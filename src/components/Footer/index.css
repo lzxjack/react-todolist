@@ -1,0 +1,12 @@
+.footer {
+    background-color: skyblue;
+    text-align: center;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.author {
+    font-size: 18px;
+}

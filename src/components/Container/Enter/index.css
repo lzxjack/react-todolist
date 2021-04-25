@@ -1,0 +1,30 @@
+.enter {
+    background-color: red;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.enterLogin {
+    font-size: 28px;
+    color: #000;
+    font-weight: 700;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.enterRegister {
+    font-size: 28px;
+    color: #000;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.enterBox {
+    background-color: #fff;
+    width: 60%;
+    height: 80%;
+}

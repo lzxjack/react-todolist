@@ -1,0 +1,13 @@
+.display {
+    background-color: pink;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro {
+    font-size: 48px;
+    font-weight: 700;
+}
