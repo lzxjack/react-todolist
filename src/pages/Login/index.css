@@ -1,0 +1,63 @@
+/* .enterBody {
+    height: 100%;
+} */
+.avatarBox {
+    height: 50%;
+    /* width: 100%; */
+    text-align: center;
+}
+
+.avatar {
+    height: 16em;
+    width: 16em;
+}
+
+.loginInput {
+    height: 30%;
+}
+
+.loginInput span {
+    /* display: inline-block; */
+    height: 100%;
+    width: 30%;
+    background-color: rgb(10, 243, 134);
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.loginInput input {
+    display: block;
+    width: 70%;
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: 24px;
+    height: 100%;
+    /* background: transparent; */
+}
+
+.loginUname {
+    display: flex;
+    flex-direction: row;
+    height: 50%;
+    background-color: rgb(172, 132, 132);
+}
+.loginPsd {
+    display: flex;
+    flex-direction: row;
+    height: 50%;
+    background-color: rgb(104, 166, 170);
+}
+
+.loginBtn {
+    width: 100%;
+    height: 20%;
+    background-color: rgb(190, 247, 35);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    user-select: none;
+}

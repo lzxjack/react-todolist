@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
-import MyNavLink from '../../MyNavLink';
-import Login from '../../../pages/Login';
-import Register from '../../../pages/Register';
+import { Route, Redirect } from 'react-router-dom';
+import MyNavLink from '../../../MyNavLink';
+import Login from '../../../../pages/Login';
+import Register from '../../../../pages/Register';
 import './index.css';
 
 export default class Enter extends Component {
@@ -21,6 +21,7 @@ export default class Enter extends Component {
                     <div className="enterBody">
                         <Route path="/login" component={Login} />
                         <Route path="/register" component={Register} />
+                        <Redirect to="/" />
                     </div>
                 </div>
             </div>

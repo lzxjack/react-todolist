@@ -6,6 +6,19 @@
     justify-content: center;
     align-items: center;
 }
+.enterBox {
+    background-color: #fff;
+    width: 60%;
+    height: 80%;
+}
+.enterHeader {
+    height: 15%;
+}
+
+.enterBody {
+    height: 85%;
+}
+
 .enterLogin {
     font-size: 28px;
     color: #000;
@@ -14,6 +27,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100%;
 }
 .enterRegister {
     font-size: 28px;
@@ -22,9 +36,5 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
-.enterBox {
-    background-color: #fff;
-    width: 60%;
-    height: 80%;
+    height: 100%;
 }
