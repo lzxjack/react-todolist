@@ -15,8 +15,12 @@ export default class Login extends Component {
                     // alert('登录成功');
                     this.uname.value = '';
                     this.psd.value = '';
-                    // this.setState({});
-                    // this.forceUpdate();
+                    console.log(loginState);
+                    // 将服务端返回的token保存在sessionStorage中
+                    window.sessionStorage.setItem('token', loginState._cache.keys.accessTokenKey);
+                    // console.log(this.props.history);
+                    // 通过编程式导航跳转到登录后的页面
+                    this.props.history.push('/user');
                 });
         } catch (error) {
             console.log(error);
