@@ -4,3 +4,5 @@ flex 布局
 antd+样式按需引入
 
 react-route
+
+react-route-config集中管理路由
