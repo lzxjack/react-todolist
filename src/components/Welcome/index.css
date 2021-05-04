@@ -1,0 +1,71 @@
+/* ------------界面总容器-------------- */
+.welcome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 85%;
+    width: 100%;
+}
+/* --------------左侧图片区------------------- */
+.display {
+    background-color: pink;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* user-select: none; */
+}
+
+.intro {
+    font-size: 48px;
+    font-weight: 700;
+}
+/* --------------右侧登录区------------------ */
+
+.enter {
+    background-color: red;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.enterBox {
+    background-color: #fff;
+    width: 60%;
+    height: 60%;
+}
+.enterHeader {
+    height: 15%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+}
+
+.enterLogin,
+.enterRegister {
+    font-size: 28px;
+    color: #000;
+    font-weight: 700;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 50%;
+    background-color: pink;
+}
+.enterRegister {
+    background-color: rgb(197, 82, 102);
+}
+
+.enterBody {
+    height: 85%;
+    background-color: skyblue;
+}
+
+.select {
+    background-color: rgb(18, 16, 168);
+    color: #fff;
+}

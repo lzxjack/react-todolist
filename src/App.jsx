@@ -1,12 +1,12 @@
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
+import Welcome from './components/Welcome';
 import Footer from './components/Footer';
-import Container from './components/Container';
 
-export default class App extends Component {
+export default class App extends PureComponent {
     render() {
         return (
             <Fragment>
-                <Container />
+                <Welcome />
                 <Footer />
             </Fragment>
         );
