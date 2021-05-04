@@ -1,8 +1,3 @@
-/* .inputUname,
-.inputPwd {
-    border: 1px solid #ccc;
-} */
-
 .LoginBox {
     display: flex;
     /* justify-content: space-around; */

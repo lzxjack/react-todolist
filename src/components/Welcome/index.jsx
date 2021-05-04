@@ -1,13 +1,13 @@
 import React, { PureComponent } from 'react';
 import MyNavLink from '../MyNavLink';
-import routes from '../../router.js';
+// import routes from '../../router.js';
 import renderRoutes from '../../utils/renderRoutes';
 import './index.css';
 
 export default class Welcome extends PureComponent {
     render() {
         return (
-            <div class="welcome">
+            <div className="welcome">
                 {/* 左侧图片区 */}
                 <div className="display">
                     <span className="intro">使用TodoList，做一个时间管理大师</span>
@@ -17,19 +17,23 @@ export default class Welcome extends PureComponent {
                     <div className="enterBox">
                         {/* 路由链接 */}
                         <div className="enterHeader">
-                            <MyNavLink activeClassName="select" to="/login" className="enterLogin">
+                            <MyNavLink
+                                activeClassName="select"
+                                to="/welcome/login"
+                                className="enterLogin"
+                            >
                                 登陆
                             </MyNavLink>
                             <MyNavLink
                                 activeClassName="select"
-                                to="/register"
+                                to="/welcome/register"
                                 className="enterRegister"
                             >
                                 注册
                             </MyNavLink>
                         </div>
                         {/* 路由展示区 */}
-                        <div className="enterBody">{renderRoutes(routes)}</div>
+                        <div className="enterBody">{renderRoutes(this.props.route.children)}</div>
                     </div>
                 </div>
             </div>

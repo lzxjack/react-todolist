@@ -1,18 +1,39 @@
-import Login from './pages/Login';
-import Register from './pages/Register';
+import Home from './components/Home';
+import Welcome from './components/Welcome';
+import Login from './components/Welcome/Login';
+import Register from './components/Welcome/Register';
 
 const routes = [
     {
-        path: '/login',
-        component: Login,
+        path: '/home',
+        component: Home,
+        requiresAuth: true,
     },
     {
-        path: '/register',
-        component: Register,
+        path: '/welcome',
+        component: Welcome,
+        requiresAuth: false,
+        children: [
+            {
+                path: '/welcome/login',
+                component: Login,
+                requiresAuth: false,
+            },
+            {
+                path: '/welcome/register',
+                component: Register,
+                requiresAuth: false,
+            },
+            {
+                path: '/welcome',
+                component: Login,
+                requiresAuth: false,
+            },
+        ],
     },
     {
         path: '/',
-        component: Login,
+        component: Welcome,
     },
 ];
 
