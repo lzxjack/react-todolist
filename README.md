@@ -17,4 +17,5 @@ react-route-config集中管理路由
 4. 响应式布局，判断屏幕大小
 5. withRouter 加工一般组件，返回新组件，使其具有路由组件的API
 6. componentDidMount
-
+7. input 监听回车事件
+8. 正则表达式验证

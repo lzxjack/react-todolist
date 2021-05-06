@@ -7,8 +7,6 @@ import Footer from './components/Footer';
 import { auth } from './utils/cloudBase';
 import { login, logout } from './redux/actions/userState';
 
-// const auth = app.auth();
-
 class App extends PureComponent {
     componentDidMount() {
         // App组件挂载后，判断登录状态
@@ -19,12 +17,13 @@ class App extends PureComponent {
             // 未登录
             this.props.logout();
         }
+        // 无论是否登录，都尝试跳转到/home页，由路由鉴权作进一步判断
         this.props.history.replace('/home');
-        // console.log(this.props);
     }
     render() {
         return (
             <Fragment>
+                {/* 路由鉴权：渲染/welcome页面 or /home页面 */}
                 {renderRoutes(routes, this.props.userState, '/welcome')}
                 <Footer />
             </Fragment>

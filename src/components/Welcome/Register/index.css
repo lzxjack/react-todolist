@@ -1,4 +1,4 @@
-.LoginBox {
+.RegisterBox {
     display: flex;
     /* justify-content: space-around; */
     justify-content: center;
@@ -16,7 +16,7 @@
     margin: 15px;
 }
 
-.LoginBtn {
+.RegisterBtn {
     width: 80%;
     height: 15%;
     background-color: red;
@@ -28,7 +28,7 @@
     margin: 15px;
     user-select: none;
 }
-.LoginBtn:hover,
+.RegisterBtn:hover,
 .inputUname:hover,
 .inputPwd:hover {
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
