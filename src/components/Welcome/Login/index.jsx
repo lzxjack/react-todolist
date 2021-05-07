@@ -40,8 +40,8 @@ class Login extends PureComponent {
     };
     render() {
         return (
-            <div className="LoginBox">
-                <div className="inputLogin">
+            <div className="loginBox">
+                <div className="loginEmail">
                     <input
                         ref={c => {
                             this.loginEmail = c;
@@ -50,7 +50,7 @@ class Login extends PureComponent {
                         placeholder="请输入邮箱地址"
                     />
                 </div>
-                <div className="inputPwd">
+                <div className="loginPwd">
                     <input
                         ref={c => {
                             this.logonPwd = c;
@@ -60,7 +60,7 @@ class Login extends PureComponent {
                         placeholder="请输入密码"
                     />
                 </div>
-                <div className="LoginBtn" onClick={this.emailLogin}>
+                <div className="loginBtn" onClick={this.emailLogin}>
                     登录
                 </div>
             </div>

@@ -73,8 +73,8 @@ export default class Register extends PureComponent {
     };
     render() {
         return (
-            <div className="RegisterBox">
-                <div className="inputUname">
+            <div className="registerBox">
+                <div className="registerUname">
                     <input
                         ref={c => {
                             this.newEmail = c;
@@ -83,7 +83,7 @@ export default class Register extends PureComponent {
                         placeholder="请输入邮箱地址"
                     />
                 </div>
-                <div className="inputPwd">
+                <div className="registerPwd">
                     <input
                         ref={c => {
                             this.newPwd = c;
@@ -92,7 +92,7 @@ export default class Register extends PureComponent {
                         placeholder="请输入密码（8~32位，包含字母、数字）"
                     />
                 </div>
-                <div className="inputPwd">
+                <div className="registerPwd">
                     <input
                         ref={c => {
                             this.newPwdAgian = c;
@@ -103,7 +103,7 @@ export default class Register extends PureComponent {
                     />
                 </div>
 
-                <div onClick={this.addUser} className="RegisterBtn">
+                <div onClick={this.addUser} className="registerBtn">
                     注册
                 </div>
             </div>

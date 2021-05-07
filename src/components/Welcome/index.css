@@ -1,19 +1,33 @@
-/* ------------界面总容器-------------- */
-.welcome {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 85%;
+/* 页面大容器 */
+.welcomeBox {
     width: 100%;
+    height: 100%;
+    display: grid;
+    background-color: rgb(33, 255, 255);
 }
-/* --------------左侧图片区------------------- */
+
+/* ------------居中的盒子-------------- */
+.welcome {
+    align-self: center;
+    justify-self: center;
+    display: flex;
+    flex-direction: row;
+    /* align-items: center;
+    justify-content: center; */
+    height: 780px;
+    width: 1500px;
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.8);
+}
+/* --------------盒子左侧图片区------------------- */
 .display {
     background-color: pink;
     height: 100%;
     width: 50%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 60px;
     /* user-select: none; */
 }
 
@@ -21,7 +35,7 @@
     font-size: 48px;
     font-weight: 700;
 }
-/* --------------右侧登录区------------------ */
+/* --------------盒子右侧登录区------------------ */
 
 .enter {
     background-color: red;
@@ -33,22 +47,22 @@
 }
 .enterBox {
     background-color: #fff;
-    width: 60%;
-    height: 60%;
+    width: 460px;
+    height: 520px;
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.8);
 }
 .enterHeader {
-    height: 15%;
-    background-color: #fff;
+    height: 70px;
+    width: 460px;
     display: flex;
     flex-direction: row;
 }
 
-.enterLogin,
-.enterRegister {
+.linkLogin,
+.linkRegister {
     font-size: 28px;
     color: #000;
     font-weight: 700;
-    text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -56,12 +70,12 @@
     width: 50%;
     background-color: pink;
 }
-.enterRegister {
+.linkRegister {
     background-color: rgb(197, 82, 102);
 }
 
 .enterBody {
-    height: 85%;
+    height: 450px;
     background-color: skyblue;
 }
 

@@ -1,4 +1,4 @@
-.RegisterBox {
+.registerBox {
     display: flex;
     /* justify-content: space-around; */
     justify-content: center;
@@ -6,37 +6,37 @@
     flex-direction: column;
     height: 100%;
 }
-.inputUname,
-.inputPwd {
+.registerUname,
+.registerPwd {
     display: flex;
     align-items: center;
-    width: 80%;
-    height: 15%;
+    width: 360px;
+    height: 70px;
     background-color: #fff;
     margin: 15px;
 }
 
-.RegisterBtn {
-    width: 80%;
-    height: 15%;
+.registerBtn {
+    width: 360px;
+    height: 70px;
     background-color: red;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.4vw;
+    font-size: 32px;
     font-weight: 700;
     margin: 15px;
     user-select: none;
 }
-.RegisterBtn:hover,
-.inputUname:hover,
-.inputPwd:hover {
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+.registerBtn:hover,
+.registerUname:hover,
+.registerPwd:hover {
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.8);
 }
-.inputUname input,
-.inputPwd input {
+.registerUname input,
+.registerPwd input {
     width: 100%;
     height: 100%;
     padding: 0 20px 0;
-    font-size: 1vw;
+    font-size: 20px;
 }
