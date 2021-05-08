@@ -11,6 +11,7 @@
 9. componentDidMount
 10. input 监听回车事件
 11. 正则表达式验证
+12. CSS 自定义动画
 
 # 主要功能实现：
 

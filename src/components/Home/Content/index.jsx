@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import Task from '../Task';
 
 import { AlignLeftOutlined, UserOutlined } from '@ant-design/icons';
 import './index.css';
@@ -11,15 +12,19 @@ export default class Content extends PureComponent {
                     <ul>
                         <li>
                             <AlignLeftOutlined />
-                            <span className="test">&nbsp;&nbsp;任务</span>
+                            <span className="text">&nbsp;&nbsp;任务</span>
                         </li>
                         <li>
                             <UserOutlined />
-                            <span className="test">&nbsp;&nbsp;关于</span>
+                            <span className="text">&nbsp;&nbsp;关于</span>
                         </li>
                     </ul>
                 </div>
-                <div className="show">{/* <div className="test"></div> */}</div>
+                <div className="show">
+                    <div className="showBox">
+                        <Task />
+                    </div>
+                </div>
             </div>
         );
     }
