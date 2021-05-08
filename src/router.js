@@ -2,8 +2,11 @@ import Home from './components/Home';
 import Welcome from './components/Welcome';
 import Login from './components/Welcome/Login';
 import Register from './components/Welcome/Register';
+import Going from './components/Home/Content/Going';
+import Finished from './components/Home/Content/Finished';
+import Me from './components/Home/Content/Me';
 
-const routes = [
+export const appRoutes = [
     {
         path: '/home',
         component: Home,
@@ -37,4 +40,23 @@ const routes = [
     },
 ];
 
-export default routes;
+export const homeRouters = [
+    {
+        path: '/home/going',
+        component: Going,
+        requiresAuth: false,
+    },
+    {
+        path: '/home/finished',
+        component: Finished,
+        requiresAuth: false,
+    },
+    {
+        path: '/home/me',
+        component: Me,
+    },
+    {
+        path: '/home',
+        component: Going,
+    },
+];
