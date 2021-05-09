@@ -1,11 +1,11 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import { message } from 'antd';
 import { CheckOutlined, CloseOutlined, DoubleRightOutlined } from '@ant-design/icons';
 import { db } from '../../../../utils/cloudBase';
 import './index.css';
 
 const _ = db.command;
-export default class Going extends PureComponent {
+export default class Going extends Component {
     componentDidMount() {
         // 首先获得所有未完成的任务
         this.getGoingTask();
@@ -25,6 +25,7 @@ export default class Going extends PureComponent {
             .then(res => {
                 // 将返回的结果存放在state中
                 this.setState({ going: res.data });
+                // console.log(res);
             });
     };
     // 添加任务
@@ -33,18 +34,25 @@ export default class Going extends PureComponent {
         if (e.keyCode === 13) {
             // 判断输入框会否为空
             if (this.inputTask.value.trim() !== '') {
+                // this.setState({going:[]})
+                // 更新数据库
                 db.collection('tasks')
                     .add({
                         content: this.inputTask.value,
                         done: false,
                     })
-                    .then(() => {
+                    .then(async res => {
+                        // 获取旧状态
+                        const { going } = this.state;
+                        const { id } = await res;
+                        const addOne = { _id: id, content: this.inputTask.value, done: false };
+                        // const newGoing=[]
+                        // 更新状态
+                        this.setState({ going: [...going, addOne] });
+                        // 清空输入框
+                        this.inputTask.value = '';
                         message.success('添加成功！');
                     });
-                // 清空输入框
-                this.inputTask.value = '';
-                // 重新获得所有未完成的任务，从而改变state，重新渲染页面
-                this.getGoingTask();
             } else {
                 // 清空输入框
                 this.inputTask.value = '';
@@ -52,7 +60,7 @@ export default class Going extends PureComponent {
             }
         }
     };
-    // 从状态中删除相应ID任务
+    // 从状态中删除相应id任务
     deleteTaskInState = id => {
         // 获取旧状态
         const { going } = this.state;
