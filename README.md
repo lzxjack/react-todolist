@@ -13,6 +13,9 @@
 11. 正则表达式验证
 12. CSS 自定义动画
 13. 手写导航栏效果
+14. 页脚始终固定在底部（min-height、负margin-top、专门填充的div）
+15. 渲染数据`<li></li>`之前，先`setState`存放数据，一定要初始化状态！！！`state = { going: [] };`
+16. onClick传递参数：`this.deleteTask.bind(this, taskObj._id)`，`bind(this,参数)`
 
 # 主要功能实现：
 

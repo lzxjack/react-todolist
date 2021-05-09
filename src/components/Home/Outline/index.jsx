@@ -37,9 +37,6 @@ class Outline extends PureComponent {
                     </div>
                     <div className="dependTime"> 时间不早了，赶快睡觉吧！</div>
                 </div>
-                {/* <div className="logoutBtn" onClick={this.turnLogout}>
-                    退出
-                </div> */}
                 <Popconfirm
                     placement="bottomRight"
                     title={text}

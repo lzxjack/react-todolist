@@ -9,3 +9,93 @@
     align-items: center;
     padding: 0 20px;
 }
+
+/* 提示信息 */
+.finishedText {
+    height: 120px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+}
+
+/* 任务列表ul */
+.finishedTaskBox {
+    overflow: hidden;
+    overflow-y: scroll;
+    padding: 20px 0;
+    width: 100%;
+    height: 600px;
+    background-color: rgb(78, 236, 117);
+}
+
+/* 隐藏滚动条，但能滚动 */
+.finishedTaskBox::-webkit-scrollbar {
+    display: none;
+}
+
+.finishedTaskBox li {
+    position: relative;
+    width: 750px;
+    height: 50px;
+    margin: 0 auto 20px;
+    background-color: #fff;
+    transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+}
+
+.finishedTaskBox li .finishedDoneBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    width: 50px;
+    height: 50px;
+    background-color: rgb(21, 211, 236);
+    transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+}
+.finishedTaskBox li .finishedDoneBtn:hover {
+    background-color: rgb(0, 228, 38);
+    color: #fff;
+}
+
+.finishedTaskBox li .finishedTaskContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, 0);
+    width: 650px;
+    height: 50px;
+    background-color: rgb(123, 241, 236);
+    user-select: none;
+}
+
+.finishedTaskBox li .finishedDeleteBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+}
+
+.finishedTaskBox li .finishedDeleteBtn:hover {
+    color: #fff;
+    background-color: rgb(45, 11, 236);
+}
+
+.finishedTaskBox li:hover {
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.8);
+}

@@ -1,20 +1,20 @@
-/* 内容大盒子 */
+/* --------------------内容大盒子-------------------- */
 .contentBox {
-    /* background-color: rgb(238, 248, 90); */
+    position: relative;
     width: 100%;
     height: 817px;
-    display: flex;
-    flex-direction: row;
+    background-color: pink;
+    /* background-color: rgb(38, 255, 255); */
 }
 
-/* 左侧导航栏盒子 */
+/* ---------------------------------左侧导航栏---------------------------- */
 .nav {
-    z-index: 9;
-    /* width: 180px; */
+    position: absolute;
+    left: 0;
+    top: 0;
     width: 50px;
     height: 100%;
     background-color: rgb(38, 255, 154);
-    /* box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8); */
     transition: all 0.3s;
     -webkit-transition: all 0.3s;
 }
@@ -76,17 +76,17 @@
     align-items: center;
 }
 
-/* 中间展示区 */
-.show {
+/* --------------------------------中间路由展示区--------------------------- */
+/* .show {
     width: 100%;
     height: 100%;
     background-color: rgb(38, 255, 255);
-}
+} */
 
 .showBox {
     height: 100%;
     width: 900px;
-    position: relative;
+    /* position: relative; */
     background-color: rgb(251, 255, 39);
     margin: 0 auto;
 }
