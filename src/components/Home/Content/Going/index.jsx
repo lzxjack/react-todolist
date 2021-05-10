@@ -38,34 +38,33 @@ export default class Going extends Component {
     };
     // 添加任务
     addTask = e => {
+        // console.log(this.inputTask.value);
         // 判断用户按下回车
         if (e.keyCode === 13) {
             // 判断输入框会否为空
-            if (this.inputTask.value.trim() !== '') {
-                // this.setState({going:[]})
-                // 更新数据库
-                db.collection('tasks')
-                    .add({
-                        content: this.inputTask.value,
-                        done: false,
-                    })
-                    .then(async res => {
-                        // 获取旧状态
-                        const { going } = this.state;
-                        const { id } = await res;
-                        const addOne = { _id: id, content: this.inputTask.value, done: false };
-                        // const newGoing=[]
-                        // 更新状态
-                        this.setState({ going: [...going, addOne] });
-                        // 清空输入框
-                        this.inputTask.value = '';
-                        message.success('添加成功！');
-                    });
-            } else {
+            if (this.inputTask.value.trim() === '') {
                 // 清空输入框
                 this.inputTask.value = '';
                 message.warning('请输入todo...');
+                return;
             }
+            // 更新数据库
+            db.collection('tasks')
+                .add({
+                    content: this.inputTask.value.trim(),
+                    done: false,
+                })
+                .then(async res => {
+                    // 获取旧状态
+                    const { going } = this.state;
+                    const { id } = await res;
+                    const addOne = { _id: id, content: this.inputTask.value.trim(), done: false };
+                    // 更新状态
+                    this.setState({ going: [...going, addOne] });
+                    // 清空输入框
+                    this.inputTask.value = '';
+                    message.success('添加成功！');
+                });
         }
     };
     // 从状态中删除相应id任务

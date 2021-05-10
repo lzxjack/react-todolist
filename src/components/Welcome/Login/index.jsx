@@ -1,14 +1,26 @@
 import React, { PureComponent } from 'react';
 // import { withRouter } from 'react-router-dom';
-import { message } from 'antd';
+import { message, notification } from 'antd';
 import { auth } from '../../../utils/cloudBase';
 import { connect } from 'react-redux';
 import { login, logout } from '../../../redux/actions/userState';
 import './index.css';
 
 class Login extends PureComponent {
+    // 打开登录失败的消息提醒框
+    openLoginFailed = type => {
+        notification[type]({
+            message: '登陆失败！',
+            description: '请检查邮箱地址、密码是否正确！',
+        });
+    };
     // 邮箱地址登录
     emailLogin = () => {
+        // 判断用户是否输入了密码
+        if (this.logonPwd.value === '') {
+            message.warning('请输入密码！');
+            return;
+        }
         try {
             auth.signInWithEmailAndPassword(this.loginEmail.value, this.logonPwd.value).then(() => {
                 // 登录成功后，调用login()，改变登录状态为true
@@ -27,9 +39,10 @@ class Login extends PureComponent {
                 message.success('登录成功！开始查看todo吧~');
             });
         } catch (error) {
-            console.log(error);
             // 登录失败，改变登录状态为false
             this.props.logout();
+            this.openLoginFailed('error');
+            this.logonPwd.value = '';
         }
     };
     onEnter = e => {

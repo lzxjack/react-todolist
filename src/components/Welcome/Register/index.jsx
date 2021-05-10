@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
-import { notification, message } from 'antd';
+import { notification, Button } from 'antd';
 import { auth } from '../../../utils/cloudBase';
+import { CheckOutlined } from '@ant-design/icons';
 import './index.css';
 
 export default class Register extends PureComponent {
@@ -9,6 +10,7 @@ export default class Register extends PureComponent {
         notification[type]({
             message: '信息填写错误！',
             description: '请输入正确的邮箱地址',
+            duration: 7,
         });
     };
     // 密码错误的提示消息
@@ -16,6 +18,7 @@ export default class Register extends PureComponent {
         notification[type]({
             message: '信息填写错误！',
             description: '请输入正确的密码，8~32位，需包含字母、数字',
+            duration: 7,
         });
     };
     // 密码确认错误的提示消息
@@ -23,6 +26,32 @@ export default class Register extends PureComponent {
         notification[type]({
             message: '信息填写错误！',
             description: '两次输入的密码不一致',
+            duration: 7,
+        });
+    };
+    // 注册邮箱地址失败的提示消息
+    openRegisterFailed = type => {
+        notification[type]({
+            message: '注册失败！',
+            description: '邮箱地址不存在或邮箱地址已被注册！',
+            duration: 7,
+        });
+    };
+    // 注册邮箱地址成功的提示消息
+    openNotification = () => {
+        const key = `open${Date.now()}`;
+        const btn = (
+            <Button type="primary" size="small" onClick={() => notification.close(key)}>
+                好的
+            </Button>
+        );
+        notification.open({
+            message: '验证信息已发送',
+            description: '已发送激活邮件，请及时前往填写的邮箱中查收并确认激活~',
+            btn,
+            key,
+            duration: 0,
+            icon: <CheckOutlined />,
         });
     };
     addUser = () => {
@@ -49,20 +78,17 @@ export default class Register extends PureComponent {
         }
         // 通过验证，validateFlag还是为true
         if (validateFlag) {
-            auth.signUpWithEmailAndPassword(this.newEmail.value, this.newPwd.value).then(() => {
-                // 发送验证邮件成功，提示消息
-                // message.success({
-                //     content: '已发送激活邮件，请前往填写的邮箱中查收并确认激活~',
-                //     className: 'custom-class',
-                //     style: {
-                //         marginTop: '20vh',
-                //     },
-                //     duration: 1.5,
-                // });
-                message.success('已发送激活邮件，请前往填写的邮箱中查收并确认激活~');
-                // 返回登录页面
-                this.props.history.replace('/welcome/login');
-            });
+            try {
+                auth.signUpWithEmailAndPassword(this.newEmail.value, this.newPwd.value).then(() => {
+                    // 发送验证邮件成功，提示消息
+                    this.openNotification();
+                    // 返回登录页面
+                    this.props.history.replace('/welcome/login');
+                });
+            } catch (error) {
+                // 提示消息
+                this.openRegisterFailed('error');
+            }
         }
     };
     onEnter = e => {
