@@ -4,6 +4,9 @@ import { CheckOutlined, CloseOutlined, DoubleRightOutlined } from '@ant-design/i
 import { db } from '../../../../utils/cloudBase';
 import './index.css';
 
+// import { Result } from 'antd';
+import { SmileOutlined } from '@ant-design/icons';
+
 const _ = db.command;
 export default class Going extends Component {
     componentDidMount() {
@@ -109,28 +112,36 @@ export default class Going extends Component {
                         className="inputTask"
                     />
                 </div>
-
-                <ul className="goingTaskBox">
-                    {this.state.going.map(taskObj => {
-                        return (
-                            <li key={taskObj._id}>
-                                <div
-                                    className="goingDoneBtn"
-                                    onClick={this.finishTask.bind(this, taskObj._id)}
-                                >
-                                    <CheckOutlined />
-                                </div>
-                                <div className="goingTaskContent">{taskObj.content}</div>
-                                <div
-                                    className="goingDeleteBtn"
-                                    onClick={this.deleteTask.bind(this, taskObj._id)}
-                                >
-                                    <CloseOutlined />
-                                </div>
-                            </li>
-                        );
-                    })}
-                </ul>
+                {this.state.going.length === 0 ? (
+                    <div className="goingNull">
+                        <div className="goingNullIcon">
+                            <SmileOutlined />
+                        </div>
+                        <div className="goingNullText">Great, 你已完成所有任务！</div>
+                    </div>
+                ) : (
+                    <ul className="goingTaskBox">
+                        {this.state.going.map(taskObj => {
+                            return (
+                                <li key={taskObj._id}>
+                                    <div
+                                        className="goingDoneBtn"
+                                        onClick={this.finishTask.bind(this, taskObj._id)}
+                                    >
+                                        <CheckOutlined />
+                                    </div>
+                                    <div className="goingTaskContent">{taskObj.content}</div>
+                                    <div
+                                        className="goingDeleteBtn"
+                                        onClick={this.deleteTask.bind(this, taskObj._id)}
+                                    >
+                                        <CloseOutlined />
+                                    </div>
+                                </li>
+                            );
+                        })}
+                    </ul>
+                )}
             </Fragment>
         );
     }

@@ -16,14 +16,15 @@ class Login extends PureComponent {
                 // 跳转到home页面
                 this.props.history.replace('/home');
                 // 提示消息
-                message.success({
-                    content: '登录成功！开始查看todo吧~',
-                    className: 'custom-class',
-                    style: {
-                        marginTop: '20vh',
-                    },
-                    duration: 1.5,
-                });
+                // message.success({
+                //     content: '登录成功！开始查看todo吧~',
+                //     className: 'custom-class',
+                //     style: {
+                //         marginTop: '20vh',
+                //     },
+                //     duration: 1.5,
+                // });
+                message.success('登录成功！开始查看todo吧~');
             });
         } catch (error) {
             console.log(error);

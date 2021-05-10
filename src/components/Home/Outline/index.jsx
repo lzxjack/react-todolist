@@ -1,25 +1,30 @@
 import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
-// import { message } from 'antd';
-import { Popconfirm, message, Button } from 'antd';
+import { Popconfirm, message } from 'antd';
 import './index.css';
 
-const text = '真的要退出登录吗？';
+const logoutCheck = '真的要退出登录吗？';
 class Outline extends PureComponent {
     turnLogout = () => {
         // 清除sessionStorage
         sessionStorage.clear();
         // 提示消息
-        message.success({
-            content: '退出成功！',
-            className: 'custom-class',
-            style: {
-                marginTop: '20vh',
-            },
-            duration: 1.5,
-        });
+        // message.success({
+        //     content: '退出成功！',
+        //     className: 'custom-class',
+        //     style: {
+        //         marginTop: '20vh',
+        //     },
+        //     duration: 1.5,
+        // });
+        message.success('退出成功！');
         // 回到welcome页面
         this.props.history.replace('/welcome');
+    };
+
+    // 退出（取消）
+    turnLogoutCancel = () => {
+        message.info('取消退出！');
     };
     render() {
         return (
@@ -39,12 +44,13 @@ class Outline extends PureComponent {
                 </div>
                 <Popconfirm
                     placement="bottomRight"
-                    title={text}
+                    title={logoutCheck}
                     onConfirm={this.turnLogout}
+                    onCancel={this.turnLogoutCancel}
                     okText="退出！"
                     cancelText="再看看！"
                 >
-                    <Button className="logoutBtn">退出</Button>
+                    <div className="logoutBtn">退出</div>
                 </Popconfirm>
             </div>
         );

@@ -51,14 +51,15 @@ export default class Register extends PureComponent {
         if (validateFlag) {
             auth.signUpWithEmailAndPassword(this.newEmail.value, this.newPwd.value).then(() => {
                 // 发送验证邮件成功，提示消息
-                message.success({
-                    content: '已发送激活邮件，请前往填写的邮箱中查收并确认激活~',
-                    className: 'custom-class',
-                    style: {
-                        marginTop: '20vh',
-                    },
-                    duration: 1.5,
-                });
+                // message.success({
+                //     content: '已发送激活邮件，请前往填写的邮箱中查收并确认激活~',
+                //     className: 'custom-class',
+                //     style: {
+                //         marginTop: '20vh',
+                //     },
+                //     duration: 1.5,
+                // });
+                message.success('已发送激活邮件，请前往填写的邮箱中查收并确认激活~');
                 // 返回登录页面
                 this.props.history.replace('/welcome/login');
             });

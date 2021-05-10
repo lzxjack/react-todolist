@@ -8,6 +8,7 @@
     /* justify-content: center; */
     align-items: center;
     padding: 0 20px;
+    user-select: none;
 }
 
 /* 输入框包裹的盒子 */
@@ -38,6 +39,22 @@
     background-color: rgb(230, 233, 233);
     box-shadow: 0 0 18px rgba(0, 0, 0, 0.8);
 }
+
+.goingNull {
+    padding: 100px 0;
+    /* background-color: #fff; */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    user-select: none;
+}
+.goingNullIcon {
+    font-size: 60px;
+}
+.goingNullText {
+    font-size: 24px;
+}
+
 /* 任务列表ul */
 .goingTaskBox {
     overflow: hidden;
@@ -45,7 +62,7 @@
     padding: 20px 0;
     width: 100%;
     height: 600px;
-    background-color: rgb(78, 236, 117);
+    /* background-color: rgb(78, 236, 117); */
 }
 
 /* 隐藏滚动条，但能滚动 */

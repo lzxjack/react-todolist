@@ -53,10 +53,11 @@
     align-items: center;
     justify-content: center;
     user-select: none;
-    border: none;
+    transition: all 0.3s;
+    -webkit-transition: all 0.3s;
 }
 .logoutBtn:hover {
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8);
-    background-color: rgb(19, 190, 111);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+    background-color: rgb(11, 15, 240);
     color: #fff;
 }
