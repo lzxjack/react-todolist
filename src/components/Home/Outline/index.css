@@ -32,10 +32,12 @@
 .welcomeUser {
     font-size: 30px;
     font-weight: 700;
+    user-select: none;
 }
 /* 提示时间语句 */
-.dependTime {
+.timeText {
     font-size: 18px;
+    user-select: none;
 }
 /* 退出按钮 */
 .logoutBtn {
