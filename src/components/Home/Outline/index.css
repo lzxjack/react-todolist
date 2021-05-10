@@ -5,8 +5,8 @@
     background-color: red;
     position: relative;
 }
-/* 头像 */
-.avatar {
+/* 头像盒子 */
+.avatarBox {
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
@@ -14,9 +14,16 @@
     width: 100px;
     height: 100px;
     border-radius: 50%;
+    overflow: hidden;
     background-color: rgb(232, 245, 239);
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8);
 }
+
+.outlineAvatar {
+    width: 100px;
+    height: 100px;
+}
+
 /* 语句盒子 */
 .words {
     position: absolute;

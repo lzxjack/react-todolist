@@ -2,8 +2,10 @@ import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Popconfirm, message } from 'antd';
 import moment from 'moment';
+import { auth } from '../../../utils/cloudBase';
 import './index.css';
 
+const user = auth.currentUser;
 const logoutCheck = '真的要退出登录吗？';
 class Outline extends PureComponent {
     // state = { time: '', timeText: '', nowTime: '' };
@@ -76,18 +78,41 @@ class Outline extends PureComponent {
     turnLogoutCancel = () => {
         message.info('取消退出！');
     };
+
+    // testtouxiang = () => {
+    //     user.update({
+    //         nickName: '飞鸟',
+    //         gender: 'MALE',
+    //         avatarUrl: 'https://jack-img.oss-cn-hangzhou.aliyuncs.com/img/20201204121004.jpg',
+    //     }).then(() => {
+    //         console.log(111);
+    //     });
+    //     console.log(user.avatarUrl === '');
+    //     console.log(user);
+    // };
     render() {
         return (
             <div className="outlineBox">
-                <div className="avatar"></div>
+                <div className="avatarBox">
+                    <img
+                        // src="https://jack-img.oss-cn-hangzhou.aliyuncs.com/img/20210510203904.png"
+                        src={
+                            user.avatarUrl === ''
+                                ? 'https://jack-img.oss-cn-hangzhou.aliyuncs.com/img/20210510203904.png'
+                                : user.avatarUrl
+                        }
+                        alt="头像"
+                        className="outlineAvatar"
+                    />
+                </div>
                 <div className="words">
                     <div className="welcomeUser">
                         {this.state.time}，
-                        {
-                            JSON.parse(
-                                sessionStorage.getItem('user_info_todolist-3gayiz0cb9b8b263')
-                            ).content.email
-                        }
+                        {user.nickName === ''
+                            ? JSON.parse(
+                                  sessionStorage.getItem('user_info_todolist-3gayiz0cb9b8b263')
+                              ).content.email
+                            : user.nickName}
                         ！
                     </div>
                     <div className="timeText"> {this.state.timeText}</div>
