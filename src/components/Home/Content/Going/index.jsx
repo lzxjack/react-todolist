@@ -1,22 +1,27 @@
 import React, { Component, Fragment } from 'react';
 import { message } from 'antd';
-import { CheckOutlined, CloseOutlined, DoubleRightOutlined } from '@ant-design/icons';
+import {
+    CheckOutlined,
+    CloseOutlined,
+    DoubleRightOutlined,
+    SmileOutlined,
+} from '@ant-design/icons';
 import { db } from '../../../../utils/cloudBase';
 import './index.css';
 
-// import { Result } from 'antd';
-import { SmileOutlined } from '@ant-design/icons';
-
 const _ = db.command;
+
 export default class Going extends Component {
+    // 状态初始化
+    // state = { isLoading: true };
+
+    state = { going: [], isLoading: true };
+
     componentDidMount() {
         // 首先获得所有未完成的任务
         this.getGoingTask();
-        // console.log(this.props.location.state);
+        // this.setState({ isLoading: false });
     }
-
-    // 状态初始化
-    state = { going: [] };
 
     // 获得所有正在进行的任务
     getGoingTask = () => {
@@ -27,8 +32,8 @@ export default class Going extends Component {
             .get()
             .then(res => {
                 // 将返回的结果存放在state中
-                this.setState({ going: res.data });
-                // console.log(res);
+                // this.setState({ going: res.data });
+                this.setState({ going: res.data, isLoading: false });
             });
     };
     // 添加任务
@@ -112,7 +117,7 @@ export default class Going extends Component {
                         className="inputTask"
                     />
                 </div>
-                {this.state.going.length === 0 ? (
+                {this.state.isLoading ? null : this.state.going.length === 0 ? (
                     <div className="goingNull">
                         <div className="goingNullIcon">
                             <SmileOutlined />

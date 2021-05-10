@@ -40,7 +40,7 @@ class Outline extends PureComponent {
                         }
                         ！
                     </div>
-                    <div className="dependTime"> 时间不早了，赶快睡觉吧！</div>
+                    <div className="dependTime"> 时间不早了，早点休息吧。</div>
                 </div>
                 <Popconfirm
                     placement="bottomRight"

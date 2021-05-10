@@ -14,9 +14,10 @@ import './index.css';
 
 const deleteAllDoneCheck = '确认要删除所有已完成的任务吗？';
 const _ = db.command;
+
 export default class Finished extends PureComponent {
     // 状态初始化
-    state = { finished: [] };
+    state = { finished: [], isLoading: true };
 
     componentDidMount() {
         // 首先获得所有已完成的任务
@@ -54,7 +55,7 @@ export default class Finished extends PureComponent {
             .get()
             .then(res => {
                 // 将返回的结果存放在state中
-                this.setState({ finished: res.data });
+                this.setState({ finished: res.data, isLoading: false });
             });
     };
 
@@ -95,7 +96,7 @@ export default class Finished extends PureComponent {
                     <CheckOutlined />
                     &nbsp;Finished
                 </div>
-                {this.state.finished.length === 0 ? (
+                {this.state.isLoading ? null : this.state.finished.length === 0 ? (
                     <Fragment>
                         <div className="finishedText">
                             <span>
