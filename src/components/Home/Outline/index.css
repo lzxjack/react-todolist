@@ -36,16 +36,15 @@
     user-select: none;
 }
 
-.timeBox {
+/* .timeBox {
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
-    /* bottom: 0; */
     right: 320px;
     font-size: 40px;
     font-weight: 700;
     user-select: none;
-}
+} */
 
 /* 退出按钮 */
 .logoutBtn {

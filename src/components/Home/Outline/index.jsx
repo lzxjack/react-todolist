@@ -6,53 +6,54 @@ import './index.css';
 
 const logoutCheck = '真的要退出登录吗？';
 class Outline extends PureComponent {
-    state = { time: '', timeText: '', nowTime: '' };
+    // state = { time: '', timeText: '', nowTime: '' };
+    state = { time: '', timeText: '' };
 
     componentDidMount() {
         // 开启定时器，每隔一秒改变状态，重新渲染页面
-        this.timeUpdate = setInterval(() => {
-            const hour = moment().hours();
-            const time =
-                hour < 6
-                    ? '凌晨好'
-                    : hour < 9
-                    ? '早上好'
-                    : hour < 11
-                    ? '上午好'
-                    : hour < 13
-                    ? '中午好'
-                    : hour < 17
-                    ? '下午好'
-                    : hour < 19
-                    ? '傍晚好'
-                    : hour < 22
-                    ? '晚上好'
-                    : '夜深了';
-            const timeText =
-                hour < 6
-                    ? '三更灯火五更鸡，正是男儿读书时。'
-                    : hour < 9
-                    ? '早起的鸟儿有虫吃！'
-                    : hour < 11
-                    ? '一日之计在于晨。'
-                    : hour < 13
-                    ? '树阴满地日当午， 梦觉流莺时一声。'
-                    : hour < 17
-                    ? '点一杯下午茶吧。'
-                    : hour < 19
-                    ? '夕阳无限好，只是近黄昏。'
-                    : hour < 22
-                    ? '更深月色半人家，北斗阑干南斗斜。'
-                    : '时间不早了，早点休息吧。';
-            const nowTime = moment().format('HH:mm:ss');
-            this.setState({ time, timeText, nowTime });
-        }, 1000);
+        // this.timeUpdate = setInterval(() => {
+        const hour = moment().hours();
+        const time =
+            hour < 6
+                ? '凌晨好'
+                : hour < 9
+                ? '早上好'
+                : hour < 11
+                ? '上午好'
+                : hour < 13
+                ? '中午好'
+                : hour < 17
+                ? '下午好'
+                : hour < 19
+                ? '傍晚好'
+                : hour < 22
+                ? '晚上好'
+                : '夜深了';
+        const timeText =
+            hour < 6
+                ? '三更灯火五更鸡，正是男儿读书时。'
+                : hour < 9
+                ? '早起的鸟儿有虫吃！'
+                : hour < 11
+                ? '一日之计在于晨。'
+                : hour < 13
+                ? '树阴满地日当午， 梦觉流莺时一声。'
+                : hour < 17
+                ? '点一杯下午茶吧。'
+                : hour < 19
+                ? '夕阳无限好，只是近黄昏。'
+                : hour < 22
+                ? '更深月色半人家，北斗阑干南斗斜。'
+                : '时间不早了，早点休息吧。';
+        // const nowTime = moment().format('HH:mm:ss');
+        this.setState({ time, timeText });
+        // }, 1000);
     }
 
-    componentWillUnmount() {
-        // 清除定时器
-        clearInterval(this.timeUpdate);
-    }
+    // componentWillUnmount() {
+    //     // 清除定时器
+    //     clearInterval(this.timeUpdate);
+    // }
 
     turnLogout = () => {
         // 清除sessionStorage
@@ -91,7 +92,7 @@ class Outline extends PureComponent {
                     </div>
                     <div className="timeText"> {this.state.timeText}</div>
                 </div>
-                <div className="timeBox">{this.state.nowTime}</div>
+                {/* <div className="timeBox">{this.state.nowTime}</div> */}
                 <Popconfirm
                     placement="bottomRight"
                     title={logoutCheck}
