@@ -116,7 +116,7 @@
     width: 650px;
     height: 50px;
     background-color: rgb(123, 241, 236);
-    user-select: none;
+    /* user-select: none; */
 }
 
 .finishedTaskBox li .finishedDeleteBtn {

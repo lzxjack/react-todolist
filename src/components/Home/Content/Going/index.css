@@ -1,11 +1,9 @@
 .Going {
     width: 100%;
     height: 60px;
-    /* background-color: #fff; */
     font-size: 36px;
     border-bottom: 3px solid #000;
     display: flex;
-    /* justify-content: center; */
     align-items: center;
     padding: 0 20px;
     user-select: none;
@@ -107,7 +105,7 @@
     width: 650px;
     height: 50px;
     background-color: rgb(123, 241, 236);
-    user-select: none;
+    /* user-select: none; */
 }
 
 .goingTaskBox li .goingDeleteBtn {
