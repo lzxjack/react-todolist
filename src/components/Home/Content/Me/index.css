@@ -19,6 +19,7 @@
     position: absolute;
     top: 20px;
     left: 50%;
+    background-color: #fff;
     transform: translate(-50%, 0);
     height: 200px;
     width: 200px;
@@ -32,7 +33,7 @@
     width: 200px;
 }
 
-.upToOSSBtn {
+.upToCOSBtn {
     position: absolute;
     bottom: 20px;
     left: 50%;
@@ -49,6 +50,10 @@
     user-select: none;
     font-size: 14px;
     font-weight: 700;
+}
+
+.upToCOSInput {
+    display: none;
 }
 
 .updateAvatarBtn {
@@ -70,7 +75,7 @@
     font-weight: 700;
 }
 
-.upToOSSBtn:hover,
+.upToCOSBtn:hover,
 .updateAvatarBtn:hover {
     box-shadow: 0 0 15px rgba(0, 0, 0, 1);
     background-color: rgb(39, 60, 248);

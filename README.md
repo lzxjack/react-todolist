@@ -20,7 +20,9 @@
 18. 根据不同状态渲染不同组件
 19. 解决闪动问题：isLoading，使用加载页面
 20. 获取当前时间`import moment from 'moment';`
-21. 开启定时器每秒更新状态（componentDidMount），记得关闭定时器（componentWillUnmount）
+21. 开启定时器每秒更新状态（componentDidMount），开启之前先执行一遍需要的操作，记得关闭定时器（componentWillUnmount）
+22. input上传图片、预览图片
+23. input file元素的美化方案：外面套层div，input隐藏，点击div触发input的click事件
 
 # 主要功能实现：
 

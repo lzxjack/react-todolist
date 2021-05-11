@@ -1,12 +1,118 @@
 import React, { PureComponent, Fragment } from 'react';
-import { UserOutlined } from '@ant-design/icons';
+import { UserOutlined, CloseOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
+import { nanoid } from 'nanoid';
+import { notification, Button, message } from 'antd';
 import { updateAvatarUrl, updateNickName } from '../../../../redux/actions/userInform';
 import { DEFAULT_AVATAR_URL } from '../../../../utils/constant';
-// import { auth } from '../../../../utils/cloudBase';
+import { appTcb, auth } from '../../../../utils/cloudBase';
 import './index.css';
 
 class Me extends PureComponent {
+    state = { fileID: '', tempAvatarURL: '' };
+
+    componentDidMount() {
+        // 将redux中的头像链接保存在state中，作展示
+        this.setState({ tempAvatarURL: this.props.userInform.avatarUrl });
+    }
+    // 头像格式错误的提醒消息
+    openAvatarTypeError = () => {
+        const key = `open${Date.now()}`;
+        const btn = (
+            <Button type="primary" size="small" onClick={() => notification.close(key)}>
+                好的
+            </Button>
+        );
+        notification.open({
+            message: '头像选取失败！',
+            description: '请上传图片，仅支持 png、bmp、jpeg、jpg 格式的图片。',
+            btn,
+            key,
+            duration: 0,
+            icon: <CloseOutlined />,
+        });
+    };
+    // 头像大小超出的提醒消息
+    openAvatarSizeError = () => {
+        const key = `open${Date.now()}`;
+        const btn = (
+            <Button type="primary" size="small" onClick={() => notification.close(key)}>
+                好的
+            </Button>
+        );
+        notification.open({
+            message: '头像选取失败！',
+            description: '请上传小于或等于 2M 的图片。',
+            btn,
+            key,
+            duration: 0,
+            icon: <CloseOutlined />,
+        });
+    };
+    // 选中图片之后的回调
+    // 图片上传到云存储，并返回链接，展示图片
+    beforeUpload = async () => {
+        // 获取文件对象
+        const avatarFile = this.inputAvatar.files[0];
+        // console.log(avatarFile);
+        // 文件类型
+        const fileType = avatarFile.type;
+        // 文件后缀
+        const fileEnd = fileType.split('/')[1];
+        // console.log(fileEnd);
+        // 1. 判断是否是图片文件
+        if (!(fileType === 'image/png' || fileType === 'image/bmp' || fileType === 'image/jpeg')) {
+            // 不是图片文件，提醒用户，中止操作
+            this.openAvatarTypeError();
+            return;
+        }
+        // 2. 判断图片大小是否>2M
+        if (avatarFile.size / 1024 / 1024 > 2) {
+            // 图片大于2M，提醒用户，中止操作
+            this.openAvatarSizeError();
+            return;
+        }
+
+        // 3. 图片上传到云存储
+        await appTcb
+            .uploadFile({
+                // 云存储的路径
+                // cloudPath: 'userAvatar/1.png',
+                cloudPath: `userAvatar/${nanoid()}.${fileEnd}`,
+                // 需要上传的文件，File 类型
+                filePath: avatarFile,
+            })
+            .then(res => {
+                // 返回文件 ID
+                this.setState({ fileID: res.fileID });
+            });
+
+        // 4. 获得图片链接
+        await appTcb
+            .getTempFileURL({
+                fileList: [this.state.fileID],
+            })
+            .then(res => {
+                // 5. 根据图片链接展示图片
+                // 图片链接放入状态中，驱动页面更新，预览头像
+                this.setState({ tempAvatarURL: res.fileList[0].tempFileURL });
+            });
+    };
+    // 将图片链接上传到用户信息中
+    updateAvatar = async () => {
+        const user = auth.currentUser;
+        await user
+            .update({
+                avatarUrl: this.state.tempAvatarURL,
+            })
+            .then(() => {
+                // 将state中的tempAvatarURL放入redux，redux状态改变，驱动Outline组件头像变化
+                this.props.updateAvatarUrl(this.state.tempAvatarURL);
+                // 提醒用户
+                message.success('头像更新成功！');
+            });
+    };
+
     render() {
         return (
             <Fragment>
@@ -18,16 +124,35 @@ class Me extends PureComponent {
                     <div className="meAvatarBox">
                         <img
                             src={
-                                this.props.userInform.avatarUrl === ''
+                                this.state.tempAvatarURL === ''
                                     ? DEFAULT_AVATAR_URL
-                                    : this.props.userInform.avatarUrl
+                                    : this.state.tempAvatarURL
                             }
                             alt="头像"
                             className="meAvatar"
                         />
                     </div>
-                    <div className="upToOSSBtn">上传</div>
-                    <div className="updateAvatarBtn">更新</div>
+
+                    <div
+                        className="upToCOSBtn"
+                        onClick={() => {
+                            this.inputAvatar.click();
+                        }}
+                    >
+                        {/* <div className="upToCOSBtn"> */}
+                        选择
+                        <input
+                            type="file"
+                            ref={c => (this.inputAvatar = c)}
+                            accept="image/*"
+                            className="upToCOSInput"
+                            onChange={this.beforeUpload}
+                        />
+                    </div>
+
+                    <div className="updateAvatarBtn" onClick={this.updateAvatar}>
+                        上传
+                    </div>
                 </div>
                 <div className="updateInfoBox"></div>
             </Fragment>
