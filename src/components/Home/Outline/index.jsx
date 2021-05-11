@@ -1,19 +1,40 @@
 import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Popconfirm, message } from 'antd';
+import { connect } from 'react-redux';
+import { updateAvatarUrl, updateNickName } from '../../../redux/actions/userInform';
+import { DEFAULT_AVATAR_URL } from '../../../utils/constant';
 import moment from 'moment';
 import { auth } from '../../../utils/cloudBase';
 import './index.css';
 
-const user = auth.currentUser;
 const logoutCheck = '真的要退出登录吗？';
 class Outline extends PureComponent {
-    // state = { time: '', timeText: '', nowTime: '' };
-    state = { time: '', timeText: '' };
+    state = {
+        time: '',
+        timeText: '',
+        nowTime: '',
+    };
 
     componentDidMount() {
-        // 开启定时器，每隔一秒改变状态，重新渲染页面
-        // this.timeUpdate = setInterval(() => {
+        // 先执行一次，避免'白屏'
+        this.runPerTime();
+        // 开启定时器，每秒执行一次，更新状态
+        this.timeUpdate = setInterval(() => {
+            this.runPerTime();
+        }, 1000);
+        // 获取用户API
+        const user = auth.currentUser;
+        // 将用户上的信息添加到redux状态中
+        this.props.updateAvatarUrl(user.avatarUrl);
+        this.props.updateNickName(user.nickName);
+    }
+    componentWillUnmount() {
+        // 清除定时器
+        clearInterval(this.timeUpdate);
+    }
+    // 定时器每秒执行的函数
+    runPerTime = () => {
         const hour = moment().hours();
         const time =
             hour < 6
@@ -47,28 +68,14 @@ class Outline extends PureComponent {
                 : hour < 22
                 ? '更深月色半人家，北斗阑干南斗斜。'
                 : '时间不早了，早点休息吧。';
-        // const nowTime = moment().format('HH:mm:ss');
-        this.setState({ time, timeText });
-        // }, 1000);
-    }
-
-    // componentWillUnmount() {
-    //     // 清除定时器
-    //     clearInterval(this.timeUpdate);
-    // }
+        const nowTime = moment().format('HH:mm:ss');
+        this.setState({ time, timeText, nowTime });
+    };
 
     turnLogout = () => {
         // 清除sessionStorage
         sessionStorage.clear();
         // 提示消息
-        // message.success({
-        //     content: '退出成功！',
-        //     className: 'custom-class',
-        //     style: {
-        //         marginTop: '20vh',
-        //     },
-        //     duration: 1.5,
-        // });
         message.success('退出成功！');
         // 回到welcome页面
         this.props.history.replace('/welcome');
@@ -79,45 +86,33 @@ class Outline extends PureComponent {
         message.info('取消退出！');
     };
 
-    // testtouxiang = () => {
-    //     user.update({
-    //         nickName: '飞鸟',
-    //         gender: 'MALE',
-    //         avatarUrl: 'https://jack-img.oss-cn-hangzhou.aliyuncs.com/img/20201204121004.jpg',
-    //     }).then(() => {
-    //         console.log(111);
-    //     });
-    //     console.log(user.avatarUrl === '');
-    //     console.log(user);
-    // };
     render() {
         return (
             <div className="outlineBox">
                 <div className="avatarBox">
                     <img
-                        // src="https://jack-img.oss-cn-hangzhou.aliyuncs.com/img/20210510203904.png"
                         src={
-                            user.avatarUrl === ''
-                                ? 'https://jack-img.oss-cn-hangzhou.aliyuncs.com/img/20210510203904.png'
-                                : user.avatarUrl
+                            this.props.userInform.avatarUrl === ''
+                                ? DEFAULT_AVATAR_URL
+                                : this.props.userInform.avatarUrl
                         }
-                        alt="头像"
+                        alt="用户头像"
                         className="outlineAvatar"
                     />
                 </div>
                 <div className="words">
                     <div className="welcomeUser">
                         {this.state.time}，
-                        {user.nickName === ''
+                        {this.props.userInform.nickName === ''
                             ? JSON.parse(
                                   sessionStorage.getItem('user_info_todolist-3gayiz0cb9b8b263')
                               ).content.email
-                            : user.nickName}
+                            : this.props.userInform.nickName}
                         ！
                     </div>
                     <div className="timeText"> {this.state.timeText}</div>
                 </div>
-                {/* <div className="timeBox">{this.state.nowTime}</div> */}
+                <div className="timeBox">{this.state.nowTime}</div>
                 <Popconfirm
                     placement="bottomRight"
                     title={logoutCheck}
@@ -133,4 +128,13 @@ class Outline extends PureComponent {
     }
 }
 
-export default withRouter(Outline);
+export default withRouter(
+    connect(
+        // 状态
+        state => ({
+            userInform: state.userInform,
+        }),
+        // 操作状态的方法
+        { updateAvatarUrl, updateNickName }
+    )(Outline)
+);

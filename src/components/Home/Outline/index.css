@@ -43,7 +43,7 @@
     user-select: none;
 }
 
-/* .timeBox {
+.timeBox {
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
@@ -51,7 +51,7 @@
     font-size: 40px;
     font-weight: 700;
     user-select: none;
-} */
+}
 
 /* 退出按钮 */
 .logoutBtn {
@@ -69,11 +69,12 @@
     align-items: center;
     justify-content: center;
     user-select: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
     transition: all 0.3s;
     -webkit-transition: all 0.3s;
 }
 .logoutBtn:hover {
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 1);
     background-color: rgb(11, 15, 240);
     color: #fff;
 }

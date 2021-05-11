@@ -1,10 +1,12 @@
 import React, { PureComponent, Fragment } from 'react';
 import { UserOutlined } from '@ant-design/icons';
-import { auth } from '../../../../utils/cloudBase';
+import { connect } from 'react-redux';
+import { updateAvatarUrl, updateNickName } from '../../../../redux/actions/userInform';
+import { DEFAULT_AVATAR_URL } from '../../../../utils/constant';
+// import { auth } from '../../../../utils/cloudBase';
 import './index.css';
 
-const user = auth.currentUser;
-export default class Me extends PureComponent {
+class Me extends PureComponent {
     render() {
         return (
             <Fragment>
@@ -16,9 +18,9 @@ export default class Me extends PureComponent {
                     <div className="meAvatarBox">
                         <img
                             src={
-                                user.avatarUrl === ''
-                                    ? 'https://jack-img.oss-cn-hangzhou.aliyuncs.com/img/20210510203904.png'
-                                    : user.avatarUrl
+                                this.props.userInform.avatarUrl === ''
+                                    ? DEFAULT_AVATAR_URL
+                                    : this.props.userInform.avatarUrl
                             }
                             alt="头像"
                             className="meAvatar"
@@ -32,3 +34,10 @@ export default class Me extends PureComponent {
         );
     }
 }
+
+export default connect(
+    state => ({
+        userInform: state.userInform,
+    }),
+    { updateAvatarUrl, updateNickName }
+)(Me);
