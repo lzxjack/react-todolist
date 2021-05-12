@@ -3,9 +3,10 @@ import renderRoutes from './utils/renderRoutes';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { appRoutes } from './router.js';
-// import Footer from './components/Footer';
+import Footer from './components/Footer';
 import { auth } from './utils/cloudBase';
 import { login, logout } from './redux/actions/userState';
+import './App.css';
 
 class App extends PureComponent {
     componentDidMount() {
@@ -23,9 +24,11 @@ class App extends PureComponent {
     render() {
         return (
             <Fragment>
-                {/* 路由鉴权：渲染/welcome页面 or /home页面 */}
-                {renderRoutes(appRoutes, this.props.userState, '/welcome')}
-                {/* <Footer /> */}
+                <div className="appBox">
+                    {/* 路由鉴权：渲染/welcome页面 or /home页面 */}
+                    {renderRoutes(appRoutes, this.props.userState, '/welcome')}
+                </div>
+                <Footer />
             </Fragment>
         );
     }

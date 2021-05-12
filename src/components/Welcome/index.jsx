@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import MyNavLink from '../MyNavLink';
-// import routes from '../../router.js';
 import renderRoutes from '../../utils/renderRoutes';
 import './index.css';
 

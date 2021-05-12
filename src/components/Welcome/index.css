@@ -1,21 +1,17 @@
 /* 页面大容器 */
 .welcomeBox {
-    width: 100%;
-    height: 100%;
-    display: grid;
+    min-height: calc(100vh - 80px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: rgb(33, 255, 255);
 }
 
 /* ------------居中的盒子-------------- */
 .welcome {
-    align-self: center;
-    justify-self: center;
     display: flex;
-    flex-direction: row;
-    /* align-items: center;
-    justify-content: center; */
-    height: 780px;
-    width: 1500px;
+    height: 700px;
+    width: 1300px;
     box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.8);
 }
 /* --------------盒子左侧图片区------------------- */
@@ -28,7 +24,7 @@
     justify-content: center;
     align-items: center;
     padding: 60px;
-    /* user-select: none; */
+    user-select: none;
 }
 
 .intro {

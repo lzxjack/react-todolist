@@ -215,7 +215,6 @@ class Me extends PureComponent {
                 </div>
                 <div className="updateInfoBox">
                     <div className="nickNameBox">
-                        {/* <div className="NickNameText">昵称</div> */}
                         <input
                             type="text"
                             placeholder={

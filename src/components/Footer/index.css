@@ -1,13 +1,43 @@
 .footer {
-    height: 60px;
-    /* margin-top: -60px; */
+    z-index: 999;
+    height: 80px;
     background-color: rgb(238, 60, 16);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     user-select: none;
 }
 
-.author {
+.appName {
     font-size: 18px;
+    font-weight: 700;
+}
+
+.author {
+    font-size: 14px;
+}
+.author a {
+    color: rgb(71, 114, 255);
+}
+
+.author a:hover {
+    color: rgb(255, 243, 71);
+}
+
+/* 今日诗句 */
+.todayPoem {
+    /* background-color: #fff; */
+    height: 20px;
+    line-height: 20px;
+}
+
+.poemWords {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.poemTitle {
+    font-size: 14px;
+    text-align: right;
 }

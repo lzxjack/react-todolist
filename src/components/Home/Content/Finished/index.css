@@ -1,11 +1,9 @@
 .Finished {
     width: 100%;
     height: 70px;
-    /* background-color: #fff; */
     font-size: 36px;
     border-bottom: 3px solid #000;
     display: flex;
-    /* justify-content: center; */
     align-items: center;
     padding: 0 20px;
     user-select: none;
@@ -53,7 +51,6 @@
     width: 72px;
     height: 40px;
     font-size: 16px;
-    /* background-color: rgb(156, 201, 243); */
     user-select: none;
     transition: all 0.3s;
     -webkit-transition: all 0.3s;
@@ -67,33 +64,24 @@
 
 /* 任务列表ul */
 .finishedTaskBox {
-    overflow: hidden;
-    overflow-y: scroll;
-    padding: 20px 0;
-    width: 100%;
-    height: 600px;
-    /* background-color: rgb(78, 236, 117); */
-}
-
-/* 隐藏滚动条，但能滚动 */
-.finishedTaskBox::-webkit-scrollbar {
-    display: none;
+    padding: 10px 0;
+    margin-bottom: 0;
 }
 
 .finishedTaskBox li {
-    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     width: 750px;
     height: 50px;
-    margin: 0 auto 20px;
-    background-color: #fff;
+    margin: 20px auto 20px;
     transition: all 0.3s;
     -webkit-transition: all 0.3s;
 }
 
 .finishedTaskBox li .finishedDoneBtn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
+    line-height: 50px;
     font-size: 22px;
     width: 50px;
     height: 50px;
@@ -107,28 +95,18 @@
 }
 
 .finishedTaskBox li .finishedTaskContent {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
+    line-height: 50px;
     font-size: 22px;
-    position: absolute;
-    left: 50%;
-    top: 0;
-    transform: translate(-50%, 0);
-    width: 650px;
+    flex: 1;
     height: 50px;
     background-color: rgb(123, 241, 236);
-    /* user-select: none; */
 }
 
 .finishedTaskBox li .finishedDeleteBtn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
+    line-height: 50px;
     font-size: 22px;
-    position: absolute;
-    right: 0;
-    top: 0;
     width: 50px;
     height: 50px;
     background-color: red;

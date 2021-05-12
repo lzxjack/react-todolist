@@ -4,6 +4,7 @@
     height: 120px;
     background-color: red;
     position: relative;
+    z-index: 999;
 }
 /* 头像盒子 */
 .avatarBox {
@@ -41,30 +42,6 @@
 .timeText {
     font-size: 18px;
     user-select: none;
-}
-
-/* 今日诗句 */
-.todayPoem {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 100%;
-    width: 400px;
-    user-select: none;
-}
-
-.poemWords {
-    font-size: 22px;
-    font-weight: 700;
-}
-
-.poemTitle {
-    font-size: 16px;
-    text-align: right;
 }
 
 /* 实时显示时间 */
