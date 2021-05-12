@@ -14,9 +14,18 @@ class Outline extends PureComponent {
         time: '',
         timeText: '',
         nowTime: '',
+        poemWords: '',
+        poemTitle: '',
     };
 
     componentDidMount() {
+        // console.log();
+        // 今日诗词API
+        const jinrishici = require('jinrishici');
+        // 获取诗句，放入state
+        jinrishici.load(result => {
+            this.setState({ poemWords: result.data.content, poemTitle: result.data.origin.title });
+        });
         // 先执行一次，避免'白屏'
         this.runPerTime();
         // 开启定时器，每秒执行一次，更新状态
@@ -112,7 +121,13 @@ class Outline extends PureComponent {
                     </div>
                     <div className="timeText"> {this.state.timeText}</div>
                 </div>
+                <div className="todayPoem">
+                    <div className="poemWords">{this.state.poemWords}</div>
+                    <div className="poemTitle">——《{this.state.poemTitle}》</div>
+                </div>
+
                 <div className="timeBox">{this.state.nowTime}</div>
+                {/* 退出按钮 */}
                 <Popconfirm
                     placement="bottomRight"
                     title={logoutCheck}
