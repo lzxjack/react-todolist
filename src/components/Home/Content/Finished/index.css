@@ -29,7 +29,9 @@
 .finishedText {
     position: relative;
     height: 120px;
-    width: 100%;
+    width: 750px;
+    margin: 0 auto;
+    border-bottom: 2px solid #000;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -43,15 +45,15 @@
 
 .deleteAllDoneBtn {
     position: absolute;
+    right: 0;
+    bottom: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    right: 10px;
-    /* bottom: 10px; */
     width: 72px;
     height: 40px;
     font-size: 16px;
-    background-color: rgb(156, 201, 243);
+    /* background-color: rgb(156, 201, 243); */
     user-select: none;
     transition: all 0.3s;
     -webkit-transition: all 0.3s;

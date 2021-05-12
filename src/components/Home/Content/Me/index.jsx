@@ -1,5 +1,5 @@
 import React, { PureComponent, Fragment } from 'react';
-import { UserOutlined, CloseOutlined } from '@ant-design/icons';
+import { UserOutlined, CloseOutlined, CheckOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
 import { nanoid } from 'nanoid';
 import { notification, Button, message } from 'antd';
@@ -9,7 +9,7 @@ import { appTcb, auth } from '../../../../utils/cloudBase';
 import './index.css';
 
 class Me extends PureComponent {
-    state = { fileID: '', tempAvatarURL: '' };
+    state = { avatarCheck: false, fileID: '', tempAvatarURL: '' };
 
     componentDidMount() {
         // 将redux中的头像链接保存在state中，作展示
@@ -42,7 +42,7 @@ class Me extends PureComponent {
         );
         notification.open({
             message: '头像选取失败！',
-            description: '请上传小于或等于 2M 的图片。',
+            description: '请上传小于或等于 1M 的图片。',
             btn,
             key,
             duration: 0,
@@ -67,7 +67,7 @@ class Me extends PureComponent {
             return;
         }
         // 2. 判断图片大小是否>2M
-        if (avatarFile.size / 1024 / 1024 > 2) {
+        if (avatarFile.size / 1024 / 1024 > 1) {
             // 图片大于2M，提醒用户，中止操作
             this.openAvatarSizeError();
             return;
@@ -95,11 +95,17 @@ class Me extends PureComponent {
             .then(res => {
                 // 5. 根据图片链接展示图片
                 // 图片链接放入状态中，驱动页面更新，预览头像
-                this.setState({ tempAvatarURL: res.fileList[0].tempFileURL });
+                // 将avatarCheck改为true，表示已经选择了图片文件，可以进行上传操作
+                this.setState({ avatarCheck: true, tempAvatarURL: res.fileList[0].tempFileURL });
             });
     };
     // 将图片链接上传到用户信息中
     updateAvatar = async () => {
+        // avatarCheck为false，用户未选择头像
+        if (!this.state.avatarCheck) {
+            message.info('请先选择头像，再进行上传！');
+            return;
+        }
         const user = auth.currentUser;
         await user
             .update({
@@ -108,17 +114,68 @@ class Me extends PureComponent {
             .then(() => {
                 // 将state中的tempAvatarURL放入redux，redux状态改变，驱动Outline组件头像变化
                 this.props.updateAvatarUrl(this.state.tempAvatarURL);
+                // 将清空file，否则下次若选择同样的图片，不会触发onchange
+                this.inputAvatar.value = '';
+                // 上传头像完毕， avatarCheck重新设置为false
+                this.setState({ avatarCheck: false });
                 // 提醒用户
                 message.success('头像更新成功！');
             });
     };
 
+    // 修改昵称
+    updateNickName = async () => {
+        // console.log(this.inputNickName.value.length);
+        // 取得输入的昵称，去掉首尾空格
+        const nickName = this.inputNickName.value.trim();
+        if (nickName === '') {
+            // 清空输入框
+            this.inputNickName.value = '';
+            message.info('请输入昵称！');
+            return;
+        }
+        const nickNameReg = /^[a-zA-Z\u4e00-\u9fa5]+$/;
+        // console.log(nickNameReg.test(nickName));
+        if (!nickNameReg.test(nickName)) {
+            message.warning('昵称只能出现汉字或字母哦~');
+            return;
+        }
+        // 判断用户输入的nickname长度是否大于15
+        if (nickName.length > 15) {
+            message.warning('昵称过长，请输入15字以下的昵称~');
+            return;
+        }
+        // 判断新旧昵称
+        if (nickName === this.props.userInform.nickName) {
+            // 判断用户输入的nickname 是否等于 现在的nickname
+            message.warning('新旧昵称相同，无需修改~');
+            return;
+        }
+        // 发送修改请求
+        const user = auth.currentUser;
+        await user
+            .update({
+                nickName,
+            })
+            .then(() => {
+                this.inputNickName.value = '';
+                this.props.updateNickName(nickName);
+                message.success('昵称更新成功！');
+            });
+    };
+    // 监听是否按下回车
+    onEnter = e => {
+        if (e.keyCode === 13) this.updateNickName();
+    };
     render() {
         return (
             <Fragment>
                 <div className="Me">
                     <UserOutlined />
                     &nbsp;Me
+                </div>
+                <div className="avatarHead">
+                    <span>头像</span>
                 </div>
                 <div className="updateAvatarBox">
                     <div className="meAvatarBox">
@@ -139,7 +196,6 @@ class Me extends PureComponent {
                             this.inputAvatar.click();
                         }}
                     >
-                        {/* <div className="upToCOSBtn"> */}
                         选择
                         <input
                             type="file"
@@ -154,7 +210,28 @@ class Me extends PureComponent {
                         上传
                     </div>
                 </div>
-                <div className="updateInfoBox"></div>
+                <div className="nickNameHead">
+                    <span>昵称</span>
+                </div>
+                <div className="updateInfoBox">
+                    <div className="nickNameBox">
+                        {/* <div className="NickNameText">昵称</div> */}
+                        <input
+                            type="text"
+                            placeholder={
+                                this.props.userInform.nickName
+                                    ? this.props.userInform.nickName
+                                    : '怎么称呼呢？'
+                            }
+                            className="inputNickName"
+                            ref={c => (this.inputNickName = c)}
+                            onKeyUp={this.onEnter}
+                        />
+                        <div className="updateNickNameBtn" onClick={this.updateNickName}>
+                            <CheckOutlined />
+                        </div>
+                    </div>
+                </div>
             </Fragment>
         );
     }

@@ -23,6 +23,7 @@
 21. 开启定时器每秒更新状态（componentDidMount），开启之前先执行一遍需要的操作，记得关闭定时器（componentWillUnmount）
 22. input上传图片、预览图片
 23. input file元素的美化方案：外面套层div，input隐藏，点击div触发input的click事件
+24. 上传头像成功后，清空input的值，防止下次选择相同图片，不会触发onchange
 
 # 主要功能实现：
 
