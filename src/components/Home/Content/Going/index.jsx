@@ -45,7 +45,7 @@ export default class Going extends Component {
             if (this.inputTask.value.trim() === '') {
                 // 清空输入框
                 this.inputTask.value = '';
-                message.warning('请输入todo...');
+                message.info('请输入todo...');
                 return;
             }
             // 更新数据库

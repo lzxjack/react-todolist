@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Popconfirm, message } from 'antd';
+import { Popconfirm, notification } from 'antd';
+import { ArrowRightOutlined, RollbackOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
 import { updateAvatarUrl, updateNickName } from '../../../redux/actions/userInform';
 import { DEFAULT_AVATAR_URL } from '../../../utils/constant';
@@ -80,19 +81,34 @@ class Outline extends PureComponent {
         const nowTime = moment().format('HH:mm:ss');
         this.setState({ time, timeText, nowTime });
     };
-
+    // 退出登录的消息提示
+    openLogoutNoti = () => {
+        notification.open({
+            message: '退出成功！',
+            description: '已退出 TodoList',
+            duration: 2,
+            placement: 'bottomLeft',
+            icon: <ArrowRightOutlined />,
+        });
+    };
+    // 退出取消的消息提示
+    openLogoutCancel = () => {
+        notification.open({
+            message: '取消退出！',
+            description: '再看看吧~',
+            duration: 2,
+            placement: 'bottomLeft',
+            icon: <RollbackOutlined />,
+        });
+    };
+    // 退出
     turnLogout = () => {
         // 清除sessionStorage
         sessionStorage.clear();
         // 提示消息
-        message.success('退出成功！');
+        this.openLogoutNoti();
         // 回到welcome页面
         this.props.history.replace('/welcome');
-    };
-
-    // 退出（取消）
-    turnLogoutCancel = () => {
-        message.info('取消退出！');
     };
 
     render() {
@@ -132,7 +148,7 @@ class Outline extends PureComponent {
                     placement="bottomRight"
                     title={logoutCheck}
                     onConfirm={this.turnLogout}
-                    onCancel={this.turnLogoutCancel}
+                    onCancel={this.openLogoutCancel}
                     okText="退出！"
                     cancelText="再看看！"
                 >

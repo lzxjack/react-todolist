@@ -24,6 +24,8 @@
 22. input上传图片、预览图片
 23. input file元素的美化方案：外面套层div，input隐藏，点击div触发input的click事件
 24. 上传头像成功后，清空input的值，防止下次选择相同图片，不会触发onchange
+25. 每日一句诗句 API
+26. 
 
 # 主要功能实现：
 

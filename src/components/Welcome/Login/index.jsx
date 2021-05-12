@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 // import { withRouter } from 'react-router-dom';
 import { message, notification } from 'antd';
+import { SmileOutlined } from '@ant-design/icons';
 import { auth } from '../../../utils/cloudBase';
 import { connect } from 'react-redux';
 import { login, logout } from '../../../redux/actions/userState';
@@ -12,6 +13,16 @@ class Login extends PureComponent {
         notification[type]({
             message: '登陆失败！',
             description: '请检查邮箱地址、密码是否正确！',
+        });
+    };
+    // 登录成功的消息提示
+    openLoginSuccess = () => {
+        notification.open({
+            message: '登录成功！',
+            description: '欢迎使用 TodoList',
+            duration: 2,
+            placement: 'bottomLeft',
+            icon: <SmileOutlined />,
         });
     };
     // 邮箱地址登录
@@ -28,15 +39,7 @@ class Login extends PureComponent {
                 // 跳转到home页面
                 this.props.history.replace('/home');
                 // 提示消息
-                // message.success({
-                //     content: '登录成功！开始查看todo吧~',
-                //     className: 'custom-class',
-                //     style: {
-                //         marginTop: '20vh',
-                //     },
-                //     duration: 1.5,
-                // });
-                message.success('登录成功！开始查看todo吧~');
+                this.openLoginSuccess();
             });
         } catch (error) {
             // 登录失败，改变登录状态为false
