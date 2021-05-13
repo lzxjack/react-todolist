@@ -4,8 +4,10 @@ import { combineReducers } from 'redux';
 // import flagState from './flag';
 import userState from './userState';
 import userInform from './userInform';
+import doneSum from './doneSum';
 
 export default combineReducers({
     userState,
     userInform,
+    doneSum,
 });

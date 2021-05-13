@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { message } from 'antd';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import {
     CheckOutlined,
     CloseOutlined,
@@ -7,11 +9,12 @@ import {
     SmileOutlined,
 } from '@ant-design/icons';
 import { db } from '../../../../utils/cloudBase';
+import { add } from '../../../../redux/actions/doneSum';
 import './index.css';
 
 const _ = db.command;
 
-export default class Going extends Component {
+class Going extends Component {
     // 状态初始化
     // state = { isLoading: true };
 
@@ -95,6 +98,8 @@ export default class Going extends Component {
         this.deleteTaskInState(id);
         // 提醒用户
         message.success('完成啦！');
+        // 累计完成总数+1
+        this.props.add();
         // 2. 在数据库中修改相应id的done属性
         db.collection('tasks').doc(id).update({
             done: true,
@@ -124,7 +129,7 @@ export default class Going extends Component {
         // 新数据更新状态，渲染页面
         this.setState({ going });
         task.blur();
-        message.success('更新完成！');
+        message.success('修改成功！');
         // 发送请求，修改数据库中的值
         db.collection('tasks').doc(id).update({
             content: task.value,
@@ -202,3 +207,12 @@ export default class Going extends Component {
         );
     }
 }
+
+export default withRouter(
+    connect(
+        // 状态
+        state => ({}),
+        // 操作状态的方法
+        { add }
+    )(Going)
+);

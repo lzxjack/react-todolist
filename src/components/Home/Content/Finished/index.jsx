@@ -1,5 +1,7 @@
 import React, { PureComponent, Fragment } from 'react';
 import { message, Popconfirm } from 'antd';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import {
     RedoOutlined,
     CloseOutlined,
@@ -10,12 +12,13 @@ import {
     CodepenOutlined,
 } from '@ant-design/icons';
 import { db } from '../../../../utils/cloudBase';
+import { min } from '../../../../redux/actions/doneSum';
 import './index.css';
 
 const deleteAllDoneCheck = '确认要删除所有已完成的任务吗？';
 const _ = db.command;
 
-export default class Finished extends PureComponent {
+class Finished extends PureComponent {
     // 状态初始化
     state = { finished: [], isLoading: true };
 
@@ -65,6 +68,8 @@ export default class Finished extends PureComponent {
         this.deleteTaskInState(id);
         // 提醒用户
         message.success('已撤销完成的任务！');
+        // 累计完成总数-1
+        this.props.min();
         // 2. 在数据库中修改相应id的done属性
         db.collection('tasks').doc(id).update({
             done: false,
@@ -162,3 +167,12 @@ export default class Finished extends PureComponent {
         );
     }
 }
+
+export default withRouter(
+    connect(
+        // 状态
+        state => ({}),
+        // 操作状态的方法
+        { min }
+    )(Finished)
+);

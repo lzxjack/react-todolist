@@ -126,7 +126,7 @@ class Outline extends PureComponent {
                                   sessionStorage.getItem('user_info_todolist-3gayiz0cb9b8b263')
                               ).content.email
                             : this.props.userInform.nickName}
-                        ！
+                        ！_____{this.props.doneSum}
                     </div>
                     <div className="timeText"> {this.state.timeText}</div>
                 </div>
@@ -155,6 +155,7 @@ export default withRouter(
         // 状态
         state => ({
             userInform: state.userInform,
+            doneSum: state.doneSum,
         }),
         // 操作状态的方法
         { updateAvatarUrl, updateNickName }

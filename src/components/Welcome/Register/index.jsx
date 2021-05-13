@@ -77,19 +77,23 @@ export default class Register extends PureComponent {
             this.openPwdAgainError('error');
         }
         // 通过验证，validateFlag还是为true
-        if (validateFlag) {
-            auth.signUpWithEmailAndPassword(this.newEmail.value, this.newPwd.value)
-                .then(() => {
-                    // 发送验证邮件成功，提示消息
-                    this.openNotification();
-                    // 返回登录页面
-                    this.props.history.replace('/welcome/login');
-                })
-                .catch(() => {
-                    // 提示消息
-                    this.openRegisterFailed('error');
-                });
-        }
+        if (!validateFlag) return;
+
+        auth.signUpWithEmailAndPassword(this.newEmail.value, this.newPwd.value)
+            .then(() => {
+                // 发送验证邮件成功，提示消息
+                this.openNotification();
+                // 返回登录页面
+                this.props.history.replace('/welcome/login');
+            })
+            .catch(() => {
+                // 提示消息
+                this.openRegisterFailed('error');
+            });
+
+        // db.collection('doneSum').add({
+        //     count: 0,
+        // });
     };
     onEnter = e => {
         // 判断是否按下回车
