@@ -2,4 +2,6 @@
     position: relative;
     min-height: calc(100vh - 80px);
     background-color: rgb(79, 248, 240);
+    /* background: url('./bg.jpg') no-repeat center fixed;
+    background-size: cover; */
 }

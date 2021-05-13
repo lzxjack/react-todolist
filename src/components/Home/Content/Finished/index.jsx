@@ -95,6 +95,9 @@ export default class Finished extends PureComponent {
                 <div className="Finished">
                     <CheckOutlined />
                     &nbsp;Finished
+                    {this.state.finished.length === 0 ? null : (
+                        <span>&nbsp;——&nbsp;{this.state.finished.length}</span>
+                    )}
                 </div>
                 {this.state.isLoading ? null : this.state.finished.length === 0 ? (
                     <Fragment>

@@ -26,6 +26,7 @@
 24. 上传头像成功后，清空input的值，防止下次选择相同图片，不会触发onchange
 25. 每日一句诗句 API
 26. promise错误需要在最后`.catch(()=>{})`
+27. setState是异步的，所以要先等状态更新完、input输入框显示出来以后，再获取input的焦点，所以focus写在setState的回调函数中
 
 # 主要功能实现：
 

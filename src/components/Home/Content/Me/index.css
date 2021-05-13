@@ -12,12 +12,10 @@
 .avatarHead,
 .nickNameHead {
     position: relative;
-    margin: 0 auto;
+    margin: auto;
     width: 750px;
     height: 60px;
     border-bottom: 2px solid #000;
-    /* background-color: #fff; */
-    margin-top: 20px;
     user-select: none;
 }
 

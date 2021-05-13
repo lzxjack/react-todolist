@@ -55,7 +55,12 @@
     margin-bottom: 0;
 }
 
+/* .hidden {
+    display: none;
+} */
+
 .goingTaskBox li {
+    /* position: relative; */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -81,13 +86,26 @@
     color: #fff;
 }
 
-.goingTaskBox li .goingTaskContent {
+/* .goingTaskBox li .goingTaskContent {
     text-align: center;
     line-height: 50px;
     font-size: 22px;
     flex: 1;
     height: 50px;
     background-color: rgb(123, 241, 236);
+    user-select: none;
+} */
+
+/* 编辑框 */
+.goingTaskBox li .goingTaskEdit {
+    text-align: center;
+    line-height: 50px;
+    font-size: 22px;
+    flex: 1;
+    height: 50px;
+    /* background-color: rgb(111, 48, 219); */
+    background-color: rgb(123, 241, 236);
+    user-select: none;
 }
 
 .goingTaskBox li .goingDeleteBtn {

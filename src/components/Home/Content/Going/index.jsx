@@ -100,12 +100,45 @@ export default class Going extends Component {
             done: true,
         });
     };
+
+    // 失去焦点，不更新content
+    returnContent = taskObj => {
+        document.getElementById(`${taskObj._id}`).value = taskObj.content;
+    };
+    // 判断用户按下回车
+    updateEditTask = (id, e) => {
+        // console.log(e.keyCode);
+        if (e.keyCode === 13) {
+            this.updateTaskById(id);
+        }
+    };
+    // 发送请求，根据相应id更改task内容
+    updateTaskById = id => {
+        const task = document.getElementById(`${id}`);
+        // 先在状态中更改相应的值，早点渲染页面
+        // 获取旧状态
+        const { going } = this.state;
+        going.forEach(taskObj => {
+            if (taskObj._id === id) taskObj.content = task.value;
+        });
+        // 新数据更新状态，渲染页面
+        this.setState({ going });
+        task.blur();
+        message.success('更新完成！');
+        // 发送请求，修改数据库中的值
+        db.collection('tasks').doc(id).update({
+            content: task.value,
+        });
+    };
     render() {
         return (
             <Fragment>
                 <div className="Going">
                     <DoubleRightOutlined />
                     &nbsp;Going
+                    {this.state.going.length === 0 ? null : (
+                        <span>&nbsp;——&nbsp;{this.state.going.length}</span>
+                    )}
                 </div>
                 <div className="inputBox">
                     <input
@@ -114,6 +147,7 @@ export default class Going extends Component {
                         onKeyUp={this.addTask}
                         placeholder="Add some todos?"
                         className="inputTask"
+                        autoFocus
                     />
                 </div>
                 {this.state.isLoading ? null : this.state.going.length === 0 ? (
@@ -134,7 +168,25 @@ export default class Going extends Component {
                                     >
                                         <CheckOutlined />
                                     </div>
-                                    <div className="goingTaskContent">{taskObj.content}</div>
+                                    {/* <div
+                                        ref={c => (this.showTask = c)}
+                                        onDoubleClick={this.editTask.bind(this, index, taskObj)}
+                                        className={
+                                            this.state.index === index
+                                                ? 'hidden'
+                                                : 'goingTaskContent'
+                                        }
+                                    >
+                                        {taskObj.content}
+                                    </div> */}
+                                    <input
+                                        type="text"
+                                        onBlur={this.returnContent.bind(this, taskObj)}
+                                        className="goingTaskEdit"
+                                        id={taskObj._id}
+                                        defaultValue={taskObj.content}
+                                        onKeyUp={this.updateEditTask.bind(this, taskObj._id)}
+                                    />
                                     <div
                                         className="goingDeleteBtn"
                                         onClick={this.deleteTask.bind(this, taskObj._id)}
