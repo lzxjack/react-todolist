@@ -13,6 +13,7 @@ class Login extends PureComponent {
         notification[type]({
             message: '登陆失败！',
             description: '请检查邮箱地址、密码是否正确！',
+            duration: 3,
         });
     };
     // 登录成功的消息提示
@@ -32,21 +33,22 @@ class Login extends PureComponent {
             message.warning('请输入密码！');
             return;
         }
-        try {
-            auth.signInWithEmailAndPassword(this.loginEmail.value, this.logonPwd.value).then(() => {
+
+        auth.signInWithEmailAndPassword(this.loginEmail.value, this.logonPwd.value)
+            .then(() => {
                 // 登录成功后，调用login()，改变登录状态为true
                 this.props.login();
                 // 跳转到home页面
                 this.props.history.replace('/home');
                 // 提示消息
                 this.openLoginSuccess();
+            })
+            .catch(() => {
+                // 登录失败，改变登录状态为false
+                this.props.logout();
+                this.openLoginFailed('error');
+                this.logonPwd.value = '';
             });
-        } catch (error) {
-            // 登录失败，改变登录状态为false
-            this.props.logout();
-            this.openLoginFailed('error');
-            this.logonPwd.value = '';
-        }
     };
     onEnter = e => {
         // 判断是否按下回车

@@ -1,5 +1,6 @@
 .footer {
-    z-index: 999;
+    position: relative;
+    z-index: 2;
     height: 80px;
     background-color: rgb(238, 60, 16);
     display: flex;
@@ -7,6 +8,7 @@
     justify-content: center;
     align-items: center;
     user-select: none;
+    box-shadow: 0 0 14px #000;
 }
 
 .appName {

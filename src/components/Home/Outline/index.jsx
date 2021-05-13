@@ -105,6 +105,7 @@ class Outline extends PureComponent {
     render() {
         return (
             <div className="outlineBox">
+                {/* 头像盒子 */}
                 <div className="avatarBox">
                     <img
                         src={
@@ -116,6 +117,7 @@ class Outline extends PureComponent {
                         className="outlineAvatar"
                     />
                 </div>
+                {/* 提示词 */}
                 <div className="words">
                     <div className="welcomeUser">
                         {this.state.time}，
@@ -128,7 +130,9 @@ class Outline extends PureComponent {
                     </div>
                     <div className="timeText"> {this.state.timeText}</div>
                 </div>
-
+                {/* 应用标题 */}
+                <div className="appHead">TodoList</div>
+                {/* 实时时间 */}
                 <div className="timeBox">{this.state.nowTime}</div>
                 {/* 退出按钮 */}
                 <Popconfirm

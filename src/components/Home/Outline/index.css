@@ -4,7 +4,8 @@
     height: 120px;
     background-color: red;
     position: relative;
-    z-index: 999;
+    z-index: 2;
+    box-shadow: 0 0 14px #000;
 }
 /* 头像盒子 */
 .avatarBox {
@@ -41,6 +42,20 @@
 /* 提示时间语句 */
 .timeText {
     font-size: 18px;
+    user-select: none;
+}
+
+/* app标题 */
+.appHead {
+    height: 120px;
+    width: 900px;
+    margin: auto;
+    text-align: center;
+    line-height: 120px;
+    font-size: 70px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 5px 5px 5px #000;
     user-select: none;
 }
 
