@@ -9,4 +9,5 @@ export const app = cloudbase.init({
     env: 'todolist-3gayiz0cb9b8b263',
 });
 export const auth = app.auth();
-export let db = app.database();
+export const db = app.database();
+export const user = auth.currentUser;

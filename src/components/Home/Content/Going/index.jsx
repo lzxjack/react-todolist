@@ -9,42 +9,19 @@ import {
     SmileOutlined,
 } from '@ant-design/icons';
 import { db } from '../../../../utils/cloudBase';
-import { add } from '../../../../redux/actions/doneSum';
+import { addCount } from '../../../../redux/actions/doneSum';
+import { addTask, deleteTask, finishTask, editTask } from '../../../../redux/actions/tasks';
+
 import './index.css';
 
 const _ = db.command;
 
 class Going extends Component {
-    // 状态初始化
-    // state = { isLoading: true };
-
-    state = { going: [], isLoading: true };
-
-    componentDidMount() {
-        // 首先获得所有未完成的任务
-        this.getGoingTask();
-        // this.setState({ isLoading: false });
-    }
-
-    // 获得所有正在进行的任务
-    getGoingTask = () => {
-        db.collection('tasks')
-            .where({
-                done: _.eq(false),
-            })
-            .get()
-            .then(res => {
-                // 将返回的结果存放在state中
-                // this.setState({ going: res.data });
-                this.setState({ going: res.data, isLoading: false });
-            });
-    };
     // 添加任务
     addTask = e => {
-        // console.log(this.inputTask.value);
         // 判断用户按下回车
         if (e.keyCode === 13) {
-            // 判断输入框会否为空
+            // 判断输入框是否为空
             if (this.inputTask.value.trim() === '') {
                 // 清空输入框
                 this.inputTask.value = '';
@@ -58,34 +35,23 @@ class Going extends Component {
                     done: false,
                 })
                 .then(async res => {
-                    // 获取旧状态
-                    const { going } = this.state;
+                    // 得到返回的数据库中的ID值
                     const { id } = await res;
+                    // 构造一个新的数据
                     const addOne = { _id: id, content: this.inputTask.value.trim(), done: false };
-                    // 更新状态
-                    this.setState({ going: [...going, addOne] });
+                    // 更新redux状态
+                    this.props.addTask(addOne);
                     // 清空输入框
                     this.inputTask.value = '';
                     message.success('添加成功！');
                 });
         }
     };
-    // 从状态中删除相应id任务
-    deleteTaskInState = id => {
-        // 获取旧状态
-        const { going } = this.state;
-        // 将相应id的数据去除，返回新的数据
-        const newGoing = going.filter(taskObj => {
-            return taskObj._id !== id;
-        });
-        // 新数据更新状态，渲染页面
-        this.setState({ going: newGoing });
-    };
 
     // 删除任务
     deleteTask = id => {
-        // 1. 首先删除state中的相应数据，重新渲染页面
-        this.deleteTaskInState(id);
+        // 删除redux中的记录
+        this.props.deleteTask(id);
         // 提醒用户
         message.success('删除成功！');
         // 2. 再从数据库中删除数据
@@ -94,17 +60,15 @@ class Going extends Component {
 
     // 完成任务
     finishTask = id => {
-        // 1. 首先删除state中的相应数据，重新渲染页面
-        this.deleteTaskInState(id);
+        // 在redux中完成任务
+        this.props.finishTask(id);
         // 提醒用户
         message.success('完成啦！');
-        // ------------------------
         // 累计完成总数+1
-        this.props.add();
-        // ------------------------
+        this.props.addCount();
         // 发送请求，数据库中count+1
         db.collection('doneSum')
-            .doc(this.props.doneID)
+            .doc(this.props.id)
             .update({
                 count: _.inc(1),
             });
@@ -119,28 +83,32 @@ class Going extends Component {
         document.getElementById(`${taskObj._id}`).value = taskObj.content;
     };
     // 判断用户按下回车
-    updateEditTask = (id, e) => {
-        // console.log(e.keyCode);
+    updateEditTask = (taskObj, e) => {
+        // 按下回车
         if (e.keyCode === 13) {
-            this.updateTaskById(id);
+            // 调用修改任务的方法（原内容，id）
+            this.updateTaskById(taskObj.content, taskObj._id);
         }
     };
-    // 发送请求，根据相应id更改task内容
-    updateTaskById = id => {
+    // 修改任务：发送请求，根据相应id更改task内容
+    updateTaskById = (oldContent, id) => {
+        // 根据id获取input元素
         const task = document.getElementById(`${id}`);
-        // 先在状态中更改相应的值，早点渲染页面
-        // 获取旧状态
-        const { going } = this.state;
-        going.forEach(taskObj => {
-            if (taskObj._id === id) taskObj.content = task.value;
-        });
-        // 新数据更新状态，渲染页面
-        this.setState({ going });
+        // 用户输入的值，去掉首尾空格
+        const value = task.value.trim();
+        // 判断是否修改：原内容是否等于用户输入的值去掉首尾空格
+        if (oldContent === value) {
+            task.blur();
+            message.info('无需更新！');
+            return;
+        }
+        // 在redux中编辑任务
+        this.props.editTask({ id, value });
         task.blur();
         message.success('修改成功！');
         // 发送请求，修改数据库中的值
         db.collection('tasks').doc(id).update({
-            content: task.value,
+            content: value,
         });
     };
     render() {
@@ -149,8 +117,17 @@ class Going extends Component {
                 <div className="Going">
                     <DoubleRightOutlined />
                     &nbsp;Going
-                    {this.state.going.length === 0 ? null : (
-                        <span>&nbsp;——&nbsp;{this.state.going.length}</span>
+                    {this.props.tasks.filter(taskObj => {
+                        return taskObj.done === false;
+                    }).length === 0 ? null : (
+                        <span>
+                            &nbsp;——&nbsp;
+                            {
+                                this.props.tasks.filter(taskObj => {
+                                    return taskObj.done === false;
+                                }).length
+                            }
+                        </span>
                     )}
                 </div>
                 <div className="inputBox">
@@ -163,7 +140,9 @@ class Going extends Component {
                         autoFocus
                     />
                 </div>
-                {this.state.isLoading ? null : this.state.going.length === 0 ? (
+                {this.props.tasks.filter(taskObj => {
+                    return taskObj.done === false;
+                }).length === 0 ? (
                     <div className="goingNull">
                         <div className="goingNullIcon">
                             <SmileOutlined />
@@ -172,43 +151,36 @@ class Going extends Component {
                     </div>
                 ) : (
                     <ul className="goingTaskBox">
-                        {this.state.going.map(taskObj => {
-                            return (
-                                <li key={taskObj._id}>
-                                    <div
-                                        className="goingDoneBtn"
-                                        onClick={this.finishTask.bind(this, taskObj._id)}
-                                    >
-                                        <CheckOutlined />
-                                    </div>
-                                    {/* <div
-                                        ref={c => (this.showTask = c)}
-                                        onDoubleClick={this.editTask.bind(this, index, taskObj)}
-                                        className={
-                                            this.state.index === index
-                                                ? 'hidden'
-                                                : 'goingTaskContent'
-                                        }
-                                    >
-                                        {taskObj.content}
-                                    </div> */}
-                                    <input
-                                        type="text"
-                                        onBlur={this.returnContent.bind(this, taskObj)}
-                                        className="goingTaskEdit"
-                                        id={taskObj._id}
-                                        defaultValue={taskObj.content}
-                                        onKeyUp={this.updateEditTask.bind(this, taskObj._id)}
-                                    />
-                                    <div
-                                        className="goingDeleteBtn"
-                                        onClick={this.deleteTask.bind(this, taskObj._id)}
-                                    >
-                                        <CloseOutlined />
-                                    </div>
-                                </li>
-                            );
-                        })}
+                        {this.props.tasks
+                            .filter(taskObj => {
+                                return taskObj.done === false;
+                            })
+                            .map(taskObj => {
+                                return (
+                                    <li key={taskObj._id}>
+                                        <div
+                                            className="goingDoneBtn"
+                                            onClick={this.finishTask.bind(this, taskObj._id)}
+                                        >
+                                            <CheckOutlined />
+                                        </div>
+                                        <input
+                                            type="text"
+                                            onBlur={this.returnContent.bind(this, taskObj)}
+                                            className="goingTaskEdit"
+                                            id={taskObj._id}
+                                            defaultValue={taskObj.content}
+                                            onKeyUp={this.updateEditTask.bind(this, taskObj)}
+                                        />
+                                        <div
+                                            className="goingDeleteBtn"
+                                            onClick={this.deleteTask.bind(this, taskObj._id)}
+                                        >
+                                            <CloseOutlined />
+                                        </div>
+                                    </li>
+                                );
+                            })}
                     </ul>
                 )}
             </Fragment>
@@ -219,8 +191,9 @@ class Going extends Component {
 export default withRouter(
     connect(
         state => ({
-            doneID: state.doneSum.id,
+            id: state.doneSum.id,
+            tasks: state.tasks,
         }),
-        { add }
+        { addCount, addTask, deleteTask, finishTask, editTask }
     )(Going)
 );

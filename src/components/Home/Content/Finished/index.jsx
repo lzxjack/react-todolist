@@ -12,67 +12,35 @@ import {
     CodepenOutlined,
 } from '@ant-design/icons';
 import { db } from '../../../../utils/cloudBase';
-import { min } from '../../../../redux/actions/doneSum';
+import { minCount } from '../../../../redux/actions/doneSum';
+import { deleteTask, returnTask, deleteAllDone } from '../../../../redux/actions/tasks';
 import './index.css';
 
 const deleteAllDoneCheck = '确认要删除所有已完成的任务吗？';
 const _ = db.command;
 
 class Finished extends PureComponent {
-    // 状态初始化
-    state = { finished: [], isLoading: true };
-
-    componentDidMount() {
-        // 首先获得所有已完成的任务
-        this.getFinishedTask();
-    }
-
-    // 从状态中删除相应ID任务
-    deleteTaskInState = id => {
-        // 获取旧状态
-        const { finished } = this.state;
-        // 将相应id的数据去除，返回新的数据
-        const newFinished = finished.filter(taskObj => {
-            return taskObj._id !== id;
-        });
-        // 新数据更新状态，渲染页面
-        this.setState({ finished: newFinished });
-    };
-
     // 删除任务
     deleteTask = id => {
-        // 1. 首先删除state中的相应数据，重新渲染页面
-        this.deleteTaskInState(id);
+        // 1. 删除redux中的数据
+        this.props.deleteTask(id);
         // 提醒用户
         message.success('删除成功！');
         // 2. 再从数据库中删除数据
         db.collection('tasks').doc(id).remove();
     };
 
-    // 获得所有已完成的任务
-    getFinishedTask = () => {
-        db.collection('tasks')
-            .where({
-                done: _.eq(true),
-            })
-            .get()
-            .then(res => {
-                // 将返回的结果存放在state中
-                this.setState({ finished: res.data, isLoading: false });
-            });
-    };
-
     // 撤销已完成
     backToGoing = id => {
-        // 1. 首先删除state中的相应数据，重新渲染页面
-        this.deleteTaskInState(id);
+        // 1. 首先修改redux中的数据
+        this.props.returnTask(id);
         // 提醒用户
         message.success('已撤销完成的任务！');
         // 累计完成总数-1
-        this.props.min();
+        this.props.minCount();
         // 发送请求，数据库中count-1
         db.collection('doneSum')
-            .doc(this.props.doneID)
+            .doc(this.props.id)
             .update({
                 count: _.inc(-1),
             });
@@ -83,10 +51,8 @@ class Finished extends PureComponent {
     };
     // 删除所有已完成任务
     deleteAllDone = () => {
-        // 1. 删除state中的数据，更新状态
-        // 获取旧状态
-        // const { finished } = this.state;
-        this.setState({ finished: [] });
+        // 1. 删除redux中所有done:true的数据
+        this.props.deleteAllDone();
         // 提醒用户
         message.success('已删除所有已完成的任务！');
         // 2. 删除数据库中的数据
@@ -98,7 +64,7 @@ class Finished extends PureComponent {
     };
     // 删除所有已完成任务（取消确认）
     deleteAllDoneCancel = () => {
-        message.info('未删除！');
+        message.info('取消清空！');
     };
     render() {
         return (
@@ -106,11 +72,22 @@ class Finished extends PureComponent {
                 <div className="Finished">
                     <CheckOutlined />
                     &nbsp;Finished
-                    {this.state.finished.length === 0 ? null : (
-                        <span>&nbsp;——&nbsp;{this.state.finished.length}</span>
+                    {this.props.tasks.filter(taskObj => {
+                        return taskObj.done === true;
+                    }).length === 0 ? null : (
+                        <span>
+                            &nbsp;——&nbsp;
+                            {
+                                this.props.tasks.filter(taskObj => {
+                                    return taskObj.done === true;
+                                }).length
+                            }
+                        </span>
                     )}
                 </div>
-                {this.state.isLoading ? null : this.state.finished.length === 0 ? (
+                {this.props.tasks.filter(taskObj => {
+                    return taskObj.done === true;
+                }).length === 0 ? (
                     <Fragment>
                         <div className="finishedText">
                             <span>
@@ -147,25 +124,31 @@ class Finished extends PureComponent {
                             </Popconfirm>
                         </div>
                         <ul className="finishedTaskBox">
-                            {this.state.finished.map(taskObj => {
-                                return (
-                                    <li key={taskObj._id}>
-                                        <div
-                                            className="finishedDoneBtn"
-                                            onClick={this.backToGoing.bind(this, taskObj._id)}
-                                        >
-                                            <RedoOutlined />
-                                        </div>
-                                        <div className="finishedTaskContent">{taskObj.content}</div>
-                                        <div
-                                            className="finishedDeleteBtn"
-                                            onClick={this.deleteTask.bind(this, taskObj._id)}
-                                        >
-                                            <CloseOutlined />
-                                        </div>
-                                    </li>
-                                );
-                            })}
+                            {this.props.tasks
+                                .filter(taskObj => {
+                                    return taskObj.done === true;
+                                })
+                                .map(taskObj => {
+                                    return (
+                                        <li key={taskObj._id}>
+                                            <div
+                                                className="finishedDoneBtn"
+                                                onClick={this.backToGoing.bind(this, taskObj._id)}
+                                            >
+                                                <RedoOutlined />
+                                            </div>
+                                            <div className="finishedTaskContent">
+                                                {taskObj.content}
+                                            </div>
+                                            <div
+                                                className="finishedDeleteBtn"
+                                                onClick={this.deleteTask.bind(this, taskObj._id)}
+                                            >
+                                                <CloseOutlined />
+                                            </div>
+                                        </li>
+                                    );
+                                })}
                         </ul>
                     </Fragment>
                 )}
@@ -177,8 +160,9 @@ class Finished extends PureComponent {
 export default withRouter(
     connect(
         state => ({
-            doneID: state.doneSum.id,
+            id: state.doneSum.id,
+            tasks: state.tasks,
         }),
-        { min }
+        { minCount, deleteTask, returnTask, deleteAllDone }
     )(Finished)
 );

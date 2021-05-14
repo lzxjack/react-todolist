@@ -3,18 +3,17 @@ import { UserOutlined, CloseOutlined, CheckOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
 import { nanoid } from 'nanoid';
 import { notification, Button, message } from 'antd';
-import { updateAvatarUrl, updateNickName } from '../../../../redux/actions/userInform';
+import {
+    updateAvatarUrl,
+    updateNickName,
+    updateAvatarTempUrl,
+} from '../../../../redux/actions/userInform';
 import { DEFAULT_AVATAR_URL } from '../../../../utils/constant';
-import { appTcb, auth } from '../../../../utils/cloudBase';
+import { appTcb, user } from '../../../../utils/cloudBase';
 import './index.css';
 
 class Me extends PureComponent {
-    state = { avatarCheck: false, fileID: '', tempAvatarURL: '' };
-
-    componentDidMount() {
-        // 将redux中的头像链接保存在state中，作展示
-        this.setState({ tempAvatarURL: this.props.userInform.avatarUrl });
-    }
+    state = { avatarCheck: false, fileID: '' };
     // 头像格式错误的提醒消息
     openAvatarTypeError = () => {
         const key = `open${Date.now()}`;
@@ -54,12 +53,10 @@ class Me extends PureComponent {
     beforeUpload = async () => {
         // 获取文件对象
         const avatarFile = this.inputAvatar.files[0];
-        // console.log(avatarFile);
         // 文件类型
         const fileType = avatarFile.type;
         // 文件后缀
         const fileEnd = fileType.split('/')[1];
-        // console.log(fileEnd);
         // 1. 判断是否是图片文件
         if (!(fileType === 'image/png' || fileType === 'image/bmp' || fileType === 'image/jpeg')) {
             // 不是图片文件，提醒用户，中止操作
@@ -77,7 +74,7 @@ class Me extends PureComponent {
         await appTcb
             .uploadFile({
                 // 云存储的路径
-                // cloudPath: 'userAvatar/1.png',
+                // nanoid()生成唯一随机数
                 cloudPath: `userAvatar/${nanoid()}.${fileEnd}`,
                 // 需要上传的文件，File 类型
                 filePath: avatarFile,
@@ -94,9 +91,11 @@ class Me extends PureComponent {
             })
             .then(res => {
                 // 5. 根据图片链接展示图片
-                // 图片链接放入状态中，驱动页面更新，预览头像
+                // 图片链接放入redux中，驱动页面更新，预览头像
                 // 将avatarCheck改为true，表示已经选择了图片文件，可以进行上传操作
-                this.setState({ avatarCheck: true, tempAvatarURL: res.fileList[0].tempFileURL });
+                // this.setState({ avatarCheck: true, tempAvatarURL: res.fileList[0].tempFileURL });
+                this.setState({ avatarCheck: true });
+                this.props.updateAvatarTempUrl(res.fileList[0].tempFileURL);
             });
     };
     // 将图片链接上传到用户信息中
@@ -106,18 +105,17 @@ class Me extends PureComponent {
             message.info('请先选择头像，再进行上传！');
             return;
         }
-        const user = auth.currentUser;
         await user
             .update({
-                avatarUrl: this.state.tempAvatarURL,
+                avatarUrl: this.props.avatarTempUrl,
             })
             .then(() => {
                 // 将state中的tempAvatarURL放入redux，redux状态改变，驱动Outline组件头像变化
-                this.props.updateAvatarUrl(this.state.tempAvatarURL);
+                this.props.updateAvatarUrl(this.props.avatarTempUrl);
                 // 将清空file，否则下次若选择同样的图片，不会触发onchange
                 this.inputAvatar.value = '';
-                // 上传头像完毕， avatarCheck重新设置为false
-                this.setState({ avatarCheck: false });
+                // 上传头像完毕， avatarCheck重新设置为false,fileID清空
+                this.setState({ avatarCheck: false, fileID: '' });
                 // 提醒用户
                 message.success('头像更新成功！');
             });
@@ -125,7 +123,6 @@ class Me extends PureComponent {
 
     // 修改昵称
     updateNickName = async () => {
-        // console.log(this.inputNickName.value.length);
         // 取得输入的昵称，去掉首尾空格
         const nickName = this.inputNickName.value.trim();
         if (nickName === '') {
@@ -146,13 +143,12 @@ class Me extends PureComponent {
             return;
         }
         // 判断新旧昵称
-        if (nickName === this.props.userInform.nickName) {
+        if (nickName === this.props.nickName) {
             // 判断用户输入的nickname 是否等于 现在的nickname
             message.warning('新旧昵称相同，无需修改~');
             return;
         }
         // 发送修改请求
-        const user = auth.currentUser;
         await user
             .update({
                 nickName,
@@ -181,9 +177,9 @@ class Me extends PureComponent {
                     <div className="meAvatarBox">
                         <img
                             src={
-                                this.state.tempAvatarURL === ''
+                                this.props.avatarTempUrl === ''
                                     ? DEFAULT_AVATAR_URL
-                                    : this.state.tempAvatarURL
+                                    : this.props.avatarTempUrl
                             }
                             alt="头像"
                             className="meAvatar"
@@ -217,11 +213,7 @@ class Me extends PureComponent {
                     <div className="nickNameBox">
                         <input
                             type="text"
-                            placeholder={
-                                this.props.userInform.nickName
-                                    ? this.props.userInform.nickName
-                                    : '怎么称呼呢？'
-                            }
+                            placeholder={this.props.nickName ? this.props.nickName : '怎么称呼呢？'}
                             className="inputNickName"
                             ref={c => (this.inputNickName = c)}
                             onKeyUp={this.onEnter}
@@ -238,7 +230,9 @@ class Me extends PureComponent {
 
 export default connect(
     state => ({
-        userInform: state.userInform,
+        avatarUrl: state.userInform.avatarUrl,
+        avatarTempUrl: state.userInform.avatarTempUrl,
+        nickName: state.userInform.nickName,
     }),
-    { updateAvatarUrl, updateNickName }
+    { updateAvatarUrl, updateAvatarTempUrl, updateNickName }
 )(Me);

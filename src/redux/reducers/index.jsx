@@ -5,9 +5,11 @@ import { combineReducers } from 'redux';
 import userState from './userState';
 import userInform from './userInform';
 import doneSum from './doneSum';
+import tasks from './tasks';
 
 export default combineReducers({
     userState,
     userInform,
     doneSum,
+    tasks,
 });

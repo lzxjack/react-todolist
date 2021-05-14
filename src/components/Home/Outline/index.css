@@ -33,6 +33,14 @@
     transform: translate(0, -50%);
     left: 180px;
 }
+
+/* 累计完成任务个数 */
+.doneCount {
+    font-weight: 700;
+    color: rgb(71, 227, 255);
+    text-shadow: 2px 2px 3px #000;
+}
+
 /* 欢迎语句 */
 .welcomeUser {
     font-size: 30px;

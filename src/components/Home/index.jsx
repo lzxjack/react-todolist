@@ -1,21 +1,26 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Outline from './Outline';
 import Content from './Content';
 import Nav from './Nav';
 import CenterBox from './CenterBox';
-import { db } from '../../utils/cloudBase';
+import { db, auth } from '../../utils/cloudBase';
 import { initFromDB, initID } from '../../redux/actions/doneSum';
+import { initTask } from '../../redux/actions/tasks';
+import {
+    updateAvatarUrl,
+    updateNickName,
+    updateAvatarTempUrl,
+} from '../../redux/actions/userInform';
 
-class Home extends PureComponent {
+class Home extends Component {
     async componentDidMount() {
         // 判断用户是否第一次登陆
         let ifFirst = false;
         // 查询集合doneSum中有无文档
         await db
             .collection('doneSum')
-            .where({})
             .get()
             .then(res => {
                 // 如果没文档，则是第一次登陆
@@ -30,7 +35,8 @@ class Home extends PureComponent {
             });
         // 如果是第一次登陆，在集合doneSum中创建一个用于计数的文档
         if (ifFirst) {
-            db.collection('doneSum')
+            await db
+                .collection('doneSum')
                 .add({
                     count: 0,
                 })
@@ -40,6 +46,17 @@ class Home extends PureComponent {
                     this.props.initID(res.id);
                 });
         }
+
+        // 将数据库中的任务放入redux
+        db.collection('tasks')
+            .get()
+            .then(res => {
+                this.props.initTask(res.data);
+            });
+        // 将用户上的信息添加到redux状态中
+        this.props.updateNickName(auth.currentUser.nickName);
+        this.props.updateAvatarUrl(auth.currentUser.avatarUrl);
+        this.props.updateAvatarTempUrl(auth.currentUser.avatarUrl);
     }
     render() {
         return (
@@ -53,4 +70,13 @@ class Home extends PureComponent {
     }
 }
 
-export default withRouter(connect(() => ({}), { initFromDB, initID })(Home));
+export default withRouter(
+    connect(
+        state => ({
+            avatarUrl: state.userInform.avatarUrl,
+            avatarTempUrl: state.userInform.avatarTempUrl,
+            nickName: state.userInform.nickName,
+        }),
+        { initFromDB, initID, initTask, updateAvatarUrl, updateAvatarTempUrl, updateNickName }
+    )(Home)
+);

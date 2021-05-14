@@ -3,10 +3,8 @@ import { withRouter } from 'react-router-dom';
 import { Popconfirm, notification } from 'antd';
 import { ArrowRightOutlined, RollbackOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
-import { updateAvatarUrl, updateNickName } from '../../../redux/actions/userInform';
 import { DEFAULT_AVATAR_URL } from '../../../utils/constant';
 import moment from 'moment';
-import { auth } from '../../../utils/cloudBase';
 import './index.css';
 
 const logoutCheck = '真的要退出登录吗？';
@@ -24,11 +22,6 @@ class Outline extends PureComponent {
         this.timeUpdate = setInterval(() => {
             this.runPerTime();
         }, 1000);
-        // 获取用户API
-        const user = auth.currentUser;
-        // 将用户上的信息添加到redux状态中
-        this.props.updateAvatarUrl(user.avatarUrl);
-        this.props.updateNickName(user.nickName);
     }
     componentWillUnmount() {
         // 清除定时器
@@ -109,9 +102,7 @@ class Outline extends PureComponent {
                 <div className="avatarBox">
                     <img
                         src={
-                            this.props.userInform.avatarUrl === ''
-                                ? DEFAULT_AVATAR_URL
-                                : this.props.userInform.avatarUrl
+                            this.props.avatarUrl === '' ? DEFAULT_AVATAR_URL : this.props.avatarUrl
                         }
                         alt="用户头像"
                         className="outlineAvatar"
@@ -121,14 +112,18 @@ class Outline extends PureComponent {
                 <div className="words">
                     <div className="welcomeUser">
                         {this.state.time}，
-                        {this.props.userInform.nickName === ''
+                        {this.props.nickName === ''
                             ? JSON.parse(
                                   sessionStorage.getItem('user_info_todolist-3gayiz0cb9b8b263')
                               ).content.email
-                            : this.props.userInform.nickName}
-                        ！_____{this.props.doneSum}
+                            : this.props.nickName}
+                        ！
                     </div>
-                    <div className="timeText"> {this.state.timeText}</div>
+                    <div className="timeText">
+                        {this.state.timeText}&nbsp;已累计完成任务
+                        <span className="doneCount">&nbsp;{this.props.count}&nbsp;</span>
+                        个，继续加油！
+                    </div>
                 </div>
                 {/* 应用标题 */}
                 <div className="appHead">TodoList</div>
@@ -152,12 +147,11 @@ class Outline extends PureComponent {
 
 export default withRouter(
     connect(
-        // 状态
         state => ({
-            userInform: state.userInform,
-            doneSum: state.doneSum.count,
+            avatarUrl: state.userInform.avatarUrl,
+            nickName: state.userInform.nickName,
+            count: state.doneSum.count,
         }),
-        // 操作状态的方法
-        { updateAvatarUrl, updateNickName }
+        {}
     )(Outline)
 );
