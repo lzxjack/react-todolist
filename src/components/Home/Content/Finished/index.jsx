@@ -70,6 +70,12 @@ class Finished extends PureComponent {
         message.success('已撤销完成的任务！');
         // 累计完成总数-1
         this.props.min();
+        // 发送请求，数据库中count-1
+        db.collection('doneSum')
+            .doc(this.props.doneID)
+            .update({
+                count: _.inc(-1),
+            });
         // 2. 在数据库中修改相应id的done属性
         db.collection('tasks').doc(id).update({
             done: false,
@@ -170,9 +176,9 @@ class Finished extends PureComponent {
 
 export default withRouter(
     connect(
-        // 状态
-        state => ({}),
-        // 操作状态的方法
+        state => ({
+            doneID: state.doneSum.id,
+        }),
         { min }
     )(Finished)
 );

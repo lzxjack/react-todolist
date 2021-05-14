@@ -98,8 +98,16 @@ class Going extends Component {
         this.deleteTaskInState(id);
         // 提醒用户
         message.success('完成啦！');
+        // ------------------------
         // 累计完成总数+1
         this.props.add();
+        // ------------------------
+        // 发送请求，数据库中count+1
+        db.collection('doneSum')
+            .doc(this.props.doneID)
+            .update({
+                count: _.inc(1),
+            });
         // 2. 在数据库中修改相应id的done属性
         db.collection('tasks').doc(id).update({
             done: true,
@@ -210,9 +218,9 @@ class Going extends Component {
 
 export default withRouter(
     connect(
-        // 状态
-        state => ({}),
-        // 操作状态的方法
+        state => ({
+            doneID: state.doneSum.id,
+        }),
         { add }
     )(Going)
 );

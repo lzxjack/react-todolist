@@ -17,7 +17,7 @@ class Outline extends PureComponent {
         nowTime: '',
     };
 
-    componentDidMount() {
+    async componentDidMount() {
         // 先执行一次，避免'白屏'
         this.runPerTime();
         // 开启定时器，每秒执行一次，更新状态
@@ -155,7 +155,7 @@ export default withRouter(
         // 状态
         state => ({
             userInform: state.userInform,
-            doneSum: state.doneSum,
+            doneSum: state.doneSum.count,
         }),
         // 操作状态的方法
         { updateAvatarUrl, updateNickName }
