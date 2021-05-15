@@ -4,7 +4,7 @@ import Login from './components/Welcome/Login';
 import Register from './components/Welcome/Register';
 import Going from './components/Home/Content/Going';
 import Finished from './components/Home/Content/Finished';
-import Me from './components/Home/Content/Me';
+import AboutMe from './components/Home/Content/AboutMe';
 
 export const appRoutes = [
     {
@@ -53,7 +53,7 @@ export const homeRouters = [
     },
     {
         path: '/home/me',
-        component: Me,
+        component: AboutMe,
     },
     {
         path: '/home',

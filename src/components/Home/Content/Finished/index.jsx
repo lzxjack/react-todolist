@@ -50,11 +50,11 @@ class Finished extends PureComponent {
         });
     };
     // 删除所有已完成任务
-    deleteAllDone = () => {
+    deleteAllDoneTask = () => {
         // 1. 删除redux中所有done:true的数据
         this.props.deleteAllDone();
         // 提醒用户
-        message.success('已删除所有已完成的任务！');
+        message.success('已清空已完成的任务！');
         // 2. 删除数据库中的数据
         db.collection('tasks')
             .where({
@@ -112,7 +112,7 @@ class Finished extends PureComponent {
 
                             <Popconfirm
                                 title={deleteAllDoneCheck}
-                                onConfirm={this.deleteAllDone}
+                                onConfirm={this.deleteAllDoneTask}
                                 onCancel={this.deleteAllDoneCancel}
                                 okText="Yes"
                                 cancelText="No"

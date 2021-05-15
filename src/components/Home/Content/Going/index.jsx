@@ -102,6 +102,12 @@ class Going extends Component {
             message.info('无需更新！');
             return;
         }
+        // 判断新输入的任务是否为空
+        if (value === '') {
+            task.blur();
+            message.info('任务内容不能为空！');
+            return;
+        }
         // 在redux中编辑任务
         this.props.editTask({ id, value });
         task.blur();

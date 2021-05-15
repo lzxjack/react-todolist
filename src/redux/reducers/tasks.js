@@ -19,7 +19,8 @@ export default function addReducer(preState = initState, action) {
             return data;
         case ADD_TASK:
             // 传数组
-            return [data, ...preState];
+            // return [data, ...preState];
+            return [...preState, data];
         case DELETE_TASK: {
             // 传id
             const newTask = preState.filter(taskObj => {
@@ -29,7 +30,7 @@ export default function addReducer(preState = initState, action) {
         }
         case DELETE_ALL_DONE: {
             const newTask = preState.filter(taskObj => {
-                return taskObj.done === true;
+                return taskObj.done === false;
             });
             return newTask;
         }

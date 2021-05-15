@@ -12,7 +12,7 @@ import { DEFAULT_AVATAR_URL } from '../../../../utils/constant';
 import { appTcb, user } from '../../../../utils/cloudBase';
 import './index.css';
 
-class Me extends PureComponent {
+class AboutMe extends PureComponent {
     state = { avatarCheck: false, fileID: '' };
     // 头像格式错误的提醒消息
     openAvatarTypeError = () => {
@@ -235,4 +235,4 @@ export default connect(
         nickName: state.userInform.nickName,
     }),
     { updateAvatarUrl, updateAvatarTempUrl, updateNickName }
-)(Me);
+)(AboutMe);
