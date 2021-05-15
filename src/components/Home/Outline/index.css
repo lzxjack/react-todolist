@@ -100,7 +100,5 @@
     -webkit-transition: all 0.3s;
 }
 .logoutBtn:hover {
-    box-shadow: 0 0 15px rgb(0, 0, 0) inset;
-    background-color: #006157;
-    color: red;
+    background-color: red;
 }
