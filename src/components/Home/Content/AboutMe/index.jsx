@@ -8,12 +8,13 @@ import {
     updateNickName,
     updateAvatarTempUrl,
 } from '../../../../redux/actions/userInform';
+import { LoadingOutlined, SyncOutlined } from '@ant-design/icons';
 import { DEFAULT_AVATAR_URL } from '../../../../utils/constant';
-import { appTcb, user } from '../../../../utils/cloudBase';
+import { appTcb, auth } from '../../../../utils/cloudBase';
 import './index.css';
 
 class AboutMe extends PureComponent {
-    state = { avatarCheck: false, fileID: '' };
+    state = { avatarCheck: false, fileID: '', avatarLoading: false };
     // 头像格式错误的提醒消息
     openAvatarTypeError = () => {
         const key = `open${Date.now()}`;
@@ -52,7 +53,9 @@ class AboutMe extends PureComponent {
     // 图片上传到云存储，并返回链接，展示图片
     beforeUpload = async () => {
         // 获取文件对象
-        const avatarFile = this.inputAvatar.files[0];
+        const avatarFile = await this.inputAvatar.files[0];
+        // 图片加载中，avatarLoading改为true，页面渲染加载的效果
+        this.setState({ avatarLoading: true });
         // 文件类型
         const fileType = avatarFile.type;
         // 文件后缀
@@ -63,9 +66,9 @@ class AboutMe extends PureComponent {
             this.openAvatarTypeError();
             return;
         }
-        // 2. 判断图片大小是否>2M
+        // 2. 判断图片大小是否>1M
         if (avatarFile.size / 1024 / 1024 > 1) {
-            // 图片大于2M，提醒用户，中止操作
+            // 图片大于1M，提醒用户，中止操作
             this.openAvatarSizeError();
             return;
         }
@@ -97,6 +100,8 @@ class AboutMe extends PureComponent {
                 this.setState({ avatarCheck: true });
                 this.props.updateAvatarTempUrl(res.fileList[0].tempFileURL);
             });
+        // 加载完毕，改回false
+        this.setState({ avatarLoading: false });
     };
     // 将图片链接上传到用户信息中
     updateAvatar = async () => {
@@ -105,7 +110,7 @@ class AboutMe extends PureComponent {
             message.info('请先选择头像，再进行上传！');
             return;
         }
-        await user
+        await auth.currentUser
             .update({
                 avatarUrl: this.props.avatarTempUrl,
             })
@@ -128,13 +133,13 @@ class AboutMe extends PureComponent {
         if (nickName === '') {
             // 清空输入框
             this.inputNickName.value = '';
-            message.info('请输入昵称！');
+            message.info('昵称不能为空~');
             return;
         }
         const nickNameReg = /^[a-zA-Z\u4e00-\u9fa5]+$/;
         // console.log(nickNameReg.test(nickName));
         if (!nickNameReg.test(nickName)) {
-            message.warning('昵称只能出现汉字或字母哦~');
+            message.warning('昵称只能出现汉字或字母~');
             return;
         }
         // 判断用户输入的nickname长度是否大于15
@@ -149,7 +154,7 @@ class AboutMe extends PureComponent {
             return;
         }
         // 发送修改请求
-        await user
+        await auth.currentUser
             .update({
                 nickName,
             })
@@ -185,7 +190,11 @@ class AboutMe extends PureComponent {
                             className="meAvatar"
                         />
                     </div>
-
+                    {this.state.avatarLoading ? (
+                        <div className="loading">
+                            <LoadingOutlined />
+                        </div>
+                    ) : null}
                     <div
                         className="upToCOSBtn"
                         onClick={() => {

@@ -10,4 +10,3 @@ export const app = cloudbase.init({
 });
 export const auth = app.auth();
 export const db = app.database();
-export const user = auth.currentUser;

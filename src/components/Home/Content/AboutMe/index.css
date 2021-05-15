@@ -53,11 +53,22 @@
     width: 200px;
 }
 
+.loading {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-110px, 0);
+    height: 30px;
+    width: 30px;
+    font-size: 30px;
+    text-align: center;
+    line-height: 30px;
+}
+
 .upToCOSBtn {
     position: absolute;
     bottom: 20px;
     left: 50%;
-    /* transform: translate(-50%, 0); */
     transform: translate(-65px, 0);
     width: 50px;
     height: 30px;
