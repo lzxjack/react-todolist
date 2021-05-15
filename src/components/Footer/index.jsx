@@ -25,7 +25,12 @@ export default class Footer extends PureComponent {
                     <span className="appName">TodoList</span>
                     <span className="author">
                         &nbsp;——&nbsp;by&nbsp;
-                        <a rel="noopener noreferrer" href="https://lzxjack.top" target="_blank">
+                        <a
+                            className="authorName"
+                            rel="noopener noreferrer"
+                            href="https://lzxjack.top"
+                            target="_blank"
+                        >
                             飞鸟
                         </a>
                     </span>

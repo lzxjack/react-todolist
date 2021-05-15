@@ -1,5 +1,11 @@
 import React, { PureComponent, Fragment } from 'react';
-import { UserOutlined, CloseOutlined, CheckOutlined } from '@ant-design/icons';
+import {
+    UserOutlined,
+    CloseOutlined,
+    CheckOutlined,
+    PictureOutlined,
+    ToTopOutlined,
+} from '@ant-design/icons';
 import { connect } from 'react-redux';
 import { nanoid } from 'nanoid';
 import { notification, Button, message } from 'antd';
@@ -8,7 +14,7 @@ import {
     updateNickName,
     updateAvatarTempUrl,
 } from '../../../../redux/actions/userInform';
-import { LoadingOutlined, SyncOutlined } from '@ant-design/icons';
+import { LoadingOutlined } from '@ant-design/icons';
 import { DEFAULT_AVATAR_URL } from '../../../../utils/constant';
 import { appTcb, auth } from '../../../../utils/cloudBase';
 import './index.css';
@@ -173,10 +179,10 @@ class AboutMe extends PureComponent {
             <Fragment>
                 <div className="Me">
                     <UserOutlined />
-                    &nbsp;Me
+                    &nbsp;About Me
                 </div>
                 <div className="avatarHead">
-                    <span>头像</span>
+                    <span>Avatar</span>
                 </div>
                 <div className="updateAvatarBox">
                     <div className="meAvatarBox">
@@ -201,7 +207,7 @@ class AboutMe extends PureComponent {
                             this.inputAvatar.click();
                         }}
                     >
-                        选择
+                        <PictureOutlined />
                         <input
                             type="file"
                             ref={c => (this.inputAvatar = c)}
@@ -212,11 +218,11 @@ class AboutMe extends PureComponent {
                     </div>
 
                     <div className="updateAvatarBtn" onClick={this.updateAvatar}>
-                        上传
+                        <ToTopOutlined />
                     </div>
                 </div>
                 <div className="nickNameHead">
-                    <span>昵称</span>
+                    <span>Nick Name</span>
                 </div>
                 <div className="updateInfoBox">
                     <div className="nickNameBox">

@@ -18,18 +18,10 @@ export default class Welcome extends PureComponent {
                         <div className="enterBox">
                             {/* 路由链接 */}
                             <div className="enterHeader">
-                                <MyNavLink
-                                    activeClassName="select"
-                                    to="/welcome/login"
-                                    className="linkLogin"
-                                >
+                                <MyNavLink to="/welcome/login" className="welNav">
                                     登陆
                                 </MyNavLink>
-                                <MyNavLink
-                                    activeClassName="select"
-                                    to="/welcome/register"
-                                    className="linkRegister"
-                                >
+                                <MyNavLink to="/welcome/register" className="welNav">
                                     注册
                                 </MyNavLink>
                             </div>

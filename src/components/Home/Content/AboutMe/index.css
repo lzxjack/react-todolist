@@ -2,11 +2,12 @@
     width: 100%;
     height: 70px;
     font-size: 36px;
-    border-bottom: 3px solid #000;
+    border-bottom: 3px solid #ccc;
     display: flex;
     align-items: center;
     padding: 0 20px;
     user-select: none;
+    text-shadow: 3px 3px 3px #000;
 }
 /* 头像昵称标题 */
 .avatarHead,
@@ -15,7 +16,8 @@
     margin: auto;
     width: 750px;
     height: 60px;
-    border-bottom: 2px solid #000;
+    border-bottom: 2px solid #ccc;
+    text-shadow: 3px 3px 3px #000;
     user-select: none;
 }
 
@@ -31,8 +33,8 @@
 .updateAvatarBox {
     position: relative;
     width: 100%;
-    height: 290px;
-    /* background-color: #fff; */
+    height: 280px;
+    /* background-color: #000; */
 }
 
 .meAvatarBox {
@@ -55,31 +57,30 @@
 
 .loading {
     position: absolute;
-    bottom: 20px;
+    bottom: 0;
     left: 50%;
-    transform: translate(-110px, 0);
-    height: 30px;
-    width: 30px;
-    font-size: 30px;
+    transform: translate(-120px, 0);
+    height: 46px;
+    width: 46px;
+    font-size: 26px;
     text-align: center;
-    line-height: 30px;
+    line-height: 46px;
 }
 
 .upToCOSBtn {
     position: absolute;
-    bottom: 20px;
+    bottom: 0;
     left: 50%;
-    transform: translate(-65px, 0);
-    width: 50px;
-    height: 30px;
-    background-color: rgb(40, 252, 252);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transform: translate(-56px, 0);
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
     transition: all 0.3s;
     -webkit-transition: all 0.3s;
     text-align: center;
-    line-height: 30px;
+    line-height: 46px;
     user-select: none;
-    font-size: 14px;
+    font-size: 26px;
     font-weight: 700;
 }
 
@@ -89,28 +90,26 @@
 
 .updateAvatarBtn {
     position: absolute;
-    bottom: 20px;
+    bottom: 0;
     left: 50%;
     /* transform: translate(-50%, 0); */
-    transform: translate(15px, 0);
-    width: 50px;
-    height: 30px;
-    background-color: rgb(40, 252, 252);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transform: translate(10px, 0);
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
     transition: all 0.3s;
     -webkit-transition: all 0.3s;
     text-align: center;
-    line-height: 30px;
+    line-height: 46px;
     user-select: none;
-    font-size: 14px;
+    font-size: 26px;
     font-weight: 700;
 }
 
 .upToCOSBtn:hover,
 .updateAvatarBtn:hover {
-    box-shadow: 0 0 15px rgba(0, 0, 0, 1);
-    background-color: rgb(39, 60, 248);
-    color: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7) inset;
+    background-color: #009688;
 }
 
 /* 修改个人信息的大盒子 */
@@ -124,71 +123,66 @@
 
 /* 修改昵称的盒子 */
 .nickNameBox {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     position: relative;
+    overflow: hidden;
+    border-radius: 25px;
     width: 500px;
     height: 50px;
-    /* text-align: center; */
-}
-
-/* .NickNameText {
-    height: 50px;
-    width: 100px;
-    font-size: 20px;
-    font-weight: 700;
-    background-color: rgb(98, 252, 226);
-    text-align: center;
-    line-height: 50px;
-    user-select: none;
     transition: all 0.3s;
     -webkit-transition: all 0.3s;
-} */
+}
 
-/* .NickNameText:hover {
-    background-color: rgb(4, 196, 164);
-    color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-} */
+.nickNameBox:hover {
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.8);
+}
 
 .inputNickName {
-    flex: 1;
+    width: 100%;
     height: 50px;
-    padding: 20px;
+    padding: 0 50px 0;
     font-size: 20px;
-    background-color: rgb(98, 229, 252);
+    background-color: #00c9b5;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
     text-align: center;
     transition: all 0.3s;
     -webkit-transition: all 0.3s;
 }
 
 .inputNickName:focus {
-    background-color: rgb(1, 171, 201);
+    background-color: #009688;
     color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
 
-.inputNickName:focus::-webkit-input-placeholder {
+.inputNickName:focus::-webkit-input-placeholder,
+.inputNickName::-webkit-input-placeholder {
     color: rgb(219, 216, 216);
 }
 
-.inputNickName:focus:-moz-placeholder {
+.inputNickName:focus:-moz-placeholder,
+.inputNickName::-webkit-input-placeholder {
     color: rgb(219, 216, 216);
 }
 
-.inputNickName:focus::-moz-placeholder {
+.inputNickName:focus::-moz-placeholder,
+.inputNickName::-webkit-input-placeholder {
     color: rgb(219, 216, 216);
 }
 
-.inputNickName:focus:-ms-input-placeholder {
+.inputNickName:focus:-ms-input-placeholder,
+.inputNickName::-webkit-input-placeholder {
     color: rgb(219, 216, 216);
 }
 
 .updateNickNameBtn {
+    position: absolute;
+    right: 0;
+    top: 0;
     height: 50px;
     width: 50px;
-    background-color: rgb(252, 98, 200);
+    border-radius: 25px;
+    background-color: #00b4a2;
+    box-shadow: 0 0 14px rgb(0, 0, 0) inset;
     font-size: 20px;
     font-weight: 700;
     text-align: center;
@@ -198,7 +192,5 @@
 }
 
 .updateNickNameBtn:hover {
-    background-color: rgb(223, 11, 152);
-    color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    background-color: rgb(0, 228, 38);
 }

@@ -9,13 +9,15 @@
 /* ------------居中的盒子-------------- */
 .welcome {
     display: flex;
+    overflow: hidden;
+    border-radius: 20px;
     height: 700px;
     width: 1300px;
     box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.8);
 }
 /* --------------盒子左侧图片区------------------- */
 .display {
-    background-color: pink;
+    background-color: #008073;
     height: 100%;
     width: 50%;
     display: flex;
@@ -24,6 +26,8 @@
     align-items: center;
     padding: 60px;
     user-select: none;
+    color: rgb(180, 180, 180);
+    text-shadow: 4px 4px 4px #000;
 }
 
 .intro {
@@ -33,7 +37,7 @@
 /* --------------盒子右侧登录区------------------ */
 
 .enter {
-    background-color: red;
+    background-color: #00685d;
     width: 50%;
     height: 100%;
     display: flex;
@@ -41,7 +45,9 @@
     align-items: center;
 }
 .enterBox {
-    background-color: #fff;
+    /* background-color: #009688; */
+    border-radius: 20px;
+    overflow: hidden;
     width: 460px;
     height: 520px;
     box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.8);
@@ -53,28 +59,29 @@
     flex-direction: row;
 }
 
-.linkLogin,
-.linkRegister {
-    font-size: 28px;
-    color: #000;
+.welNav {
+    font-size: 32px;
+    color: #ccc;
+    text-shadow: 2px 2px 4px #000;
     font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
     width: 50%;
-    background-color: pink;
+    background-color: #009688;
+    user-select: none;
+    cursor: default;
+    transition: all 0.3s;
+    -webkit-transition: all 0.3s;
 }
-.linkRegister {
-    background-color: rgb(197, 82, 102);
+
+.welNav:hover {
+    background-color: #006e63;
+    color: #fff;
 }
 
 .enterBody {
     height: 450px;
-    background-color: skyblue;
-}
-
-.select {
-    background-color: rgb(18, 16, 168);
-    color: #fff;
+    background-color: #00b6a4;
 }

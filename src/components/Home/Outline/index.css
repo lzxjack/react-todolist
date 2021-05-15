@@ -2,10 +2,12 @@
 .outlineBox {
     width: 100%;
     height: 120px;
-    background-color: red;
+    background-image: linear-gradient(to top, #009688, #19534e);
     position: relative;
     z-index: 2;
     box-shadow: 0 0 14px #000;
+    color: #ccc;
+    text-shadow: 4px 4px 4px #000;
 }
 /* 头像盒子 */
 .avatarBox {
@@ -37,8 +39,7 @@
 /* 累计完成任务个数 */
 .doneCount {
     font-weight: 700;
-    color: rgb(71, 227, 255);
-    text-shadow: 2px 2px 3px #000;
+    color: red;
 }
 
 /* 欢迎语句 */
@@ -62,7 +63,7 @@
     line-height: 120px;
     font-size: 70px;
     font-weight: 700;
-    color: #fff;
+    color: rgb(218, 218, 218);
     text-shadow: 5px 5px 5px #000;
     user-select: none;
 }
@@ -86,7 +87,7 @@
     transform: translate(0, -50%);
     width: 60px;
     height: 60px;
-    background-color: rgb(62, 235, 154);
+    background-color: #007267;
     border-radius: 50%;
     font-size: 18px;
     font-weight: 700;
@@ -94,12 +95,12 @@
     align-items: center;
     justify-content: center;
     user-select: none;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 10px rgb(0, 0, 0) inset;
     transition: all 0.3s;
     -webkit-transition: all 0.3s;
 }
 .logoutBtn:hover {
-    box-shadow: 0 0 15px rgba(0, 0, 0, 1);
-    background-color: rgb(11, 15, 240);
-    color: #fff;
+    box-shadow: 0 0 15px rgb(0, 0, 0) inset;
+    background-color: #006157;
+    color: red;
 }

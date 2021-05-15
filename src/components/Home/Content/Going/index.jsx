@@ -120,7 +120,7 @@ class Going extends Component {
     render() {
         return (
             <Fragment>
-                <div className="Going">
+                <div className="going">
                     <DoubleRightOutlined />
                     &nbsp;Going
                     {this.props.tasks.filter(taskObj => {

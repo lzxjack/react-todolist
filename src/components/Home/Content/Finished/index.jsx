@@ -106,10 +106,9 @@ class Finished extends PureComponent {
                     <Fragment>
                         <div className="finishedText">
                             <span>
-                                以下任务已经完成啦！&nbsp;
+                                以下任务已经完成啦！ &nbsp;
                                 <LikeOutlined />
                             </span>
-
                             <Popconfirm
                                 title={deleteAllDoneCheck}
                                 onConfirm={this.deleteAllDoneTask}
@@ -117,10 +116,7 @@ class Finished extends PureComponent {
                                 okText="Yes"
                                 cancelText="No"
                             >
-                                <div className="deleteAllDoneBtn">
-                                    <DeleteOutlined />
-                                    清空
-                                </div>
+                                <DeleteOutlined className="deleteAllDoneBtn" />
                             </Popconfirm>
                         </div>
                         <ul className="finishedTaskBox">

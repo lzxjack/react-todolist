@@ -105,34 +105,33 @@ export default class Register extends PureComponent {
     render() {
         return (
             <div className="registerBox">
-                <div className="registerUname">
-                    <input
-                        ref={c => {
-                            this.newEmail = c;
-                        }}
-                        type="text"
-                        placeholder="请输入邮箱地址"
-                    />
-                </div>
-                <div className="registerPwd">
-                    <input
-                        ref={c => {
-                            this.newPwd = c;
-                        }}
-                        type="password"
-                        placeholder="请输入密码（8~32位，包含字母、数字）"
-                    />
-                </div>
-                <div className="registerPwd">
-                    <input
-                        ref={c => {
-                            this.newPwdAgian = c;
-                        }}
-                        onKeyUp={this.onEnter}
-                        type="password"
-                        placeholder="请再次输入密码"
-                    />
-                </div>
+                <input
+                    className="registerInput"
+                    ref={c => {
+                        this.newEmail = c;
+                    }}
+                    type="text"
+                    placeholder="请输入邮箱地址"
+                />
+
+                <input
+                    className="registerInput"
+                    ref={c => {
+                        this.newPwd = c;
+                    }}
+                    type="password"
+                    placeholder="请输入密码（8~32位，包含字母、数字）"
+                />
+
+                <input
+                    className="registerInput"
+                    ref={c => {
+                        this.newPwdAgian = c;
+                    }}
+                    onKeyUp={this.onEnter}
+                    type="password"
+                    placeholder="请再次输入密码"
+                />
 
                 <div onClick={this.addUser} className="registerBtn">
                     注册

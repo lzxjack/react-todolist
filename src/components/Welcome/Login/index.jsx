@@ -60,25 +60,24 @@ class Login extends PureComponent {
     render() {
         return (
             <div className="loginBox">
-                <div className="loginEmail">
-                    <input
-                        ref={c => {
-                            this.loginEmail = c;
-                        }}
-                        type="text"
-                        placeholder="请输入邮箱地址"
-                    />
-                </div>
-                <div className="loginPwd">
-                    <input
-                        ref={c => {
-                            this.logonPwd = c;
-                        }}
-                        onKeyUp={this.onEnter}
-                        type="password"
-                        placeholder="请输入密码"
-                    />
-                </div>
+                <input
+                    className="loginInput"
+                    ref={c => {
+                        this.loginEmail = c;
+                    }}
+                    type="text"
+                    placeholder="请输入邮箱地址"
+                />
+
+                <input
+                    className="loginInput"
+                    ref={c => {
+                        this.logonPwd = c;
+                    }}
+                    onKeyUp={this.onEnter}
+                    type="password"
+                    placeholder="请输入密码"
+                />
                 <div className="loginBtn" onClick={this.emailLogin}>
                     登录
                 </div>

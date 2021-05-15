@@ -5,21 +5,6 @@
     left: 50%;
     transform: translate(-50%, 0);
     width: 900px;
-    background-color: rgb(251, 255, 39);
+    background-color: #00a897;
     box-shadow: 0 0 10px #000;
 }
-
-/* .CenterBox::before {
-    background: url('./bg.jpg') no-repeat center fixed;
-    background-size: cover;
-    content: '';
-    display: block;
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: -20px;
-    filter: blur(5px);
-} */
