@@ -50,18 +50,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 20px;
-    width: 40px;
-    height: 40px;
+    border-radius: 50%;
+    width: 46px;
+    height: 46px;
     user-select: none;
     transition: all 0.3s;
     -webkit-transition: all 0.3s;
 }
 
 .deleteAllDoneBtn:hover {
+    cursor: default;
     color: red;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7) inset;
     background-color: #009688;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8) inset;
 }
 
 /* 任务列表ul */
