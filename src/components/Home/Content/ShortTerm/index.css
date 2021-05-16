@@ -1,4 +1,4 @@
-.going {
+.taskType {
     width: 100%;
     height: 70px;
     font-size: 36px;
@@ -23,7 +23,7 @@
 .inputTask {
     width: 750px;
     height: 50px;
-    padding: 0 50px 0;
+    padding: 0 110px 0;
     font-size: 24px;
     background-color: #90bbb6;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
@@ -64,7 +64,7 @@
 
 /* ---------------------- */
 
-.goingNull {
+.taskNull {
     padding: 100px 0;
     display: flex;
     flex-direction: column;
@@ -72,20 +72,20 @@
     user-select: none;
     text-shadow: 3px 3px 3px #000;
 }
-.goingNullIcon {
+.taskNullIcon {
     font-size: 60px;
 }
-.goingNullText {
+.taskNullText {
     font-size: 24px;
 }
 
 /* 任务列表ul */
-.goingTaskBox {
+.taskBox {
     padding: 10px 0;
     margin-bottom: 0;
 }
 
-.goingTaskBox li {
+.taskBox li {
     position: relative;
     overflow: hidden;
     border-radius: 25px;
@@ -96,12 +96,12 @@
     -webkit-transition: all 0.3s;
 }
 
-.goingTaskBox li:hover {
+.taskBox li:hover {
     box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.8);
 }
 
 /* 完成按钮 */
-.goingTaskBox li .goingDoneBtn {
+.taskBox li .taskDoneBtn {
     position: absolute;
     border-radius: 25px;
     text-align: center;
@@ -114,18 +114,18 @@
     transition: all 0.3s;
     -webkit-transition: all 0.3s;
 }
-.goingTaskBox li .goingDoneBtn:hover {
+.taskBox li .taskDoneBtn:hover {
     background-color: rgb(0, 228, 38);
 }
 
 /* 编辑框 */
-.goingTaskBox li .goingTaskEdit {
+.taskBox li .taskEdit {
     text-align: center;
     line-height: 50px;
     font-size: 22px;
     height: 50px;
     width: 100%;
-    padding: 0 80px 0;
+    padding: 0 110px 0;
     background-color: #00c9b5;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
     user-select: none;
@@ -133,12 +133,32 @@
     -webkit-transition: all 0.3s;
 }
 
-.goingTaskBox li .goingTaskEdit:focus {
+.taskBox li .taskEdit:focus {
     background-color: #009688;
 }
 
+/* 转变时效按钮 */
+.transTaskBtn {
+    position: absolute;
+    right: 50px;
+    top: 0;
+    border-radius: 25px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 22px;
+    width: 50px;
+    height: 50px;
+    background-color: #00b4a2;
+    box-shadow: 0 0 14px rgb(0, 0, 0) inset;
+    transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+}
+.taskBox li .transTaskBtn:hover {
+    background-color: rgb(235, 231, 29);
+}
+
 /* 删除按钮 */
-.goingTaskBox li .goingDeleteBtn {
+.taskBox li .taskDeleteBtn {
     position: absolute;
     right: 0;
     top: 0;
@@ -154,6 +174,6 @@
     -webkit-transition: all 0.3s;
 }
 
-.goingTaskBox li .goingDeleteBtn:hover {
+.taskBox li .taskDeleteBtn:hover {
     background-color: red;
 }

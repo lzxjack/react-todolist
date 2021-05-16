@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import { message } from 'antd';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -7,42 +7,55 @@ import {
     CloseOutlined,
     DoubleRightOutlined,
     SmileOutlined,
+    SwapOutlined,
 } from '@ant-design/icons';
 import { db } from '../../../../utils/cloudBase';
 import { addCount } from '../../../../redux/actions/doneSum';
-import { addTask, deleteTask, finishTask, editTask } from '../../../../redux/actions/tasks';
+import {
+    addTask,
+    deleteTask,
+    finishTask,
+    editTask,
+    transTask,
+} from '../../../../redux/actions/tasks';
 
 import './index.css';
 
-const _ = db.command;
+// const _ = db.command;
 
-class Going extends Component {
+class ShortTerm extends PureComponent {
     // 添加任务
     addTask = e => {
         // 判断用户按下回车
         if (e.keyCode === 13) {
             // 判断输入框是否为空
-            if (this.inputTask.value.trim() === '') {
+            if (this.inputShortTask.value.trim() === '') {
                 // 清空输入框
-                this.inputTask.value = '';
+                this.inputShortTask.value = '';
                 message.info('请输入todo...');
                 return;
             }
             // 更新数据库
             db.collection('tasks')
                 .add({
-                    content: this.inputTask.value.trim(),
+                    content: this.inputShortTask.value.trim(),
+                    isShort: true,
                     done: false,
                 })
                 .then(async res => {
                     // 得到返回的数据库中的ID值
                     const { id } = await res;
                     // 构造一个新的数据
-                    const addOne = { _id: id, content: this.inputTask.value.trim(), done: false };
+                    const addOne = {
+                        _id: id,
+                        content: this.inputShortTask.value.trim(),
+                        isShort: true,
+                        done: false,
+                    };
                     // 更新redux状态
                     this.props.addTask(addOne);
                     // 清空输入框
-                    this.inputTask.value = '';
+                    this.inputShortTask.value = '';
                     message.success('添加成功！');
                 });
         }
@@ -70,7 +83,7 @@ class Going extends Component {
         db.collection('doneSum')
             .doc(this.props.id)
             .update({
-                count: _.inc(1),
+                count: db.command.inc(1),
             });
         // 2. 在数据库中修改相应id的done属性
         db.collection('tasks').doc(id).update({
@@ -117,20 +130,31 @@ class Going extends Component {
             content: value,
         });
     };
+    // 转变任务时效
+    transTask = id => {
+        // 在redux中转变任务
+        this.props.transTask(id);
+        // 提醒用户
+        message.success('任务时效已更新，请在长期任务中查看！');
+        // 2. 在数据库中修改相应id的done属性
+        db.collection('tasks').doc(id).update({
+            isShort: false,
+        });
+    };
     render() {
         return (
             <Fragment>
-                <div className="going">
+                <div className="taskType">
                     <DoubleRightOutlined />
-                    &nbsp;Going
+                    &nbsp;ShortTerm
                     {this.props.tasks.filter(taskObj => {
-                        return taskObj.done === false;
+                        return taskObj.done === false && taskObj.isShort === true;
                     }).length === 0 ? null : (
                         <span>
                             &nbsp;——&nbsp;
                             {
                                 this.props.tasks.filter(taskObj => {
-                                    return taskObj.done === false;
+                                    return taskObj.done === false && taskObj.isShort === true;
                                 }).length
                             }
                         </span>
@@ -139,33 +163,33 @@ class Going extends Component {
                 <div className="inputBox">
                     <input
                         type="text"
-                        ref={c => (this.inputTask = c)}
+                        ref={c => (this.inputShortTask = c)}
                         onKeyUp={this.addTask}
-                        placeholder="Add some todos?"
+                        placeholder="Add some ShortTerm-todos?"
                         className="inputTask"
                         autoFocus
                     />
                 </div>
                 {this.props.tasks.filter(taskObj => {
-                    return taskObj.done === false;
+                    return taskObj.done === false && taskObj.isShort === true;
                 }).length === 0 ? (
-                    <div className="goingNull">
-                        <div className="goingNullIcon">
+                    <div className="taskNull">
+                        <div className="taskNullIcon">
                             <SmileOutlined />
                         </div>
-                        <div className="goingNullText">Great, 你已完成所有任务！</div>
+                        <div className="taskNullText">Great, 你已完成所有短期任务！</div>
                     </div>
                 ) : (
-                    <ul className="goingTaskBox">
+                    <ul className="taskBox">
                         {this.props.tasks
                             .filter(taskObj => {
-                                return taskObj.done === false;
+                                return taskObj.done === false && taskObj.isShort === true;
                             })
                             .map(taskObj => {
                                 return (
                                     <li key={taskObj._id}>
                                         <div
-                                            className="goingDoneBtn"
+                                            className="taskDoneBtn"
                                             onClick={this.finishTask.bind(this, taskObj._id)}
                                         >
                                             <CheckOutlined />
@@ -173,13 +197,19 @@ class Going extends Component {
                                         <input
                                             type="text"
                                             onBlur={this.returnContent.bind(this, taskObj)}
-                                            className="goingTaskEdit"
+                                            className="taskEdit"
                                             id={taskObj._id}
                                             defaultValue={taskObj.content}
                                             onKeyUp={this.updateEditTask.bind(this, taskObj)}
                                         />
                                         <div
-                                            className="goingDeleteBtn"
+                                            className="transTaskBtn"
+                                            onClick={this.transTask.bind(this, taskObj._id)}
+                                        >
+                                            <SwapOutlined />
+                                        </div>
+                                        <div
+                                            className="taskDeleteBtn"
                                             onClick={this.deleteTask.bind(this, taskObj._id)}
                                         >
                                             <CloseOutlined />
@@ -200,6 +230,6 @@ export default withRouter(
             id: state.doneSum.id,
             tasks: state.tasks,
         }),
-        { addCount, addTask, deleteTask, finishTask, editTask }
-    )(Going)
+        { addCount, addTask, deleteTask, finishTask, editTask, transTask }
+    )(ShortTerm)
 );

@@ -6,6 +6,7 @@ import {
     RETURN_TASK,
     EDIT_TASK,
     DELETE_ALL_DONE,
+    TRANS_TASK,
 } from '../constant';
 
 // 初始状态
@@ -46,6 +47,14 @@ export default function addReducer(preState = initState, action) {
             // 传id
             const newTask = preState.map(taskObj => {
                 if (taskObj._id === data) taskObj.done = false;
+                return taskObj;
+            });
+            return newTask;
+        }
+        case TRANS_TASK: {
+            // 传id
+            const newTask = preState.map(taskObj => {
+                if (taskObj._id === data) taskObj.isShort = !taskObj.isShort;
                 return taskObj;
             });
             return newTask;

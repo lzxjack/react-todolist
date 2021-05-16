@@ -14,10 +14,11 @@
     position: relative;
     margin: auto;
     width: 750px;
-    height: 60px;
+    height: 52px;
     border-bottom: 2px solid #ccc;
     text-shadow: 3px 3px 3px #000;
     user-select: none;
+    /* background-color: #fff; */
 }
 
 .headName span {
@@ -31,7 +32,7 @@
 .updateAvatarBox {
     position: relative;
     width: 100%;
-    height: 246px;
+    height: 260px;
     /* background-color: #000; */
 }
 

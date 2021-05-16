@@ -22,3 +22,4 @@ export const FINISH_TASK = 'finishTask';
 export const RETURN_TASK = 'returnTask';
 export const EDIT_TASK = 'editTask';
 export const DELETE_ALL_DONE = 'deleteAllDone';
+export const TRANS_TASK = 'transTask';

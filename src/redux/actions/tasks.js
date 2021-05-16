@@ -6,6 +6,7 @@ import {
     RETURN_TASK,
     EDIT_TASK,
     DELETE_ALL_DONE,
+    TRANS_TASK,
 } from '../constant';
 
 export const initTask = data => ({
@@ -15,6 +16,11 @@ export const initTask = data => ({
 
 export const addTask = data => ({
     type: ADD_TASK,
+    data,
+});
+
+export const transTask = data => ({
+    type: TRANS_TASK,
     data,
 });
 

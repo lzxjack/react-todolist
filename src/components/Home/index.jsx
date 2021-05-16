@@ -18,24 +18,24 @@ import {
 class Home extends Component {
     async componentDidMount() {
         // 判断用户是否第一次登陆
-        let ifFirst = false;
+        let isFirst = false;
         // 查询集合doneSum中有无文档
         await db
             .collection('doneSum')
             .get()
             .then(res => {
                 // 如果没文档，则是第一次登陆
-                // 否则ifFirst依然是false，不是第一次登陆
+                // 否则isFirst依然是false，不是第一次登陆
                 // 不是第一次登陆，就将数据库中的count放入redux
                 if (res.data.length === 0) {
-                    ifFirst = true;
+                    isFirst = true;
                 } else {
                     this.props.initFromDB(res.data[0].count);
                     this.props.initID(res.data[0]._id);
                 }
             });
         // 如果是第一次登陆，在集合doneSum中创建一个用于计数的文档
-        if (ifFirst) {
+        if (isFirst) {
             await db
                 .collection('doneSum')
                 .add({

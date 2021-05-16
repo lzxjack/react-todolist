@@ -2,9 +2,10 @@ import Home from './components/Home';
 import Welcome from './components/Welcome';
 import Login from './components/Welcome/Login';
 import Register from './components/Welcome/Register';
-import Going from './components/Home/Content/Going';
+import ShortTerm from './components/Home/Content/ShortTerm';
 import Finished from './components/Home/Content/Finished';
 import AboutMe from './components/Home/Content/AboutMe';
+import LongTerm from './components/Home/Content/LongTerm';
 
 export const appRoutes = [
     {
@@ -42,8 +43,13 @@ export const appRoutes = [
 
 export const homeRouters = [
     {
-        path: '/home/going',
-        component: Going,
+        path: '/home/shortterm',
+        component: ShortTerm,
+        requiresAuth: false,
+    },
+    {
+        path: '/home/longterm',
+        component: LongTerm,
         requiresAuth: false,
     },
     {
@@ -54,9 +60,10 @@ export const homeRouters = [
     {
         path: '/home/me',
         component: AboutMe,
+        requiresAuth: false,
     },
     {
         path: '/home',
-        component: Going,
+        component: ShortTerm,
     },
 ];
