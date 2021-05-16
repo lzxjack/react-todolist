@@ -8,5 +8,7 @@ export const appTcb = tcb.init({
 export const app = cloudbase.init({
     env: 'todolist-3gayiz0cb9b8b263',
 });
-export const auth = app.auth();
+export const auth = app.auth({
+    persistence: 'local',
+});
 export const db = app.database();

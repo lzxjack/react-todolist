@@ -62,3 +62,8 @@ a:active,
 a:focus {
     text-decoration: none !important;
 }
+
+#root {
+    background: url('./2.jpg') no-repeat center fixed;
+    background-size: cover;
+}

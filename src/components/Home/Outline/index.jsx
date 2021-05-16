@@ -87,8 +87,8 @@ class Outline extends PureComponent {
     };
     // 退出
     turnLogout = () => {
-        // 清除sessionStorage
-        sessionStorage.clear();
+        // 清除localStorage
+        localStorage.clear();
         // 提示消息
         this.openLogoutNoti();
         // 回到welcome页面
@@ -114,7 +114,7 @@ class Outline extends PureComponent {
                         {this.state.time}，
                         {this.props.nickName === ''
                             ? JSON.parse(
-                                  sessionStorage.getItem('user_info_todolist-3gayiz0cb9b8b263')
+                                  localStorage.getItem('user_info_todolist-3gayiz0cb9b8b263')
                               ).content.email
                             : this.props.nickName}
                         ！
