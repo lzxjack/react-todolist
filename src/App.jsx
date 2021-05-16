@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import renderRoutes from './utils/renderRoutes';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -23,13 +23,13 @@ class App extends PureComponent {
     }
     render() {
         return (
-            <Fragment>
+            <div className="background">
                 <div className="appBox">
                     {/* 路由鉴权：渲染/welcome页面 or /home页面 */}
                     {renderRoutes(appRoutes, this.props.userState, '/welcome')}
                 </div>
                 <Footer />
-            </Fragment>
+            </div>
         );
     }
 }

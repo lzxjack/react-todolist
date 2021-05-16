@@ -1,8 +1,10 @@
+.background {
+    background: url('./bg.jpg') no-repeat center fixed;
+    /* background: url('./bg.jpg') 0 / cover fixed; */
+    background-size: cover;
+}
+
 .appBox {
     position: relative;
     min-height: calc(100vh - 80px);
-    /* background-color: #009688; */
-    /* background-color: #49cabd; */
-    /* background: url('./2.jpg') no-repeat center fixed;
-    background-size: cover; */
 }

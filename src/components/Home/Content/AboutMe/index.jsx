@@ -5,6 +5,7 @@ import {
     CheckOutlined,
     PictureOutlined,
     ToTopOutlined,
+    ExclamationOutlined,
 } from '@ant-design/icons';
 import { connect } from 'react-redux';
 import { nanoid } from 'nanoid';
@@ -13,6 +14,7 @@ import {
     updateAvatarUrl,
     updateNickName,
     updateAvatarTempUrl,
+    updateUserName,
 } from '../../../../redux/actions/userInform';
 import { LoadingOutlined } from '@ant-design/icons';
 import { DEFAULT_AVATAR_URL } from '../../../../utils/constant';
@@ -171,8 +173,107 @@ class AboutMe extends PureComponent {
             });
     };
     // 监听是否按下回车
-    onEnter = e => {
+    nickOnEnter = e => {
         if (e.keyCode === 13) this.updateNickName();
+    };
+    // 监听是否按下回车
+    userOnEnter = e => {
+        if (e.keyCode === 13) this.updateUserName();
+    };
+    // 绑定用户名
+    updateUserName = async () => {
+        // 用户名
+        const userName = this.inputUserName.value;
+        if (userName === '') {
+            // 清空输入框
+            this.inputUserName.value = '';
+            message.info('请输入用户名~');
+            return;
+        }
+        let uerNameValidate = true;
+        const userNameReg = /^\w*[a-z]+\w*$/i;
+        // 判断格式：（字母）或（字母+数字），不能纯数字
+        if (!userNameReg.test(userName)) {
+            uerNameValidate = false;
+            this.openUserNameTypeFail('error');
+        }
+        // 判断长度
+        if (userName.length < 2 || userName.length > 20) {
+            uerNameValidate = false;
+            this.openUserNameLenFail('error');
+        }
+        // 不满足格式规则，中止
+        if (!uerNameValidate) return;
+        // 用户名已存在，中止
+        if (await auth.isUsernameRegistered(userName)) {
+            this.openUserNameRegistered('info');
+            return;
+        }
+        // 发送请求，绑定用户名
+        await auth.currentUser
+            .updateUsername(userName)
+            .then(() => {
+                // 绑定成功，将用户名放入redux
+                this.props.updateUserName(userName);
+                // 清空输入框
+                this.inputUserName.value = '';
+                // 提示消息
+                this.openUserNameSuccess('success');
+            })
+            .catch(() => {
+                // 失败
+                notification.open({
+                    message: '绑定失败！',
+                    description: '网络故障，请稍后重试！',
+                    duration: 7,
+                    icon: <ExclamationOutlined />,
+                });
+                return;
+            });
+    };
+    // 用户名格式错误
+    openUserNameTypeFail = () => {
+        notification.open({
+            message: '用户名格式错误！',
+            description: '用户名可以包含数字和字母，但是不允许是纯数字。不允许出现符号。',
+            duration: 7,
+            icon: <CloseOutlined />,
+        });
+    };
+    // 用户名长度错误
+    openUserNameLenFail = () => {
+        notification.open({
+            message: '用户名格式错误！',
+            description: '用户名长度在 2~20 之间。',
+            duration: 7,
+            icon: <CloseOutlined />,
+        });
+    };
+    // 用户名已存在
+    openUserNameRegistered = () => {
+        notification.open({
+            message: '用户名已存在！',
+            description: '来晚啦，用户名已被注册，换一个吧！',
+            duration: 7,
+            icon: <ExclamationOutlined />,
+        });
+    };
+    // 用户名绑定成功
+    openUserNameSuccess = () => {
+        const key = `open${Date.now()}`;
+        const btn = (
+            <Button type="primary" size="small" onClick={() => notification.close(key)}>
+                好的
+            </Button>
+        );
+        notification.open({
+            message: '绑定成功！',
+            description: '用户名绑定成功，可用用户名直接登录！',
+            btn,
+            key,
+            duration: 0,
+            icon: <CheckOutlined />,
+        });
     };
     render() {
         return (
@@ -181,7 +282,7 @@ class AboutMe extends PureComponent {
                     <UserOutlined />
                     &nbsp;About Me
                 </div>
-                <div className="avatarHead">
+                <div className="headName">
                     <span>Avatar</span>
                 </div>
                 <div className="updateAvatarBox">
@@ -221,19 +322,38 @@ class AboutMe extends PureComponent {
                         <ToTopOutlined />
                     </div>
                 </div>
-                <div className="nickNameHead">
+                <div className="headName">
                     <span>Nick Name</span>
                 </div>
                 <div className="updateInfoBox">
-                    <div className="nickNameBox">
+                    <div className="nameBox">
                         <input
                             type="text"
                             placeholder={this.props.nickName ? this.props.nickName : '怎么称呼呢？'}
-                            className="inputNickName"
+                            className="inputName"
                             ref={c => (this.inputNickName = c)}
-                            onKeyUp={this.onEnter}
+                            onKeyUp={this.nickOnEnter}
                         />
-                        <div className="updateNickNameBtn" onClick={this.updateNickName}>
+                        <div className="updateNameBtn" onClick={this.updateNickName}>
+                            <CheckOutlined />
+                        </div>
+                    </div>
+                </div>
+                <div className="headName">
+                    <span>User Name</span>
+                </div>
+                <div className="updateInfoBox">
+                    <div className="nameBox">
+                        <input
+                            type="text"
+                            placeholder={
+                                this.props.userName ? this.props.userName : '绑定后可用用户名登录'
+                            }
+                            className="inputName"
+                            ref={c => (this.inputUserName = c)}
+                            onKeyUp={this.userOnEnter}
+                        />
+                        <div className="updateNameBtn" onClick={this.updateUserName}>
                             <CheckOutlined />
                         </div>
                     </div>
@@ -248,6 +368,7 @@ export default connect(
         avatarUrl: state.userInform.avatarUrl,
         avatarTempUrl: state.userInform.avatarTempUrl,
         nickName: state.userInform.nickName,
+        userName: state.userInform.userName,
     }),
-    { updateAvatarUrl, updateAvatarTempUrl, updateNickName }
+    { updateAvatarUrl, updateAvatarTempUrl, updateNickName, updateUserName }
 )(AboutMe);

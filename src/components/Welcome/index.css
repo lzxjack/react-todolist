@@ -17,7 +17,8 @@
 }
 /* --------------盒子左侧图片区------------------- */
 .display {
-    background-color: #008073;
+    /* background-color: #008073; */
+    background-color: rgba(0, 128, 115, 0.85);
     height: 100%;
     width: 50%;
     display: flex;
@@ -37,7 +38,8 @@
 /* --------------盒子右侧登录区------------------ */
 
 .enter {
-    background-color: #00685d;
+    /* background-color: #00685d; */
+    background-color: rgba(0, 104, 93, 0.85);
     width: 50%;
     height: 100%;
     display: flex;

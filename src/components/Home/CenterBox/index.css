@@ -5,6 +5,7 @@
     left: 50%;
     transform: translate(-50%, 0);
     width: 900px;
-    background-color: #00a897;
-    box-shadow: 0 0 10px #000;
+    /* background-color: #00a897; */
+    background-color: rgba(0, 168, 151, 0.85);
+    filter: blur(10px);
 }

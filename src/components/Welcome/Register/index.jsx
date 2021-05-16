@@ -1,40 +1,44 @@
 import React, { PureComponent } from 'react';
 import { notification, Button } from 'antd';
 import { auth } from '../../../utils/cloudBase';
-import { CheckOutlined } from '@ant-design/icons';
+import { CheckOutlined, CloseOutlined, InfoOutlined, ExclamationOutlined } from '@ant-design/icons';
 import './index.css';
 
 export default class Register extends PureComponent {
     // 邮箱错误的提示消息
-    openEmailError = type => {
-        notification[type]({
+    openEmailError = () => {
+        notification.open({
             message: '信息填写错误！',
             description: '请输入正确的邮箱地址',
             duration: 7,
+            icon: <CloseOutlined />,
         });
     };
     // 密码错误的提示消息
-    openPwdError = type => {
-        notification[type]({
+    openPwdError = () => {
+        notification.open({
             message: '信息填写错误！',
             description: '请输入正确的密码，8~32位，需包含字母、数字',
             duration: 7,
+            icon: <CloseOutlined />,
         });
     };
     // 密码确认错误的提示消息
-    openPwdAgainError = type => {
-        notification[type]({
+    openPwdAgainError = () => {
+        notification.open({
             message: '信息填写错误！',
             description: '两次输入的密码不一致',
             duration: 7,
+            icon: <InfoOutlined />,
         });
     };
     // 注册邮箱地址失败的提示消息
-    openRegisterFailed = type => {
-        notification[type]({
+    openRegisterFailed = () => {
+        notification.open({
             message: '注册失败！',
             description: '邮箱地址不存在或邮箱地址已被注册！',
             duration: 7,
+            icon: <ExclamationOutlined />,
         });
     };
     // 注册邮箱地址成功的提示消息
@@ -66,15 +70,15 @@ export default class Register extends PureComponent {
             // 状态改为false
             validateFlag = false;
             // 提示消息
-            this.openEmailError('error');
+            this.openEmailError();
         }
         if (!pwdReg.test(this.newPwd.value)) {
             validateFlag = false;
-            this.openPwdError('error');
+            this.openPwdError();
         }
         if (this.newPwd.value !== this.newPwdAgian.value) {
             validateFlag = false;
-            this.openPwdAgainError('error');
+            this.openPwdAgainError();
         }
         // 通过验证，validateFlag还是为true
         if (!validateFlag) return;
@@ -88,7 +92,7 @@ export default class Register extends PureComponent {
             })
             .catch(() => {
                 // 提示消息
-                this.openRegisterFailed('error');
+                this.openRegisterFailed();
             });
 
         // db.collection('doneSum').add({

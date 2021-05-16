@@ -12,6 +12,7 @@ import {
     updateAvatarUrl,
     updateNickName,
     updateAvatarTempUrl,
+    updateUserName,
 } from '../../redux/actions/userInform';
 
 class Home extends Component {
@@ -57,6 +58,9 @@ class Home extends Component {
         this.props.updateNickName(auth.currentUser.nickName);
         this.props.updateAvatarUrl(auth.currentUser.avatarUrl);
         this.props.updateAvatarTempUrl(auth.currentUser.avatarUrl);
+        this.props.updateUserName(
+            JSON.parse(localStorage.getItem('user_info_todolist-3gayiz0cb9b8b263')).content.username
+        );
     }
     render() {
         return (
@@ -76,7 +80,16 @@ export default withRouter(
             avatarUrl: state.userInform.avatarUrl,
             avatarTempUrl: state.userInform.avatarTempUrl,
             nickName: state.userInform.nickName,
+            userName: state.userInform.userName,
         }),
-        { initFromDB, initID, initTask, updateAvatarUrl, updateAvatarTempUrl, updateNickName }
+        {
+            initFromDB,
+            initID,
+            initTask,
+            updateAvatarUrl,
+            updateAvatarTempUrl,
+            updateNickName,
+            updateUserName,
+        }
     )(Home)
 );
