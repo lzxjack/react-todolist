@@ -10,7 +10,7 @@ import {
     editTask,
     transTask,
 } from '../../../../redux/actions/tasks';
-import { message } from 'antd';
+import { message, Tooltip } from 'antd';
 import {
     CheckOutlined,
     CloseOutlined,
@@ -185,12 +185,14 @@ class LongTerm extends PureComponent {
                             .map(taskObj => {
                                 return (
                                     <li key={taskObj._id}>
-                                        <div
-                                            className="taskDoneBtn"
-                                            onClick={this.finishTask.bind(this, taskObj._id)}
-                                        >
-                                            <CheckOutlined />
-                                        </div>
+                                        <Tooltip placement="left" title="完成" zIndex="999">
+                                            <div
+                                                className="taskDoneBtn"
+                                                onClick={this.finishTask.bind(this, taskObj._id)}
+                                            >
+                                                <CheckOutlined />
+                                            </div>
+                                        </Tooltip>
                                         <input
                                             type="text"
                                             onBlur={this.returnContent.bind(this, taskObj)}
@@ -199,18 +201,22 @@ class LongTerm extends PureComponent {
                                             defaultValue={taskObj.content}
                                             onKeyUp={this.updateEditTask.bind(this, taskObj)}
                                         />
-                                        <div
-                                            className="transTaskBtn"
-                                            onClick={this.transTask.bind(this, taskObj._id)}
-                                        >
-                                            <SwapOutlined />
-                                        </div>
-                                        <div
-                                            className="taskDeleteBtn"
-                                            onClick={this.deleteTask.bind(this, taskObj._id)}
-                                        >
-                                            <CloseOutlined />
-                                        </div>
+                                        <Tooltip placement="left" title="转为近期任务" zIndex="999">
+                                            <div
+                                                className="transTaskBtn"
+                                                onClick={this.transTask.bind(this, taskObj._id)}
+                                            >
+                                                <SwapOutlined />
+                                            </div>
+                                        </Tooltip>
+                                        <Tooltip placement="right" title="删除" zIndex="999">
+                                            <div
+                                                className="taskDeleteBtn"
+                                                onClick={this.deleteTask.bind(this, taskObj._id)}
+                                            >
+                                                <CloseOutlined />
+                                            </div>
+                                        </Tooltip>
                                     </li>
                                 );
                             })}

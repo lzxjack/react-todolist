@@ -9,7 +9,7 @@ import {
 } from '@ant-design/icons';
 import { connect } from 'react-redux';
 import { nanoid } from 'nanoid';
-import { notification, Button, message } from 'antd';
+import { notification, Button, message, Tooltip } from 'antd';
 import {
     updateAvatarUrl,
     updateNickName,
@@ -115,7 +115,7 @@ class AboutMe extends PureComponent {
     updateAvatar = async () => {
         // avatarCheck为false，用户未选择头像
         if (!this.state.avatarCheck) {
-            message.info('请先选择头像，再进行上传！');
+            message.warning('请先选择头像，再进行上传！');
             return;
         }
         await auth.currentUser
@@ -302,25 +302,28 @@ class AboutMe extends PureComponent {
                             <LoadingOutlined />
                         </div>
                     ) : null}
-                    <div
-                        className="upToCOSBtn"
-                        onClick={() => {
-                            this.inputAvatar.click();
-                        }}
-                    >
-                        <PictureOutlined />
-                        <input
-                            type="file"
-                            ref={c => (this.inputAvatar = c)}
-                            accept="image/*"
-                            className="upToCOSInput"
-                            onChange={this.beforeUpload}
-                        />
-                    </div>
-
-                    <div className="updateAvatarBtn" onClick={this.updateAvatar}>
-                        <ToTopOutlined />
-                    </div>
+                    <Tooltip placement="bottom" title="选择头像">
+                        <div
+                            className="upToCOSBtn"
+                            onClick={() => {
+                                this.inputAvatar.click();
+                            }}
+                        >
+                            <PictureOutlined />
+                            <input
+                                type="file"
+                                ref={c => (this.inputAvatar = c)}
+                                accept="image/*"
+                                className="upToCOSInput"
+                                onChange={this.beforeUpload}
+                            />
+                        </div>
+                    </Tooltip>
+                    <Tooltip placement="bottom" title="上传头像">
+                        <div className="updateAvatarBtn" onClick={this.updateAvatar}>
+                            <ToTopOutlined />
+                        </div>
+                    </Tooltip>
                 </div>
                 <div className="headName">
                     <span>Nick Name</span>

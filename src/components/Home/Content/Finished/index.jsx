@@ -1,5 +1,5 @@
 import React, { PureComponent, Fragment } from 'react';
-import { message, Popconfirm } from 'antd';
+import { message, Popconfirm, Tooltip } from 'antd';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
@@ -109,15 +109,17 @@ class Finished extends PureComponent {
                                 以下任务已经完成啦！ &nbsp;
                                 <LikeOutlined />
                             </span>
-                            <Popconfirm
-                                title={deleteAllDoneCheck}
-                                onConfirm={this.deleteAllDoneTask}
-                                onCancel={this.deleteAllDoneCancel}
-                                okText="Yes"
-                                cancelText="No"
-                            >
-                                <DeleteOutlined className="deleteAllDoneBtn" />
-                            </Popconfirm>
+                            <Tooltip placement="right" title="删除所有" zIndex="999">
+                                <Popconfirm
+                                    title={deleteAllDoneCheck}
+                                    onConfirm={this.deleteAllDoneTask}
+                                    onCancel={this.deleteAllDoneCancel}
+                                    okText="Yes"
+                                    cancelText="No"
+                                >
+                                    <DeleteOutlined className="deleteAllDoneBtn" />
+                                </Popconfirm>
+                            </Tooltip>
                         </div>
                         <ul className="finishedTaskBox">
                             {this.props.tasks
@@ -127,21 +129,32 @@ class Finished extends PureComponent {
                                 .map(taskObj => {
                                     return (
                                         <li key={taskObj._id}>
-                                            <div
-                                                className="finishedDoneBtn"
-                                                onClick={this.backToGoing.bind(this, taskObj._id)}
-                                            >
-                                                <RedoOutlined />
-                                            </div>
+                                            <Tooltip placement="left" title="取消完成" zIndex="999">
+                                                <div
+                                                    className="finishedDoneBtn"
+                                                    onClick={this.backToGoing.bind(
+                                                        this,
+                                                        taskObj._id
+                                                    )}
+                                                >
+                                                    <RedoOutlined />
+                                                </div>
+                                            </Tooltip>
+
                                             <div className="finishedTaskContent">
                                                 {taskObj.content}
                                             </div>
-                                            <div
-                                                className="finishedDeleteBtn"
-                                                onClick={this.deleteTask.bind(this, taskObj._id)}
-                                            >
-                                                <CloseOutlined />
-                                            </div>
+                                            <Tooltip placement="right" title="删除" zIndex="999">
+                                                <div
+                                                    className="finishedDeleteBtn"
+                                                    onClick={this.deleteTask.bind(
+                                                        this,
+                                                        taskObj._id
+                                                    )}
+                                                >
+                                                    <CloseOutlined />
+                                                </div>
+                                            </Tooltip>
                                         </li>
                                     );
                                 })}

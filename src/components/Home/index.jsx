@@ -54,13 +54,18 @@ class Home extends Component {
             .then(res => {
                 this.props.initTask(res.data);
             });
-        // 将用户上的信息添加到redux状态中
-        this.props.updateNickName(auth.currentUser.nickName);
-        this.props.updateAvatarUrl(auth.currentUser.avatarUrl);
-        this.props.updateAvatarTempUrl(auth.currentUser.avatarUrl);
-        this.props.updateUserName(
-            JSON.parse(localStorage.getItem('user_info_todolist-3gayiz0cb9b8b263')).content.username
-        );
+
+        // 刷新用户信息，获取最新的用户信息
+        auth.currentUser.refresh().then(() => {
+            // 将用户上的信息添加到redux状态中
+            this.props.updateNickName(auth.currentUser.nickName);
+            this.props.updateAvatarUrl(auth.currentUser.avatarUrl);
+            this.props.updateAvatarTempUrl(auth.currentUser.avatarUrl);
+            this.props.updateUserName(
+                JSON.parse(localStorage.getItem('user_info_todolist-3gayiz0cb9b8b263')).content
+                    .username
+            );
+        });
     }
     render() {
         return (
