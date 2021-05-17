@@ -310,6 +310,7 @@ class AboutMe extends PureComponent {
                             }}
                         >
                             <PictureOutlined />
+
                             <input
                                 type="file"
                                 ref={c => (this.inputAvatar = c)}
