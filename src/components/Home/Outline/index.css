@@ -2,7 +2,8 @@
 .outlineBox {
     width: 100%;
     height: 120px;
-    background-image: linear-gradient(to top, #009688, #19534e);
+    background-image: linear-gradient(to top, #00b3a1, #19534e);
+    /* background-image: linear-gradient(to top, #A7FAFE, #659a9c); */
     position: relative;
     z-index: 2;
     box-shadow: 0 0 14px #000;
