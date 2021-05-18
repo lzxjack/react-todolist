@@ -9,3 +9,10 @@
     background-color: rgba(0, 168, 151, 0.85);
     filter: blur(10px);
 }
+
+@media all and (max-width: 1024px) {
+    .CenterBox {
+        width: 100%;
+        filter: blur(0);
+    }
+}

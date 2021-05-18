@@ -54,3 +54,12 @@
     padding: 0 20px 0;
     font-size: 20px;
 }
+
+@media all and (max-width: 1024px) {
+    .registerInput {
+        width: 90%;
+    }
+    .registerBtn {
+        width: 90%;
+    }
+}

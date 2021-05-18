@@ -146,7 +146,7 @@ class ShortTerm extends PureComponent {
             <Fragment>
                 <div className="taskType">
                     <DoubleRightOutlined />
-                    &nbsp;ShortTerm
+                    &nbsp;短期任务
                     {this.props.tasks.filter(taskObj => {
                         return taskObj.done === false && taskObj.isShort === true;
                     }).length === 0 ? null : (
@@ -177,7 +177,7 @@ class ShortTerm extends PureComponent {
                         <div className="taskNullIcon">
                             <SmileOutlined />
                         </div>
-                        <div className="taskNullText">Great, 你已完成所有短期任务！</div>
+                        <div className="taskNullText">Great, 你已完成所有近期任务！</div>
                     </div>
                 ) : (
                     <ul className="taskBox">

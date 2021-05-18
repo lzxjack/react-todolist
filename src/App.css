@@ -8,3 +8,9 @@
     position: relative;
     min-height: calc(100vh - 80px);
 }
+
+@media all and (max-width: 1024px) {
+    .appBox {
+        min-height: 100vh;
+    }
+}

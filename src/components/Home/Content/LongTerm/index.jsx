@@ -143,7 +143,7 @@ class LongTerm extends PureComponent {
             <Fragment>
                 <div className="taskType">
                     <DoubleRightOutlined />
-                    &nbsp;LongTerm
+                    &nbsp;长期任务
                     {this.props.tasks.filter(taskObj => {
                         return taskObj.done === false && taskObj.isShort === false;
                     }).length === 0 ? null : (

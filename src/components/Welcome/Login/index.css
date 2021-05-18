@@ -88,3 +88,12 @@
 /* input {
     background-color: yellow;
 } */
+
+@media all and (max-width: 1024px) {
+    .loginInput {
+        width: 90%;
+    }
+    .loginBtn {
+        width: 90%;
+    }
+}

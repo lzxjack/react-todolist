@@ -48,3 +48,9 @@
     font-size: 14px;
     text-align: right;
 }
+
+@media all and (max-width: 1024px) {
+    .footer {
+        display: none;
+    }
+}

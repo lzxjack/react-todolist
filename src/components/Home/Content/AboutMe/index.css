@@ -8,6 +8,7 @@
     padding: 0 20px;
     user-select: none;
     text-shadow: 3px 3px 3px #000;
+    font-weight: 700;
 }
 /* 头像昵称标题 */
 .headName {
@@ -25,7 +26,7 @@
     position: absolute;
     bottom: 0;
     font-size: 30px;
-    font-weight: 700;
+    /* font-weight: 700; */
 }
 
 /* 修改头像的大盒子 */
@@ -50,8 +51,8 @@
 }
 
 .meAvatar {
-    height: 180px;
-    width: 180px;
+    height: 100%;
+    width: 100%;
 }
 
 .loading {
@@ -193,4 +194,78 @@
 
 .updateNameBtn:hover {
     background-color: rgb(0, 228, 38);
+}
+
+@media all and (max-width: 1024px) {
+    .Me {
+        height: 50px;
+        font-size: 20px;
+    }
+    /* 头像昵称标题 */
+    .headName {
+        width: 90%;
+        height: 40px;
+    }
+    .headName span {
+        font-size: 18px;
+    }
+    /* 修改头像的大盒子 */
+    .updateAvatarBox {
+        width: 100%;
+        height: 154px;
+        /* background-color: #000; */
+    }
+    .meAvatarBox {
+        top: 20px;
+        /* background-color: #fff; */
+        height: 100px;
+        width: 100px;
+    }
+    .loading {
+        transform: translate(-80px, 0);
+        height: 30px;
+        width: 30px;
+        font-size: 16px;
+        line-height: 30px;
+    }
+    .upToCOSBtn {
+        transform: translate(-40px, 0);
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        font-size: 16px;
+        /* background-color: #fff; */
+    }
+    .updateAvatarBtn {
+        /* transform: translate(-50%, 0); */
+        transform: translate(10px, 0);
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        font-size: 16px;
+    }
+    /* 修改个人信息的大盒子 */
+    .updateInfoBox {
+        width: 100%;
+        height: 60px;
+        /* background-color: #fff; */
+    }
+    /* 修改昵称、用户名的盒子 */
+    .nameBox {
+        border-radius: 15px;
+        width: 90%;
+        height: 30px;
+    }
+    .inputName {
+        height: 30px;
+        padding: 0 50px 0;
+        font-size: 16px;
+    }
+    .updateNameBtn {
+        height: 30px;
+        width: 30px;
+        border-radius: 15px;
+        font-size: 16px;
+        line-height: 30px;
+    }
 }

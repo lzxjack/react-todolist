@@ -108,8 +108,8 @@ class Outline extends PureComponent {
                         className="outlineAvatar"
                     />
                 </div>
-                {/* 提示词 */}
-                <div className="words">
+                {/* 左边文字 */}
+                <div className="leftWords">
                     <div className="welcomeUser">
                         {this.state.time}，
                         {this.props.nickName === ''
@@ -119,16 +119,20 @@ class Outline extends PureComponent {
                             : this.props.nickName}
                         ！
                     </div>
-                    <div className="timeText">
-                        {this.state.timeText}&nbsp;已累计完成任务
+
+                    <div className="timeText">{this.state.timeText}</div>
+                </div>
+                {/* 应用标题 */}
+                <div className="appHead">TodoList</div>
+                {/* 右边文字 */}
+                <div className="rightWords">
+                    <div className="timeBox"> {this.state.nowTime}</div>
+                    <div className="doneCountText">
+                        已完成任务
                         <span className="doneCount">&nbsp;{this.props.count}&nbsp;</span>
                         个，继续加油！
                     </div>
                 </div>
-                {/* 应用标题 */}
-                <div className="appHead">TodoList</div>
-                {/* 实时时间 */}
-                <div className="timeBox">{this.state.nowTime}</div>
                 {/* 退出按钮 */}
                 <Popconfirm
                     placement="bottomRight"

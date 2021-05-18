@@ -8,6 +8,7 @@
     padding: 0 20px;
     user-select: none;
     text-shadow: 3px 3px 3px #000;
+    font-weight: 700;
 }
 
 .finishedNull {
@@ -134,4 +135,67 @@
 .finishedTaskBox li .finishedDeleteBtn:hover {
     color: #fff;
     background-color: red;
+}
+
+@media all and (max-width: 1024px) {
+    .Finished {
+        height: 50px;
+        font-size: 20px;
+    }
+
+    .finishedNull {
+        /* text-shadow: 3px 3px 3px #000; */
+        padding: 100px 0;
+    }
+    .finishedNullIcon {
+        font-size: 40px;
+    }
+    .finishedNullText {
+        font-size: 18px;
+    }
+
+    .finishedText {
+        height: 60px;
+        width: 90%;
+    }
+
+    .finishedText span {
+        font-size: 18px;
+        user-select: none;
+        text-shadow: 2px 2px 2px #000;
+    }
+
+    .deleteAllDoneBtn {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translate(0, -50%);
+        width: 30px;
+        height: 30px;
+    }
+    .finishedTaskBox li {
+        border-radius: 15px;
+        width: 90%;
+        height: 30px;
+        margin: 10px auto 10px;
+    }
+    .finishedTaskBox li .finishedDoneBtn {
+        border-radius: 15px;
+        line-height: 30px;
+        font-size: 16px;
+        width: 30px;
+        height: 30px;
+    }
+    .finishedTaskBox li .finishedTaskContent {
+        line-height: 30px;
+        font-size: 16px;
+        height: 30px;
+    }
+    .finishedTaskBox li .finishedDeleteBtn {
+        border-radius: 15px;
+        line-height: 30px;
+        font-size: 16px;
+        width: 30px;
+        height: 30px;
+    }
 }

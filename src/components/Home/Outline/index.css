@@ -25,16 +25,17 @@
 }
 
 .outlineAvatar {
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    height: 100%;
 }
 
 /* 语句盒子 */
-.words {
+.leftWords {
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
     left: 180px;
+    /* background-color: #fff; */
 }
 
 /* 累计完成任务个数 */
@@ -45,7 +46,7 @@
 
 /* 欢迎语句 */
 .welcomeUser {
-    font-size: 30px;
+    font-size: 36px;
     font-weight: 700;
     user-select: none;
 }
@@ -69,17 +70,21 @@
     user-select: none;
 }
 
-/* 实时显示时间 */
-.timeBox {
+.rightWords {
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
-    right: 320px;
-    font-size: 40px;
-    font-weight: 700;
+    right: 160px;
     user-select: none;
 }
 
+.timeBox {
+    font-size: 36px;
+    font-weight: 700;
+}
+.doneCountText {
+    font-size: 18px;
+}
 /* 退出按钮 */
 .logoutBtn {
     position: absolute;
@@ -101,4 +106,48 @@
 }
 .logoutBtn:hover {
     background-color: red;
+}
+
+@media all and (max-width: 1024px) {
+    .outlineBox {
+        height: 90px;
+    }
+    .avatarBox {
+        left: 8px;
+        width: 60px;
+        height: 60px;
+    }
+    .leftWords {
+        left: 80px;
+    }
+    .appHead,
+    .timeBox,
+    .timeText {
+        display: none;
+    }
+    .welcomeUser {
+        font-size: 24px;
+    }
+    .rightWords {
+        /* position: static; */
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        /* background-color: #fff; */
+    }
+    .doneCountText {
+        /* font-size: 99px; */
+        position: absolute;
+        font-size: 14px;
+        left: 80px;
+        bottom: 6px;
+    }
+    .logoutBtn {
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 12px;
+        line-height: 40px;
+    }
 }

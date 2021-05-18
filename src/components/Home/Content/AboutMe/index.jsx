@@ -280,10 +280,10 @@ class AboutMe extends PureComponent {
             <Fragment>
                 <div className="Me">
                     <UserOutlined />
-                    &nbsp;About Me
+                    &nbsp;关于我
                 </div>
                 <div className="headName">
-                    <span>Avatar</span>
+                    <span>头像</span>
                 </div>
                 <div className="updateAvatarBox">
                     <div className="meAvatarBox">
@@ -326,7 +326,7 @@ class AboutMe extends PureComponent {
                     </Tooltip>
                 </div>
                 <div className="headName">
-                    <span>Nick Name</span>
+                    <span>昵称</span>
                 </div>
                 <div className="updateInfoBox">
                     <div className="nameBox">
@@ -343,7 +343,7 @@ class AboutMe extends PureComponent {
                     </div>
                 </div>
                 <div className="headName">
-                    <span>User Name</span>
+                    <span>登录名</span>
                 </div>
                 <div className="updateInfoBox">
                     <div className="nameBox">

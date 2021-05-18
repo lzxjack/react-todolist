@@ -71,7 +71,7 @@ class Finished extends PureComponent {
             <Fragment>
                 <div className="Finished">
                     <CheckOutlined />
-                    &nbsp;Finished
+                    &nbsp;已完成
                     {this.props.tasks.filter(taskObj => {
                         return taskObj.done === true;
                     }).length === 0 ? null : (

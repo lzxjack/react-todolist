@@ -4,4 +4,11 @@
     width: 900px;
     margin: 0 auto;
     color: rgb(238, 238, 238);
+    /* background-color: #fff; */
+}
+
+@media all and (max-width: 1024px) {
+    .contentBox {
+        width: 100%;
+    }
 }
