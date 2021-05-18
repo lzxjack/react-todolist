@@ -38,12 +38,6 @@
     /* background-color: #fff; */
 }
 
-/* 累计完成任务个数 */
-.doneCount {
-    font-weight: 700;
-    color: red;
-}
-
 /* 欢迎语句 */
 .welcomeUser {
     font-size: 36px;
@@ -81,6 +75,12 @@
 .timeBox {
     font-size: 36px;
     font-weight: 700;
+}
+
+/* 累计完成任务个数 */
+.doneCount {
+    font-weight: 700;
+    color: red;
 }
 .doneCountText {
     font-size: 18px;
@@ -142,6 +142,7 @@
         font-size: 14px;
         left: 80px;
         bottom: 6px;
+        text-shadow: 2px 2px 2px #000;
     }
     .logoutBtn {
         right: 10px;
