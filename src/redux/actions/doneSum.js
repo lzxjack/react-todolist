@@ -1,4 +1,4 @@
-import { ADD, MIN, INIT_FROM_DB, INIT_ID } from '../constant';
+import { ADD, MIN, INIT_FROM_DB, INIT_ID, CLEAR_COUNT } from '../constant';
 
 export const addCount = data => ({
     type: ADD,
@@ -17,5 +17,10 @@ export const initFromDB = data => ({
 
 export const initID = data => ({
     type: INIT_ID,
+    data,
+});
+
+export const clearCount = data => ({
+    type: CLEAR_COUNT,
     data,
 });

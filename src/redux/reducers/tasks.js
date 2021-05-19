@@ -7,6 +7,7 @@ import {
     EDIT_TASK,
     DELETE_ALL_DONE,
     TRANS_TASK,
+    CLEAR_TASK,
 } from '../constant';
 
 // 初始状态
@@ -69,6 +70,9 @@ export default function addReducer(preState = initState, action) {
                 return taskObj;
             });
             return newTask;
+        }
+        case CLEAR_TASK: {
+            return [];
         }
         default:
             return preState;

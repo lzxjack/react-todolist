@@ -3,6 +3,7 @@ import {
     UPDATE_NICK_NAME,
     UPDATE_AVATAR_TEMP_URL,
     UPDATE_USER_NAME,
+    CLEAR_USER_INFO,
 } from '../constant';
 
 // 初始状态
@@ -37,13 +38,19 @@ export default function addReducer(preState = initState, action) {
                 nickName: data,
                 userName: preState.userName,
             };
-
         case UPDATE_USER_NAME:
             return {
                 avatarUrl: preState.avatarUrl,
                 avatarTempUrl: preState.avatarTempUrl,
                 nickName: preState.nickName,
                 userName: data,
+            };
+        case CLEAR_USER_INFO:
+            return {
+                avatarUrl: '',
+                avatarTempUrl: '',
+                nickName: '',
+                userName: '',
             };
         default:
             return preState;

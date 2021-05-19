@@ -3,6 +3,7 @@ import {
     UPDATE_NICK_NAME,
     UPDATE_AVATAR_TEMP_URL,
     UPDATE_USER_NAME,
+    CLEAR_USER_INFO,
 } from '../constant';
 
 export const updateAvatarUrl = data => ({
@@ -22,5 +23,10 @@ export const updateAvatarTempUrl = data => ({
 
 export const updateUserName = data => ({
     type: UPDATE_USER_NAME,
+    data,
+});
+
+export const clearUserInfo = data => ({
+    type: CLEAR_USER_INFO,
     data,
 });

@@ -113,12 +113,12 @@
         height: 90px;
     }
     .avatarBox {
-        left: 8px;
-        width: 60px;
-        height: 60px;
+        left: 6px;
+        width: 50px;
+        height: 50px;
     }
     .leftWords {
-        left: 80px;
+        left: 62px;
     }
     .appHead,
     .timeBox,
@@ -126,7 +126,7 @@
         display: none;
     }
     .welcomeUser {
-        font-size: 24px;
+        font-size: 18px;
     }
     .rightWords {
         /* position: static; */
@@ -140,7 +140,7 @@
         /* font-size: 99px; */
         position: absolute;
         font-size: 14px;
-        left: 80px;
+        left: 62px;
         bottom: 6px;
         text-shadow: 2px 2px 2px #000;
     }

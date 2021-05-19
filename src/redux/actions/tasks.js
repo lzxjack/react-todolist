@@ -7,6 +7,7 @@ import {
     EDIT_TASK,
     DELETE_ALL_DONE,
     TRANS_TASK,
+    CLEAR_TASK,
 } from '../constant';
 
 export const initTask = data => ({
@@ -46,5 +47,10 @@ export const editTask = data => ({
 
 export const deleteAllDone = data => ({
     type: DELETE_ALL_DONE,
+    data,
+});
+
+export const clearTask = data => ({
+    type: CLEAR_TASK,
     data,
 });

@@ -1,4 +1,4 @@
-import { ADD, MIN, INIT_FROM_DB, INIT_ID } from '../constant';
+import { ADD, MIN, INIT_FROM_DB, INIT_ID, CLEAR_COUNT } from '../constant';
 
 // 初始状态
 const initState = {
@@ -17,6 +17,8 @@ export default function addReducer(preState = initState, action) {
             return { count: data, id: preState.id };
         case INIT_ID:
             return { count: preState.count, id: data };
+        case CLEAR_COUNT:
+            return { count: 0, id: '' };
         default:
             return preState;
     }

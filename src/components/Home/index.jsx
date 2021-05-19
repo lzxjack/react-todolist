@@ -30,7 +30,9 @@ class Home extends Component {
                 if (res.data.length === 0) {
                     isFirst = true;
                 } else {
+                    // 从数据库中得到用户的count值，放入redux
                     this.props.initFromDB(res.data[0].count);
+                    // 将返回的id存入redux
                     this.props.initID(res.data[0]._id);
                 }
             });
@@ -42,8 +44,9 @@ class Home extends Component {
                     count: 0,
                 })
                 .then(res => {
-                    // 第一次登陆初始count肯定是0，直接设置为0即可
+                    // 第一次登陆初始count肯定是0，直接写0即可
                     this.props.initFromDB(0);
+                    // 将返回的id存入redux
                     this.props.initID(res.id);
                 });
         }

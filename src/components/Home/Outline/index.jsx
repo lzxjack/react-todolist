@@ -6,6 +6,9 @@ import { connect } from 'react-redux';
 import { DEFAULT_AVATAR_URL } from '../../../utils/constant';
 import moment from 'moment';
 import { logout } from '../../../redux/actions/userState';
+import { clearCount } from '../../../redux/actions/doneSum';
+import { clearTask } from '../../../redux/actions/tasks';
+import { clearUserInfo } from '../../../redux/actions/userInform';
 import './index.css';
 
 const logoutCheck = '真的要退出登录吗？';
@@ -92,6 +95,12 @@ class Outline extends PureComponent {
         localStorage.clear();
         // 改变登录状态
         this.props.logout();
+        // 清空任务计数
+        this.props.clearCount();
+        // 清空任务
+        this.props.clearTask();
+        // 清空用户信息
+        this.props.clearUserInfo();
         // 提示消息
         this.openLogoutNoti();
         // 回到welcome页面
@@ -159,6 +168,6 @@ export default withRouter(
             nickName: state.userInform.nickName,
             count: state.doneSum.count,
         }),
-        { logout }
+        { logout, clearCount, clearTask, clearUserInfo }
     )(Outline)
 );
