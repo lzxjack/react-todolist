@@ -26,3 +26,6 @@ export const EDIT_TASK = 'editTask';
 export const DELETE_ALL_DONE = 'deleteAllDone';
 export const TRANS_TASK = 'transTask';
 export const CLEAR_TASK = 'clearTask';
+
+// 黑暗模式
+export const SWITCH_DARK = 'switchDark';

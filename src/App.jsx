@@ -6,6 +6,7 @@ import { appRoutes } from './router.js';
 import Footer from './components/Footer';
 import { auth } from './utils/cloudBase';
 import { login, logout } from './redux/actions/userState';
+import { switchDark } from './redux/actions/darkMode';
 import './App.css';
 
 class App extends PureComponent {
@@ -39,8 +40,9 @@ export default withRouter(
         // 状态
         state => ({
             userState: state.userState,
+            isDark: state.darkMode.isDark,
         }),
         // 操作状态的方法
-        { login, logout }
+        { login, logout, switchDark }
     )(App)
 );
