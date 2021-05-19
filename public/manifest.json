@@ -1,0 +1,21 @@
+{
+    "short_name": "TodoList",
+    "name": "TodoList——管理事务、提升效率",
+    "description": "使用TodoList，做一个时间管理大师。",
+    "icons": [
+        {
+            "src": "favicon.ico",
+            "sizes": "64x64 32x32 24x24 16x16",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "duck.jpg",
+            "type": "image/jpg",
+            "sizes": "512x512"
+        }
+    ],
+    "start_url": "/",
+    "display": "fullscreen",
+    "theme_color": "#009688",
+    "background_color": "#009688"
+}

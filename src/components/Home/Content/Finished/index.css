@@ -89,7 +89,7 @@
 
 .finishedTaskBox li .finishedDoneBtn {
     position: absolute;
-    border-radius: 25px;
+    border-radius: 50%;
     background-color: #00b4a2;
     box-shadow: 0 0 14px rgb(0, 0, 0) inset;
     text-align: center;
@@ -120,7 +120,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    border-radius: 25px;
+    border-radius: 50%;
     background-color: #00b4a2;
     box-shadow: 0 0 14px rgb(0, 0, 0) inset;
     text-align: center;
@@ -170,32 +170,30 @@
         top: 50%;
         right: 0;
         transform: translate(0, -50%);
-        width: 30px;
-        height: 30px;
+        width: 32px;
+        height: 32px;
     }
     .finishedTaskBox li {
-        border-radius: 15px;
+        border-radius: 16px;
         width: 90%;
-        height: 30px;
+        height: 32px;
         margin: 10px auto 10px;
     }
     .finishedTaskBox li .finishedDoneBtn {
-        border-radius: 15px;
-        line-height: 30px;
+        line-height: 32px;
         font-size: 16px;
-        width: 30px;
-        height: 30px;
+        width: 32px;
+        height: 32px;
     }
     .finishedTaskBox li .finishedTaskContent {
-        line-height: 30px;
+        line-height: 32px;
         font-size: 16px;
-        height: 30px;
+        height: 32px;
     }
     .finishedTaskBox li .finishedDeleteBtn {
-        border-radius: 15px;
-        line-height: 30px;
+        line-height: 32px;
         font-size: 16px;
-        width: 30px;
-        height: 30px;
+        width: 32px;
+        height: 32px;
     }
 }
