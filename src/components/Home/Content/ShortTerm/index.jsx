@@ -165,9 +165,8 @@ class ShortTerm extends PureComponent {
                         type="text"
                         ref={c => (this.inputShortTask = c)}
                         onKeyUp={this.addTask}
-                        placeholder="Add some ShortTerm-todos?"
+                        placeholder="有哪些需要尽快解决的事情？"
                         className="inputTask"
-                        autoFocus
                     />
                 </div>
                 {this.props.tasks.filter(taskObj => {

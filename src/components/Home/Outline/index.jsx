@@ -5,6 +5,7 @@ import { ArrowRightOutlined, RollbackOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
 import { DEFAULT_AVATAR_URL } from '../../../utils/constant';
 import moment from 'moment';
+import { logout } from '../../../redux/actions/userState';
 import './index.css';
 
 const logoutCheck = '真的要退出登录吗？';
@@ -89,6 +90,8 @@ class Outline extends PureComponent {
     turnLogout = () => {
         // 清除localStorage
         localStorage.clear();
+        // 改变登录状态
+        this.props.logout();
         // 提示消息
         this.openLogoutNoti();
         // 回到welcome页面
@@ -156,6 +159,6 @@ export default withRouter(
             nickName: state.userInform.nickName,
             count: state.doneSum.count,
         }),
-        {}
+        { logout }
     )(Outline)
 );
