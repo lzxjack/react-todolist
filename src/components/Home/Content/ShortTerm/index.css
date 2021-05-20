@@ -91,7 +91,6 @@
     position: relative;
     overflow: hidden;
     border-radius: 25px;
-    /* width: 750px; */
     width: 90%;
     height: 50px;
     margin: 20px auto 20px;
@@ -125,6 +124,7 @@
 
 /* 编辑框 */
 .taskBox li .taskEdit {
+    border-radius: 25px;
     text-align: center;
     line-height: 50px;
     font-size: 22px;
@@ -227,10 +227,13 @@
         height: 32px;
     }
     .taskBox li .taskEdit {
+        border-radius: 16px;
         line-height: 32px;
         font-size: 14px;
         height: 32px;
         padding: 0 70px 0;
+        pointer-events: none;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
     }
     .transTaskBtn {
         right: 32px;

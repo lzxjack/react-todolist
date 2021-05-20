@@ -108,6 +108,7 @@
 }
 
 .finishedTaskBox li .finishedTaskContent {
+    border-radius: 25px;
     text-align: center;
     line-height: 50px;
     font-size: 22px;
@@ -183,9 +184,11 @@
         height: 32px;
     }
     .finishedTaskBox li .finishedTaskContent {
+        border-radius: 16px;
         line-height: 32px;
         font-size: 14px;
         height: 32px;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
     }
     .finishedTaskBox li .finishedDeleteBtn {
         line-height: 32px;
