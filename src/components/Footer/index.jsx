@@ -1,7 +1,9 @@
 import React, { PureComponent } from 'react';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import './index.css';
 
-export default class Footer extends PureComponent {
+class Footer extends PureComponent {
     state = {
         poemWords: '',
         poemTitle: '',
@@ -16,7 +18,7 @@ export default class Footer extends PureComponent {
     }
     render() {
         return (
-            <div className="footer">
+            <div className="footer" id={this.props.isDark ? 'footerDark' : ''}>
                 <div className="todayPoem">
                     <span className="poemWords">{this.state.poemWords}</span>
                     <span className="poemTitle">&nbsp;——《{this.state.poemTitle}》</span>
@@ -39,3 +41,12 @@ export default class Footer extends PureComponent {
         );
     }
 }
+
+export default withRouter(
+    connect(
+        state => ({
+            isDark: state.personalData.isDark,
+        }),
+        {}
+    )(Footer)
+);

@@ -2,8 +2,6 @@
     position: relative;
     z-index: 2;
     height: 80px;
-    /* background-color: rgb(238, 60, 16); */
-    /* background-image: linear-gradient(to top, #19534e, #00b3a1); */
     background-image: linear-gradient(to top, #0b2422, #059fa1);
     display: flex;
     flex-direction: column;
@@ -13,6 +11,10 @@
     color: #ccc;
     text-shadow: 3px 3px 3px #000;
     box-shadow: 0 0 14px #000;
+}
+
+#footerDark {
+    background-image: linear-gradient(to top, #000000, #00162b);
 }
 
 .appName {

@@ -6,7 +6,7 @@ import Content from './Content';
 import Nav from './Nav';
 import CenterBox from './CenterBox';
 import { db, auth } from '../../utils/cloudBase';
-import { initFromDB, initID } from '../../redux/actions/doneSum';
+import { initFromDB, initID, initDark } from '../../redux/actions/personalData';
 import { initTask } from '../../redux/actions/tasks';
 import {
     updateAvatarUrl,
@@ -19,14 +19,15 @@ class Home extends PureComponent {
     async componentDidMount() {
         // 判断用户是否第一次登陆
         let isFirst = false;
-        // 查询集合doneSum中有无文档
+        // 查询集合personalData中有无文档
         await db
-            .collection('doneSum')
+            .collection('personalData')
             .get()
             .then(res => {
                 // 如果没文档，则是第一次登陆
                 // 否则isFirst依然是false，不是第一次登陆
                 // 不是第一次登陆，就将数据库中的count放入redux
+                // console.log(res.data.length);
                 if (res.data.length === 0) {
                     isFirst = true;
                 } else {
@@ -34,20 +35,25 @@ class Home extends PureComponent {
                     this.props.initFromDB(res.data[0].count);
                     // 将返回的id存入redux
                     this.props.initID(res.data[0]._id);
+                    // 将黑暗模式数据放入redux
+                    this.props.initDark(res.data[0].isDark);
                 }
             });
-        // 如果是第一次登陆，在集合doneSum中创建一个用于计数的文档
+        // 如果是第一次登陆，在集合personalData中创建一个用于计数的文档
         if (isFirst) {
             await db
-                .collection('doneSum')
+                .collection('personalData')
                 .add({
                     count: 0,
+                    isDark: false,
                 })
                 .then(res => {
                     // 第一次登陆初始count肯定是0，直接写0即可
                     this.props.initFromDB(0);
                     // 将返回的id存入redux
                     this.props.initID(res.id);
+                    // 第一次登陆初始默认是false
+                    this.props.initDark(false);
                 });
         }
 
@@ -98,6 +104,7 @@ export default withRouter(
             updateAvatarTempUrl,
             updateNickName,
             updateUserName,
+            initDark,
         }
     )(Home)
 );

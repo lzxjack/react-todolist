@@ -11,6 +11,10 @@
     -webkit-transition: all 0.3s;
 }
 
+#navDark {
+    background-image: linear-gradient(to right, #000000, #00284e);
+}
+
 .nav:hover {
     width: 150px;
     box-shadow: 0 0 14px rgba(0, 0, 0, 0.7);
@@ -31,6 +35,10 @@
 
 .nav li:hover {
     background-color: #08423d;
+}
+
+.nav #navLiDark:hover {
+    background-color: #002d57;
 }
 
 /* 路由链接 */

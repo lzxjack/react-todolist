@@ -4,9 +4,10 @@ import { Popconfirm, notification } from 'antd';
 import { ArrowRightOutlined, RollbackOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
 import { DEFAULT_AVATAR_URL } from '../../../utils/constant';
+import { db } from '../../../utils/cloudBase';
 import moment from 'moment';
 import { logout } from '../../../redux/actions/userState';
-import { clearCount } from '../../../redux/actions/doneSum';
+import { clearUserData, switchDark } from '../../../redux/actions/personalData';
 import { clearTask } from '../../../redux/actions/tasks';
 import { clearUserInfo } from '../../../redux/actions/userInform';
 import './index.css';
@@ -89,14 +90,30 @@ class Outline extends PureComponent {
             icon: <RollbackOutlined />,
         });
     };
+    // 切换黑暗模式成功的消息
+    openSwitchDark = () => {
+        notification.open({
+            message: '天黑请闭眼~',
+            duration: 2,
+            placement: 'bottomLeft',
+        });
+    };
+    // 切换白天模式成功的消息
+    openSwitchSun = () => {
+        notification.open({
+            message: '天亮啦，请睁眼~',
+            duration: 2,
+            placement: 'bottomLeft',
+        });
+    };
     // 退出
     turnLogout = () => {
         // 清除localStorage
         localStorage.clear();
         // 改变登录状态
         this.props.logout();
-        // 清空任务计数
-        this.props.clearCount();
+        // 清空个人数据（任务计数、黑暗模式）
+        this.props.clearUserData();
         // 清空任务
         this.props.clearTask();
         // 清空用户信息
@@ -106,10 +123,22 @@ class Outline extends PureComponent {
         // 回到welcome页面
         this.props.history.replace('/welcome');
     };
-
+    // 切换黑暗模式
+    switchDark = async () => {
+        await this.props.switchDark();
+        // 数据库中修改isDark
+        db.collection('personalData')
+            .doc(this.props.id)
+            .update({
+                isDark: this.props.isDark,
+            })
+            .then(() => {
+                this.props.isDark ? this.openSwitchDark() : this.openSwitchSun();
+            });
+    };
     render() {
         return (
-            <div className="outlineBox">
+            <div className="outlineBox" id={this.props.isDark ? 'outlineBoxDark' : ''}>
                 {/* 头像盒子 */}
                 <div className="avatarBox">
                     <img
@@ -145,6 +174,11 @@ class Outline extends PureComponent {
                         个，继续加油！
                     </div>
                 </div>
+                {/* 黑暗模式 */}
+                <span
+                    className={this.props.isDark ? 'icon-moon darkMode' : 'icon-sun sunMode'}
+                    onClick={this.switchDark}
+                ></span>
                 {/* 退出按钮 */}
                 <Popconfirm
                     placement="bottomRight"
@@ -154,7 +188,9 @@ class Outline extends PureComponent {
                     okText="退出！"
                     cancelText="再看看！"
                 >
-                    <div className="logoutBtn">退出</div>
+                    <div className="logoutBtn" id={this.props.isDark ? 'logoutBtnDark' : ''}>
+                        退出
+                    </div>
                 </Popconfirm>
             </div>
         );
@@ -166,8 +202,10 @@ export default withRouter(
         state => ({
             avatarUrl: state.userInform.avatarUrl,
             nickName: state.userInform.nickName,
-            count: state.doneSum.count,
+            count: state.personalData.count,
+            isDark: state.personalData.isDark,
+            id: state.personalData.id,
         }),
-        { logout, clearCount, clearTask, clearUserInfo }
+        { logout, clearUserData, clearTask, clearUserInfo, switchDark }
     )(Outline)
 );

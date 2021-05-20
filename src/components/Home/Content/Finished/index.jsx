@@ -12,7 +12,7 @@ import {
     CodepenOutlined,
 } from '@ant-design/icons';
 import { db } from '../../../../utils/cloudBase';
-import { minCount } from '../../../../redux/actions/doneSum';
+import { minCount } from '../../../../redux/actions/personalData';
 import { deleteTask, returnTask, deleteAllDone } from '../../../../redux/actions/tasks';
 import './index.css';
 
@@ -39,7 +39,7 @@ class Finished extends PureComponent {
         // 累计完成总数-1
         this.props.minCount();
         // 发送请求，数据库中count-1
-        db.collection('doneSum')
+        db.collection('personalData')
             .doc(this.props.id)
             .update({
                 count: _.inc(-1),
@@ -169,7 +169,7 @@ class Finished extends PureComponent {
 export default withRouter(
     connect(
         state => ({
-            id: state.doneSum.id,
+            id: state.personalData.id,
             tasks: state.tasks,
         }),
         { minCount, deleteTask, returnTask, deleteAllDone }

@@ -1,7 +1,7 @@
 import React, { PureComponent, Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addCount } from '../../../../redux/actions/doneSum';
+import { addCount } from '../../../../redux/actions/personalData';
 import { db } from '../../../../utils/cloudBase';
 import {
     addTask,
@@ -76,7 +76,7 @@ class LongTerm extends PureComponent {
         // 累计完成总数+1
         this.props.addCount();
         // 发送请求，数据库中count+1
-        db.collection('doneSum')
+        db.collection('personalData')
             .doc(this.props.id)
             .update({
                 count: db.command.inc(1),
@@ -195,7 +195,11 @@ class LongTerm extends PureComponent {
                                         <input
                                             type="text"
                                             onBlur={this.returnContent.bind(this, taskObj)}
-                                            className="taskEdit"
+                                            className={
+                                                this.props.isDark
+                                                    ? 'taskEdit taskEditDark'
+                                                    : 'taskEdit'
+                                            }
                                             id={taskObj._id}
                                             defaultValue={taskObj.content}
                                             onKeyUp={this.updateEditTask.bind(this, taskObj)}
@@ -229,8 +233,9 @@ class LongTerm extends PureComponent {
 export default withRouter(
     connect(
         state => ({
-            id: state.doneSum.id,
+            id: state.personalData.id,
             tasks: state.tasks,
+            isDark: state.personalData.isDark,
         }),
         { addCount, addTask, deleteTask, finishTask, editTask, transTask }
     )(LongTerm)

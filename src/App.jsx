@@ -6,7 +6,6 @@ import { appRoutes } from './router.js';
 import Footer from './components/Footer';
 import { auth } from './utils/cloudBase';
 import { login, logout } from './redux/actions/userState';
-import { switchDark } from './redux/actions/darkMode';
 import './App.css';
 
 class App extends PureComponent {
@@ -24,7 +23,10 @@ class App extends PureComponent {
     }
     render() {
         return (
-            <div className="background">
+            <div
+                className="background"
+                style={this.props.isDark ? { background: 'url(/3.jpg)' } : {}}
+            >
                 <div className="appBox">
                     {/* 路由鉴权：渲染/welcome页面 or /home页面 */}
                     {renderRoutes(appRoutes, this.props.userState, '/welcome')}
@@ -40,9 +42,9 @@ export default withRouter(
         // 状态
         state => ({
             userState: state.userState,
-            isDark: state.darkMode.isDark,
+            isDark: state.personalData.isDark,
         }),
         // 操作状态的方法
-        { login, logout, switchDark }
+        { login, logout }
     )(App)
 );

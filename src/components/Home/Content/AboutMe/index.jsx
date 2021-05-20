@@ -330,15 +330,23 @@ class AboutMe extends PureComponent {
                     <div className="headName">
                         <span>昵称</span>
                     </div>
-                    <div className="updateInfoBox">
+                    <div
+                        className="updateInfoBox"
+                        id={this.props.isDark ? 'updateInfoBoxDark' : ''}
+                    >
                         <input
+                            id={this.props.isDark ? 'inputNameDark' : ''}
                             type="text"
                             placeholder={this.props.nickName ? this.props.nickName : '怎么称呼呢？'}
                             className="inputName"
                             ref={c => (this.inputNickName = c)}
                             onKeyUp={this.nickOnEnter}
                         />
-                        <div className="updateNameBtn" onClick={this.updateNickName}>
+                        <div
+                            className="updateNameBtn"
+                            id={this.props.isDark ? 'updateNameBtnDark' : ''}
+                            onClick={this.updateNickName}
+                        >
                             <CheckOutlined />
                         </div>
                     </div>
@@ -348,8 +356,12 @@ class AboutMe extends PureComponent {
                     <div className="headName">
                         <span>登录名</span>
                     </div>
-                    <div className="updateInfoBox">
+                    <div
+                        className="updateInfoBox"
+                        id={this.props.isDark ? 'updateInfoBoxDark' : ''}
+                    >
                         <input
+                            id={this.props.isDark ? 'inputNameDark' : ''}
                             type="text"
                             placeholder={
                                 this.props.userName ? this.props.userName : '绑定后可用用户名登录'
@@ -358,7 +370,11 @@ class AboutMe extends PureComponent {
                             ref={c => (this.inputUserName = c)}
                             onKeyUp={this.userOnEnter}
                         />
-                        <div className="updateNameBtn" onClick={this.updateUserName}>
+                        <div
+                            className="updateNameBtn"
+                            id={this.props.isDark ? 'updateNameBtnDark' : ''}
+                            onClick={this.updateUserName}
+                        >
                             <CheckOutlined />
                         </div>
                     </div>
@@ -374,6 +390,7 @@ export default connect(
         avatarTempUrl: state.userInform.avatarTempUrl,
         nickName: state.userInform.nickName,
         userName: state.userInform.userName,
+        isDark: state.personalData.isDark,
     }),
     { updateAvatarUrl, updateAvatarTempUrl, updateNickName, updateUserName }
 )(AboutMe);

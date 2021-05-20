@@ -10,7 +10,7 @@ import {
     SwapOutlined,
 } from '@ant-design/icons';
 import { db } from '../../../../utils/cloudBase';
-import { addCount } from '../../../../redux/actions/doneSum';
+import { addCount } from '../../../../redux/actions/personalData';
 import {
     addTask,
     deleteTask,
@@ -80,7 +80,7 @@ class ShortTerm extends PureComponent {
         // 累计完成总数+1
         this.props.addCount();
         // 发送请求，数据库中count+1
-        db.collection('doneSum')
+        db.collection('personalData')
             .doc(this.props.id)
             .update({
                 count: db.command.inc(1),
@@ -167,6 +167,7 @@ class ShortTerm extends PureComponent {
                         onKeyUp={this.addTask}
                         placeholder="有哪些需要尽快解决的事情？"
                         className="inputTask"
+                        id={this.props.isDark ? 'inputTaskDark' : ''}
                     />
                 </div>
                 {this.props.tasks.filter(taskObj => {
@@ -186,10 +187,14 @@ class ShortTerm extends PureComponent {
                             })
                             .map(taskObj => {
                                 return (
-                                    <li key={taskObj._id}>
+                                    <li
+                                        key={taskObj._id}
+                                        id={this.props.isDark ? 'taskLiDark' : ''}
+                                    >
                                         <Tooltip placement="left" title="完成" zIndex="999">
                                             <div
                                                 className="taskDoneBtn"
+                                                id={this.props.isDark ? 'taskDoneBtnDark' : ''}
                                                 onClick={this.finishTask.bind(this, taskObj._id)}
                                             >
                                                 <CheckOutlined />
@@ -198,7 +203,11 @@ class ShortTerm extends PureComponent {
                                         <input
                                             type="text"
                                             onBlur={this.returnContent.bind(this, taskObj)}
-                                            className="taskEdit"
+                                            className={
+                                                this.props.isDark
+                                                    ? 'taskEdit taskEditDark'
+                                                    : 'taskEdit'
+                                            }
                                             id={taskObj._id}
                                             defaultValue={taskObj.content}
                                             onKeyUp={this.updateEditTask.bind(this, taskObj)}
@@ -206,6 +215,7 @@ class ShortTerm extends PureComponent {
                                         <Tooltip placement="left" title="转为长期任务" zIndex="999">
                                             <div
                                                 className="transTaskBtn"
+                                                id={this.props.isDark ? 'transTaskBtnDark' : ''}
                                                 onClick={this.transTask.bind(this, taskObj._id)}
                                             >
                                                 <SwapOutlined />
@@ -214,6 +224,7 @@ class ShortTerm extends PureComponent {
                                         <Tooltip placement="right" title="删除" zIndex="999">
                                             <div
                                                 className="taskDeleteBtn"
+                                                id={this.props.isDark ? 'taskDeleteBtnDark' : ''}
                                                 onClick={this.deleteTask.bind(this, taskObj._id)}
                                             >
                                                 <CloseOutlined />
@@ -232,8 +243,9 @@ class ShortTerm extends PureComponent {
 export default withRouter(
     connect(
         state => ({
-            id: state.doneSum.id,
+            id: state.personalData.id,
             tasks: state.tasks,
+            isDark: state.personalData.isDark,
         }),
         { addCount, addTask, deleteTask, finishTask, editTask, transTask }
     )(ShortTerm)

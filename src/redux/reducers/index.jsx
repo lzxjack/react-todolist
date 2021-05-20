@@ -4,14 +4,12 @@ import { combineReducers } from 'redux';
 // import flagState from './flag';
 import userState from './userState';
 import userInform from './userInform';
-import doneSum from './doneSum';
+import personalData from './personalData';
 import tasks from './tasks';
-import darkMode from './darkMode';
 
 export default combineReducers({
     userState,
     userInform,
-    doneSum,
+    personalData,
     tasks,
-    darkMode,
 });

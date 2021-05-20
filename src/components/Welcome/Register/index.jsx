@@ -94,10 +94,6 @@ export default class Register extends PureComponent {
                 // 提示消息
                 this.openRegisterFailed();
             });
-
-        // db.collection('doneSum').add({
-        //     count: 0,
-        // });
     };
     onEnter = e => {
         // 判断是否按下回车

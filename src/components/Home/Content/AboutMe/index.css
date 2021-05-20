@@ -132,6 +132,9 @@
 .updateInfoBox:hover {
     box-shadow: 0 0 16px rgba(0, 0, 0, 0.8);
 }
+#updateInfoBoxDark:hover {
+    box-shadow: 0 0 16px rgba(0, 109, 211, 0.8);
+}
 
 .inputName {
     border-radius: 25px;
@@ -145,11 +148,17 @@
     transition: all 0.3s;
     -webkit-transition: all 0.3s;
 }
+#inputNameDark {
+    background-color: #0d2a44;
+}
 
 .inputName:focus {
     background-color: #009688;
     color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+#inputNameDark:focus {
+    background-color: #0e497c;
 }
 
 .inputName:focus::-webkit-input-placeholder,
@@ -188,9 +197,15 @@
     transition: all 0.3s;
     -webkit-transition: all 0.3s;
 }
+#updateNameBtnDark {
+    background-color: #004b91;
+}
 
 .updateNameBtn:hover {
     background-color: rgb(0, 228, 38);
+}
+#updateNameBtnDark:hover {
+    background-color: rgb(0, 158, 26);
 }
 
 @media all and (max-width: 1024px) {

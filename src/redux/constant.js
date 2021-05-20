@@ -9,12 +9,16 @@ export const UPDATE_NICK_NAME = 'updateNickName';
 export const UPDATE_USER_NAME = 'updateUserName';
 export const CLEAR_USER_INFO = 'clearUserInfo';
 
+// 用户个人数据（任务计数、黑暗模式数据）
 // 记录用户累计完成任务的总数
 export const ADD = 'add';
 export const MIN = 'min';
 export const INIT_FROM_DB = 'initFromDB';
 export const INIT_ID = 'initID';
-export const CLEAR_COUNT = 'clearCount';
+export const CLEAR_USER_DATA = 'clearUserData';
+// 黑暗模式
+export const SWITCH_DARK = 'switchDark';
+export const INIT_DARK = 'initDark';
 
 // 对任务相关的操作
 export const INIT_TASK = 'initTask';
@@ -26,6 +30,3 @@ export const EDIT_TASK = 'editTask';
 export const DELETE_ALL_DONE = 'deleteAllDone';
 export const TRANS_TASK = 'transTask';
 export const CLEAR_TASK = 'clearTask';
-
-// 黑暗模式
-export const SWITCH_DARK = 'switchDark';
