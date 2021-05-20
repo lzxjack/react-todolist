@@ -14,7 +14,7 @@
 .headName {
     position: relative;
     margin: auto;
-    width: 750px;
+    width: 90%;
     height: 52px;
     border-bottom: 2px solid #ccc;
     text-shadow: 3px 3px 3px #000;
@@ -112,35 +112,31 @@
     background-color: #009688;
 }
 
-/* 修改个人信息的大盒子 */
-.updateInfoBox {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 90px;
+/* 修改昵称、名称大盒子 */
+.nickUserName {
+    height: 140px;
     /* background-color: #fff; */
 }
 
-/* 修改昵称、用户名的盒子 */
-.nameBox {
+/* 修改区域 */
+.updateInfoBox {
     position: relative;
     overflow: hidden;
     border-radius: 25px;
-    width: 500px;
+    width: 60%;
     height: 50px;
+    margin: 20px auto 0;
     transition: all 0.3s;
     -webkit-transition: all 0.3s;
 }
-
-.nameBox:hover {
+.updateInfoBox:hover {
     box-shadow: 0 0 16px rgba(0, 0, 0, 0.8);
 }
 
 .inputName {
     width: 100%;
     height: 50px;
-    padding: 0 50px 0;
+    padding: 0 100px 0;
     font-size: 20px;
     background-color: #00c9b5;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
@@ -203,7 +199,7 @@
     }
     /* 头像昵称标题 */
     .headName {
-        width: 90%;
+        width: 94%;
         height: 40px;
     }
     .headName span {
@@ -213,16 +209,15 @@
     .updateAvatarBox {
         width: 100%;
         height: 154px;
-        /* background-color: #000; */
     }
     .meAvatarBox {
         top: 20px;
-        /* background-color: #fff; */
         height: 100px;
         width: 100px;
     }
     .loading {
         transform: translate(-80px, 0);
+        bottom: -10px;
         height: 30px;
         width: 30px;
         font-size: 16px;
@@ -230,6 +225,7 @@
     }
     .upToCOSBtn {
         transform: translate(-40px, 0);
+        bottom: -10px;
         width: 30px;
         height: 30px;
         line-height: 30px;
@@ -239,34 +235,36 @@
     .updateAvatarBtn {
         /* transform: translate(-50%, 0); */
         transform: translate(10px, 0);
+        bottom: -10px;
         width: 30px;
         height: 30px;
         line-height: 30px;
         font-size: 16px;
     }
-    /* 修改个人信息的大盒子 */
-    .updateInfoBox {
-        width: 100%;
-        height: 60px;
-        /* background-color: #fff; */
+
+    /* 修改昵称、名称大盒子 */
+    .nickUserName {
+        height: 120px;
     }
-    /* 修改昵称、用户名的盒子 */
-    .nameBox {
+
+    /* 修改区域 */
+    .updateInfoBox {
         border-radius: 16px;
-        width: 90%;
+        width: 80%;
         height: 32px;
+        margin: 14px auto 0;
     }
     .inputName {
         height: 32px;
         padding: 0 40px 0;
-        font-size: 16px;
-        line-height: 16px;
+        font-size: 14px;
+        line-height: 32px;
         border-radius: 16px;
     }
     .updateNameBtn {
         height: 32px;
         width: 32px;
-        font-size: 16px;
+        font-size: 14px;
         line-height: 32px;
     }
 }

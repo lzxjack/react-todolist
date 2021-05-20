@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Outline from './Outline';
@@ -15,7 +15,7 @@ import {
     updateUserName,
 } from '../../redux/actions/userInform';
 
-class Home extends Component {
+class Home extends PureComponent {
     async componentDidMount() {
         // 判断用户是否第一次登陆
         let isFirst = false;

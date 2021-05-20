@@ -30,7 +30,7 @@
 .finishedText {
     position: relative;
     height: 120px;
-    width: 750px;
+    width: 90%;
     margin: 0 auto;
     text-shadow: 3px 3px 3px #000;
     border-bottom: 2px solid #ccc;
@@ -76,7 +76,7 @@
     position: relative;
     overflow: hidden;
     border-radius: 25px;
-    width: 750px;
+    width: 90%;
     height: 50px;
     margin: 20px auto 20px;
     transition: all 0.3s;
@@ -89,6 +89,8 @@
 
 .finishedTaskBox li .finishedDoneBtn {
     position: absolute;
+    top: 0;
+    left: 0;
     border-radius: 50%;
     background-color: #00b4a2;
     box-shadow: 0 0 14px rgb(0, 0, 0) inset;
@@ -142,11 +144,6 @@
         height: 50px;
         font-size: 20px;
     }
-
-    .finishedNull {
-        /* text-shadow: 3px 3px 3px #000; */
-        padding: 100px 0;
-    }
     .finishedNullIcon {
         font-size: 40px;
     }
@@ -155,8 +152,8 @@
     }
 
     .finishedText {
-        height: 60px;
-        width: 90%;
+        height: 70px;
+        width: 94%;
     }
 
     .finishedText span {
@@ -175,24 +172,24 @@
     }
     .finishedTaskBox li {
         border-radius: 16px;
-        width: 90%;
+        width: 94%;
         height: 32px;
-        margin: 10px auto 10px;
+        margin: 0 auto 16px;
     }
     .finishedTaskBox li .finishedDoneBtn {
         line-height: 32px;
-        font-size: 16px;
+        font-size: 14px;
         width: 32px;
         height: 32px;
     }
     .finishedTaskBox li .finishedTaskContent {
         line-height: 32px;
-        font-size: 16px;
+        font-size: 14px;
         height: 32px;
     }
     .finishedTaskBox li .finishedDeleteBtn {
         line-height: 32px;
-        font-size: 16px;
+        font-size: 14px;
         width: 32px;
         height: 32px;
     }

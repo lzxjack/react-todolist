@@ -325,11 +325,12 @@ class AboutMe extends PureComponent {
                         </div>
                     </Tooltip>
                 </div>
-                <div className="headName">
-                    <span>昵称</span>
-                </div>
-                <div className="updateInfoBox">
-                    <div className="nameBox">
+
+                <div className="nickUserName">
+                    <div className="headName">
+                        <span>昵称</span>
+                    </div>
+                    <div className="updateInfoBox">
                         <input
                             type="text"
                             placeholder={this.props.nickName ? this.props.nickName : '怎么称呼呢？'}
@@ -342,11 +343,12 @@ class AboutMe extends PureComponent {
                         </div>
                     </div>
                 </div>
-                <div className="headName">
-                    <span>登录名</span>
-                </div>
-                <div className="updateInfoBox">
-                    <div className="nameBox">
+
+                <div className="nickUserName">
+                    <div className="headName">
+                        <span>登录名</span>
+                    </div>
+                    <div className="updateInfoBox">
                         <input
                             type="text"
                             placeholder={

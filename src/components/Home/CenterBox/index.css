@@ -4,8 +4,8 @@
     bottom: 0;
     left: 50%;
     transform: translate(-50%, 0);
-    width: 900px;
-    /* background-color: #00a897; */
+    /* width: 900px; */
+    width: 1024px;
     background-color: rgba(0, 168, 151, 0.85);
     filter: blur(10px);
 }

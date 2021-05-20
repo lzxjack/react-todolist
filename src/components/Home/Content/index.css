@@ -1,7 +1,8 @@
 /* --------------------内容大盒子-------------------- */
 .contentBox {
     position: relative;
-    width: 900px;
+    /* width: 900px; */
+    width: 1024px;
     margin: 0 auto;
     color: rgb(238, 238, 238);
     /* background-color: #fff; */
