@@ -12,7 +12,11 @@ class Nav extends PureComponent {
                 <div className="nav" id={this.props.isDark ? 'navDark' : ''}>
                     <ul>
                         <li id={this.props.isDark ? 'navLiDark' : ''}>
-                            <MyNavLink to="/home/shortterm" className="homeNav">
+                            <MyNavLink
+                                to="/home/shortterm"
+                                className="homeNav"
+                                id={this.props.isDark ? 'homeNavDark' : ''}
+                            >
                                 <div className="iconBox">
                                     <DoubleRightOutlined />
                                 </div>
@@ -20,7 +24,11 @@ class Nav extends PureComponent {
                             </MyNavLink>
                         </li>
                         <li id={this.props.isDark ? 'navLiDark' : ''}>
-                            <MyNavLink to="/home/longterm" className="homeNav">
+                            <MyNavLink
+                                to="/home/longterm"
+                                className="homeNav"
+                                id={this.props.isDark ? 'homeNavDark' : ''}
+                            >
                                 <div className="iconBox">
                                     <BellOutlined />
                                 </div>
@@ -28,7 +36,11 @@ class Nav extends PureComponent {
                             </MyNavLink>
                         </li>
                         <li id={this.props.isDark ? 'navLiDark' : ''}>
-                            <MyNavLink to="/home/finished" className="homeNav">
+                            <MyNavLink
+                                to="/home/finished"
+                                className="homeNav"
+                                id={this.props.isDark ? 'homeNavDark' : ''}
+                            >
                                 <div className="iconBox">
                                     <CheckOutlined />
                                 </div>
@@ -36,7 +48,11 @@ class Nav extends PureComponent {
                             </MyNavLink>
                         </li>
                         <li id={this.props.isDark ? 'navLiDark' : ''}>
-                            <MyNavLink to="/home/me" className="homeNav">
+                            <MyNavLink
+                                to="/home/me"
+                                className="homeNav"
+                                id={this.props.isDark ? 'homeNavDark' : ''}
+                            >
                                 <div className="iconBox">
                                     <UserOutlined />
                                 </div>

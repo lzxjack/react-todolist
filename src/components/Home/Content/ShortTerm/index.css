@@ -10,6 +10,10 @@
     text-shadow: 3px 3px 3px #000;
     font-weight: 700;
 }
+.taskTypeDark {
+    color: rgb(167, 167, 167);
+    border-bottom: 3px solid rgb(167, 167, 167);
+}
 
 /* 输入框包裹的盒子 */
 .inputBox {
@@ -19,6 +23,9 @@
     display: flex;
     align-items: center;
     border-bottom: 2px solid #ccc;
+}
+.inputBoxDark {
+    border-bottom: 2px solid rgb(167, 167, 167);
 }
 /* 输入框 */
 .inputTask {
@@ -34,44 +41,64 @@
     transition: all 0.3s;
     -webkit-transition: all 0.3s;
 }
-#inputTaskDark {
+.inputTaskDark {
     background-color: #0d2a44;
+    color: rgb(197, 197, 197);
 }
 .inputTask:hover {
     box-shadow: 0 0 16px rgba(0, 0, 0, 0.8);
 }
-#inputTaskDark:hover {
+.inputTaskDark:hover {
     box-shadow: 0 0 16px rgba(0, 109, 211, 0.8);
 }
 /* ---------------------- */
 .inputTask:focus {
     background-color: #009688;
 }
-#inputTaskDark:focus {
+.inputTaskDark:focus {
     background-color: #0e497c;
 }
-
+/* --------------------------------------------------------- */
+.inputTask:focus::-webkit-input-placeholder,
 .inputTask::-webkit-input-placeholder {
     color: rgb(219, 216, 216);
 }
 
-.inputTask:focus::-webkit-input-placeholder {
+.inputTask:focus:-moz-placeholder,
+.inputTask::-moz-placeholder {
     color: rgb(219, 216, 216);
 }
 
-.inputTask:focus:-moz-placeholder {
+.inputTask:focus::-moz-placeholder,
+.inputTask::-moz-placeholder {
     color: rgb(219, 216, 216);
 }
 
-.inputTask:focus::-moz-placeholder {
+.inputTask:focus:-ms-input-placeholder,
+.inputTask::-ms-input-placeholder {
     color: rgb(219, 216, 216);
 }
-
-.inputTask:focus:-ms-input-placeholder {
-    color: rgb(219, 216, 216);
+/* ------------------------------------------------------- */
+.inputTaskDark:focus::-webkit-input-placeholder,
+.inputTaskDark::-webkit-input-placeholder {
+    color: rgb(167, 167, 167);
 }
 
-/* ---------------------- */
+.inputTaskDark:focus:-moz-placeholder,
+.inputTaskDark::-moz-placeholder {
+    color: rgb(167, 167, 167);
+}
+
+.inputTaskDark:focus::-moz-placeholder,
+.inputTaskDark::-moz-placeholder {
+    color: rgb(167, 167, 167);
+}
+
+.inputTaskDark:focus:-ms-input-placeholder,
+.inputTaskDark::-ms-input-placeholder {
+    color: rgb(167, 167, 167);
+}
+/* ------------------------------------------------------- */
 
 .taskNull {
     padding: 100px 0;
@@ -80,6 +107,9 @@
     text-align: center;
     user-select: none;
     text-shadow: 3px 3px 3px #000;
+}
+.taskNullDark {
+    color: rgb(167, 167, 167);
 }
 .taskNullIcon {
     font-size: 60px;
@@ -113,7 +143,7 @@
 }
 
 /* 完成按钮 */
-.taskBox li .taskDoneBtn {
+.taskDoneBtn {
     position: absolute;
     left: 0;
     top: 0;
@@ -128,13 +158,14 @@
     transition: all 0.3s;
     -webkit-transition: all 0.3s;
 }
-#taskDoneBtnDark {
+.taskDoneBtnDark {
     background-color: #004b91;
+    /* color: rgb(167, 167, 167); */
 }
-.taskBox li .taskDoneBtn:hover {
+.taskDoneBtn:hover {
     background-color: rgb(0, 228, 38);
 }
-#taskDoneBtnDark:hover {
+.taskDoneBtnDark:hover {
     background-color: rgb(0, 158, 26);
 }
 
@@ -155,6 +186,7 @@
 }
 .taskBox li .taskEditDark {
     background-color: #0d2a44;
+    color: rgb(197, 197, 197);
 }
 
 .taskBox li .taskEdit:focus {
@@ -180,18 +212,18 @@
     transition: all 0.3s;
     -webkit-transition: all 0.3s;
 }
-#transTaskBtnDark {
+.transTaskBtnDark {
     background-color: #004b91;
 }
-.taskBox li .transTaskBtn:hover {
+.transTaskBtn:hover {
     background-color: rgb(235, 231, 29);
 }
-#transTaskBtnDark:hover {
+.transTaskBtnDark:hover {
     background-color: rgb(202, 199, 11);
 }
 
 /* 删除按钮 */
-.taskBox li .taskDeleteBtn {
+.taskDeleteBtn {
     position: absolute;
     right: 0;
     top: 0;
@@ -206,13 +238,13 @@
     transition: all 0.3s;
     -webkit-transition: all 0.3s;
 }
-#taskDeleteBtnDark {
+.taskDeleteBtnDark {
     background-color: #004b91;
 }
-.taskBox li .taskDeleteBtn:hover {
+.taskDeleteBtn:hover {
     background-color: red;
 }
-#taskDeleteBtnDark:hover {
+.taskDeleteBtnDark:hover {
     background-color: rgb(167, 0, 0);
 }
 

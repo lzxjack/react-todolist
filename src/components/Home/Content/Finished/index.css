@@ -10,7 +10,10 @@
     text-shadow: 3px 3px 3px #000;
     font-weight: 700;
 }
-
+#FinishedDark {
+    color: rgb(167, 167, 167);
+    border-bottom: 3px solid rgb(167, 167, 167);
+}
 .finishedNull {
     text-shadow: 3px 3px 3px #000;
     padding: 100px 0;
@@ -18,6 +21,9 @@
     flex-direction: column;
     text-align: center;
     user-select: none;
+}
+#finishedNullDark {
+    color: rgb(167, 167, 167);
 }
 .finishedNullIcon {
     font-size: 60px;
@@ -38,7 +44,10 @@
     justify-content: center;
     align-items: center;
 }
-
+.finishedTextDark {
+    color: rgb(167, 167, 167);
+    border-bottom: 2px solid rgb(167, 167, 167);
+}
 .finishedText span {
     font-size: 28px;
     user-select: none;
@@ -86,6 +95,9 @@
 .finishedTaskBox li:hover {
     box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.8);
 }
+#finishedLiDark:hover {
+    box-shadow: 0 0 16px rgba(0, 109, 211, 0.8);
+}
 
 .finishedTaskBox li .finishedDoneBtn {
     position: absolute;
@@ -102,11 +114,15 @@
     transition: all 0.3s;
     -webkit-transition: all 0.3s;
 }
+#finishedDoneBtnDark {
+    background-color: #004b91;
+}
 .finishedTaskBox li .finishedDoneBtn:hover {
     background-color: rgb(0, 228, 38);
-    color: #fff;
 }
-
+#finishedDoneBtnDark:hover {
+    background-color: rgb(0, 158, 26);
+}
 .finishedTaskBox li .finishedTaskContent {
     border-radius: 25px;
     text-align: center;
@@ -117,6 +133,10 @@
     background-color: #00c9b5;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
     user-select: none;
+}
+#finishedTaskContentDark {
+    background-color: #0d2a44;
+    color: rgb(197, 197, 197);
 }
 
 .finishedTaskBox li .finishedDeleteBtn {
@@ -134,12 +154,15 @@
     transition: all 0.3s;
     -webkit-transition: all 0.3s;
 }
-
+#finishedDeleteBtnDark {
+    background-color: #004b91;
+}
 .finishedTaskBox li .finishedDeleteBtn:hover {
-    color: #fff;
     background-color: red;
 }
-
+#finishedDeleteBtnDark:hover {
+    background-color: rgb(167, 0, 0);
+}
 @media all and (max-width: 1024px) {
     .Finished {
         height: 50px;

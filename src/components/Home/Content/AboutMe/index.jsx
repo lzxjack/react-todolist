@@ -278,11 +278,11 @@ class AboutMe extends PureComponent {
     render() {
         return (
             <Fragment>
-                <div className="Me">
+                <div className="Me" id={this.props.isDark ? 'MeDark' : ''}>
                     <UserOutlined />
                     &nbsp;关于我
                 </div>
-                <div className="headName">
+                <div className="headName" id={this.props.isDark ? 'headNameDark' : ''}>
                     <span>头像</span>
                 </div>
                 <div className="updateAvatarBox">
@@ -298,13 +298,14 @@ class AboutMe extends PureComponent {
                         />
                     </div>
                     {this.state.avatarLoading ? (
-                        <div className="loading">
+                        <div className="loading" id={this.props.isDark ? 'loadingDark' : ''}>
                             <LoadingOutlined />
                         </div>
                     ) : null}
                     <Tooltip placement="bottom" title="选择头像">
                         <div
                             className="upToCOSBtn"
+                            id={this.props.isDark ? 'upToCOSBtnDark' : ''}
                             onClick={() => {
                                 this.inputAvatar.click();
                             }}
@@ -320,14 +321,18 @@ class AboutMe extends PureComponent {
                         </div>
                     </Tooltip>
                     <Tooltip placement="bottom" title="上传头像">
-                        <div className="updateAvatarBtn" onClick={this.updateAvatar}>
+                        <div
+                            className="updateAvatarBtn"
+                            id={this.props.isDark ? 'updateAvatarBtnDark' : ''}
+                            onClick={this.updateAvatar}
+                        >
                             <ToTopOutlined />
                         </div>
                     </Tooltip>
                 </div>
 
                 <div className="nickUserName">
-                    <div className="headName">
+                    <div className="headName" id={this.props.isDark ? 'headNameDark' : ''}>
                         <span>昵称</span>
                     </div>
                     <div
@@ -353,7 +358,7 @@ class AboutMe extends PureComponent {
                 </div>
 
                 <div className="nickUserName">
-                    <div className="headName">
+                    <div className="headName" id={this.props.isDark ? 'headNameDark' : ''}>
                         <span>登录名</span>
                     </div>
                     <div

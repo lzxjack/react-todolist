@@ -69,7 +69,7 @@ class Finished extends PureComponent {
     render() {
         return (
             <Fragment>
-                <div className="Finished">
+                <div className="Finished" id={this.props.isDark ? 'FinishedDark' : ''}>
                     <CheckOutlined />
                     &nbsp;已完成
                     {this.props.tasks.filter(taskObj => {
@@ -89,13 +89,20 @@ class Finished extends PureComponent {
                     return taskObj.done === true;
                 }).length === 0 ? (
                     <Fragment>
-                        <div className="finishedText">
+                        <div
+                            className={
+                                this.props.isDark ? 'finishedText finishedTextDark' : 'finishedText'
+                            }
+                        >
                             <span>
                                 暂时没有已完成的任务...&nbsp;
                                 <FrownOutlined />
                             </span>
                         </div>
-                        <div className="finishedNull">
+                        <div
+                            className="finishedNull"
+                            id={this.props.isDark ? 'finishedNullDark' : ''}
+                        >
                             <div className="finishedNullIcon">
                                 <CodepenOutlined />
                             </div>
@@ -104,7 +111,11 @@ class Finished extends PureComponent {
                     </Fragment>
                 ) : (
                     <Fragment>
-                        <div className="finishedText">
+                        <div
+                            className={
+                                this.props.isDark ? 'finishedText finishedTextDark' : 'finishedText'
+                            }
+                        >
                             <span>
                                 以下任务已经完成啦！ &nbsp;
                                 <LikeOutlined />
@@ -128,10 +139,18 @@ class Finished extends PureComponent {
                                 })
                                 .map(taskObj => {
                                     return (
-                                        <li key={taskObj._id}>
+                                        <li
+                                            key={taskObj._id}
+                                            id={this.props.isDark ? 'finishedLiDark' : ''}
+                                        >
                                             <Tooltip placement="left" title="取消完成" zIndex="999">
                                                 <div
                                                     className="finishedDoneBtn"
+                                                    id={
+                                                        this.props.isDark
+                                                            ? 'finishedDoneBtnDark'
+                                                            : ''
+                                                    }
                                                     onClick={this.backToGoing.bind(
                                                         this,
                                                         taskObj._id
@@ -141,12 +160,24 @@ class Finished extends PureComponent {
                                                 </div>
                                             </Tooltip>
 
-                                            <div className="finishedTaskContent">
+                                            <div
+                                                className="finishedTaskContent"
+                                                id={
+                                                    this.props.isDark
+                                                        ? 'finishedTaskContentDark'
+                                                        : ''
+                                                }
+                                            >
                                                 {taskObj.content}
                                             </div>
                                             <Tooltip placement="right" title="删除" zIndex="999">
                                                 <div
                                                     className="finishedDeleteBtn"
+                                                    id={
+                                                        this.props.isDark
+                                                            ? 'finishedDeleteBtnDark'
+                                                            : ''
+                                                    }
                                                     onClick={this.deleteTask.bind(
                                                         this,
                                                         taskObj._id
@@ -171,6 +202,7 @@ export default withRouter(
         state => ({
             id: state.personalData.id,
             tasks: state.tasks,
+            isDark: state.personalData.isDark,
         }),
         { minCount, deleteTask, returnTask, deleteAllDone }
     )(Finished)

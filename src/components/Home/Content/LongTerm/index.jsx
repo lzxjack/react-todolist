@@ -141,7 +141,7 @@ class LongTerm extends PureComponent {
     render() {
         return (
             <Fragment>
-                <div className="taskType">
+                <div className={this.props.isDark ? 'taskType taskTypeDark' : 'taskType'}>
                     <DoubleRightOutlined />
                     &nbsp;长期任务
                     {this.props.tasks.filter(taskObj => {
@@ -157,19 +157,19 @@ class LongTerm extends PureComponent {
                         </span>
                     )}
                 </div>
-                <div className="inputBox">
+                <div className={this.props.isDark ? 'inputBox inputBoxDark' : 'inputBox'}>
                     <input
                         type="text"
                         ref={c => (this.inputLongTask = c)}
                         onKeyUp={this.addTask}
                         placeholder="在这里写下长期任务..."
-                        className="inputTask"
+                        className={this.props.isDark ? 'inputTask inputTaskDark' : 'inputTask'}
                     />
                 </div>
                 {this.props.tasks.filter(taskObj => {
                     return taskObj.done === false && taskObj.isShort === false;
                 }).length === 0 ? (
-                    <div className="taskNull">
+                    <div className={this.props.isDark ? 'taskNull taskNullDark' : 'taskNull'}>
                         <div className="taskNullIcon">
                             <SmileOutlined />
                         </div>
@@ -183,10 +183,17 @@ class LongTerm extends PureComponent {
                             })
                             .map(taskObj => {
                                 return (
-                                    <li key={taskObj._id}>
+                                    <li
+                                        key={taskObj._id}
+                                        id={this.props.isDark ? 'taskLiDark' : ''}
+                                    >
                                         <Tooltip placement="left" title="完成" zIndex="999">
                                             <div
-                                                className="taskDoneBtn"
+                                                className={
+                                                    this.props.isDark
+                                                        ? 'taskDoneBtn taskDoneBtnDark'
+                                                        : 'taskDoneBtn'
+                                                }
                                                 onClick={this.finishTask.bind(this, taskObj._id)}
                                             >
                                                 <CheckOutlined />
@@ -206,7 +213,11 @@ class LongTerm extends PureComponent {
                                         />
                                         <Tooltip placement="left" title="转为近期任务" zIndex="999">
                                             <div
-                                                className="transTaskBtn"
+                                                className={
+                                                    this.props.isDark
+                                                        ? 'transTaskBtn transTaskBtnDark'
+                                                        : 'transTaskBtn'
+                                                }
                                                 onClick={this.transTask.bind(this, taskObj._id)}
                                             >
                                                 <SwapOutlined />
@@ -214,7 +225,11 @@ class LongTerm extends PureComponent {
                                         </Tooltip>
                                         <Tooltip placement="right" title="删除" zIndex="999">
                                             <div
-                                                className="taskDeleteBtn"
+                                                className={
+                                                    this.props.isDark
+                                                        ? 'taskDeleteBtn taskDeleteBtnDark'
+                                                        : 'taskDeleteBtn'
+                                                }
                                                 onClick={this.deleteTask.bind(this, taskObj._id)}
                                             >
                                                 <CloseOutlined />

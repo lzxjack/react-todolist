@@ -15,40 +15,34 @@
 
 #footerDark {
     background-image: linear-gradient(to top, #000000, #00162b);
+    color: rgb(167, 167, 167);
 }
 
-.appName {
-    font-size: 18px;
-    font-weight: 700;
-}
-
-.author {
+.authorName,
+.icpInfo {
     font-size: 14px;
-}
-.author .authorName {
     color: #ccc;
+    transition: all 0.3s;
+    -webkit-transition: all 0.3s;
 }
 
-.author .authorName:hover {
-    font-weight: 700;
-    color: red;
+#authorNameDark,
+#icpInfoDark {
+    color: rgb(167, 167, 167);
+}
+
+.authorName:hover,
+.icpInfo:hover {
+    color: #00b8a5;
+}
+#authorNameDark:hover,
+#icpInfoDark:hover {
+    color: #0061bd;
 }
 
 /* 今日诗句 */
-.todayPoem {
-    /* background-color: #fff; */
-    height: 20px;
-    line-height: 20px;
-}
-
 .poemWords {
-    font-size: 18px;
-    font-weight: 700;
-}
-
-.poemTitle {
     font-size: 14px;
-    text-align: right;
 }
 
 @media all and (max-width: 1024px) {

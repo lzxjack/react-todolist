@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Popconfirm, notification } from 'antd';
+import { Popconfirm, notification, message } from 'antd';
 import { ArrowRightOutlined, RollbackOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
 import { DEFAULT_AVATAR_URL } from '../../../utils/constant';
@@ -90,22 +90,6 @@ class Outline extends PureComponent {
             icon: <RollbackOutlined />,
         });
     };
-    // 切换黑暗模式成功的消息
-    openSwitchDark = () => {
-        notification.open({
-            message: '天黑请闭眼~',
-            duration: 2,
-            placement: 'bottomLeft',
-        });
-    };
-    // 切换白天模式成功的消息
-    openSwitchSun = () => {
-        notification.open({
-            message: '天亮啦，请睁眼~',
-            duration: 2,
-            placement: 'bottomLeft',
-        });
-    };
     // 退出
     turnLogout = () => {
         // 清除localStorage
@@ -133,7 +117,7 @@ class Outline extends PureComponent {
                 isDark: this.props.isDark,
             })
             .then(() => {
-                this.props.isDark ? this.openSwitchDark() : this.openSwitchSun();
+                this.props.isDark ? message.info('天黑请闭眼~') : message.success('天亮啦！');
             });
     };
     render() {
