@@ -111,14 +111,12 @@ class Outline extends PureComponent {
     switchDark = async () => {
         await this.props.switchDark();
         // 数据库中修改isDark
-        db.collection('personalData')
-            .doc(this.props.id)
-            .update({
-                isDark: this.props.isDark,
-            })
-            .then(() => {
-                this.props.isDark ? message.info('天黑请闭眼~') : message.success('天亮啦！');
-            });
+        db.collection('personalData').doc(this.props.id).update({
+            isDark: this.props.isDark,
+        });
+        // .then(() => {
+        //     this.props.isDark ? message.info('天黑请闭眼~') : message.success('天亮啦！');
+        // });
     };
     render() {
         return (
@@ -136,13 +134,8 @@ class Outline extends PureComponent {
                 {/* 左边文字 */}
                 <div className="leftWords">
                     <div className="welcomeUser">
-                        {this.state.time}，
-                        {this.props.nickName === ''
-                            ? JSON.parse(
-                                  localStorage.getItem('user_info_todolist-3gayiz0cb9b8b263')
-                              ).content.email
-                            : this.props.nickName}
-                        ！
+                        {this.state.time}
+                        {this.props.nickName === '' ? ' ！' : `，${this.props.nickName} ！`}
                     </div>
 
                     <div className="timeText">{this.state.timeText}</div>

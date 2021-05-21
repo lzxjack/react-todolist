@@ -72,7 +72,7 @@
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
-    right: 160px;
+    right: 190px;
     user-select: none;
 }
 
@@ -99,7 +99,7 @@
     border-radius: 50%;
     text-align: center;
     line-height: 50px;
-    right: 110px;
+    right: 130px;
     top: 50%;
     transform: translate(0, -50%);
     font-size: 50px;
@@ -153,12 +153,12 @@
         height: 90px;
     }
     .avatarBox {
-        left: 6px;
-        width: 50px;
-        height: 50px;
+        left: 10px;
+        width: 60px;
+        height: 60px;
     }
     .leftWords {
-        left: 62px;
+        left: 80px;
     }
     .appHead,
     .timeBox,
@@ -169,18 +169,15 @@
         font-size: 18px;
     }
     .rightWords {
-        /* position: static; */
         left: 0;
         right: 0;
         width: 100%;
         height: 100%;
-        /* background-color: #fff; */
     }
     .doneCountText {
-        /* font-size: 99px; */
         position: absolute;
         font-size: 14px;
-        left: 62px;
+        left: 80px;
         bottom: 6px;
         text-shadow: 2px 2px 2px #000;
     }
@@ -190,5 +187,13 @@
         height: 40px;
         font-size: 12px;
         line-height: 40px;
+    }
+    .darkMode,
+    .sunMode {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        right: 60px;
+        font-size: 40px;
     }
 }
