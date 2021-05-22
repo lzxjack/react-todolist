@@ -83,12 +83,6 @@ a:focus {
     font-weight: normal;
     font-style: normal;
 }
-@font-face {
-    font-family: 'shao';
-    src: url(./054-ShangShouShaoNianTi-2.ttf);
-    font-weight: normal;
-    font-style: normal;
-}
 
 @font-face {
     font-family: 'shouye1';
@@ -100,13 +94,6 @@ a:focus {
 @font-face {
     font-family: 'shouye2';
     src: url(./053-ShangShouYiFeiTi-2.ttf);
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'ding';
-    src: url(./2012DingYongKangYingBiKaiShuXinBan-2.ttf);
     font-weight: normal;
     font-style: normal;
 }
