@@ -8,7 +8,7 @@
     box-shadow: 0 0 14px #000;
     color: rgb(223, 223, 223);
     text-shadow: 3px 3px 3px #000;
-    font-family: 'MyriadPro', 'ZCOOL';
+    font-family: 'yu400';
 }
 
 #outlineBoxDark {
@@ -47,7 +47,7 @@
 /* 欢迎语句 */
 .welcomeUser {
     font-size: 36px;
-    font-weight: 700;
+    /* font-weight: 700; */
     user-select: none;
 }
 /* 提示时间语句 */

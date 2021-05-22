@@ -64,36 +64,22 @@ a:focus {
 }
 
 @font-face {
-    font-family: 'FiraCode-Regular';
-    src: url(./FiraCode-Regular.ttf);
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'ZCOOL';
-    src: url(./ZCOOLKuaiLe-Regular.ttf);
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'MyriadPro';
-    src: url(./MyriadPro-Regular-14.otf);
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'shouye1';
-    src: url(./YouSheBiaoTiHei-2.ttf);
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
     font-family: 'shouye2';
-    src: url(./053-ShangShouYiFeiTi-2.ttf);
+    src: url(./shouye2.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'yu100';
+    src: url(./yu100.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'yu400';
+    src: url(./yu400.ttf);
     font-weight: normal;
     font-style: normal;
 }

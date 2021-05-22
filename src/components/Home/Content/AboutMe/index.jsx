@@ -22,7 +22,7 @@ import { appTcb, auth } from '../../../../utils/cloudBase';
 import './index.css';
 
 class AboutMe extends PureComponent {
-    state = { avatarCheck: false, fileID: '', avatarLoading: true };
+    state = { avatarCheck: false, fileID: '', avatarLoading: false };
     // 头像格式错误的提醒消息
     openAvatarTypeError = () => {
         const key = `open${Date.now()}`;

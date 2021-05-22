@@ -1,11 +1,10 @@
 /* --------------------内容大盒子-------------------- */
 .contentBox {
     position: relative;
-    /* width: 900px; */
     width: 1024px;
     margin: 0 auto;
     color: rgb(238, 238, 238);
-    font-family: 'FiraCode-Regular', 'ZCOOL';
+    font-family: 'yu100';
 }
 
 @media all and (max-width: 1024px) {

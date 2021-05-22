@@ -31,10 +31,8 @@
 }
 
 .intro {
-    /* font-size: 74px;
-    font-family: 'shouye2'; */
-    font-size: 76px;
-    font-family: 'shouye1';
+    font-size: 74px;
+    font-family: 'shouye2';
 }
 
 /* --------------盒子右侧登录区------------------ */
@@ -47,6 +45,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'yu400';
 }
 
 .enterBox {
