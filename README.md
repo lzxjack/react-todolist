@@ -1,4 +1,4 @@
-# 技术点：
+# 心得：
 
 1. react-route-config 集中管理路由
 
@@ -36,7 +36,7 @@
 
 18. 根据不同状态渲染不同组件
 
-19. 解决闪动问题：isLoading，使用加载页面
+19. ~~解决闪动问题：isLoading，使用加载页面~~
 
 20. 获取当前时间`import moment from 'moment';`
 
@@ -70,14 +70,6 @@
 
 34. 退出时，清空所有 redux 中的数据
 
-# 主要功能实现：
+35. 黑暗模式：根据redux中的数据，给每个模块添加类名或ID
 
-## 1. 注册
 
-## 2. 登录
-
-## 3. 退出
-
-默认头像
-
-![](https://jack-img.oss-cn-hangzhou.aliyuncs.com/img/20210510203904.png)
