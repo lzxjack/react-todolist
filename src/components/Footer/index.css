@@ -16,7 +16,7 @@
 
 #footerDark {
     background-image: linear-gradient(to top, #000000, #00162b);
-    color: rgb(177, 177, 177);
+    color: rgb(207, 207, 207);
 }
 
 .authorName,
@@ -29,7 +29,7 @@
 
 #authorNameDark,
 #icpInfoDark {
-    color: rgb(177, 177, 177);
+    color: rgb(207, 207, 207);
 }
 
 .authorName:hover,

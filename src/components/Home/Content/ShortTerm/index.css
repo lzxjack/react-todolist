@@ -2,7 +2,7 @@
     width: 100%;
     height: 70px;
     font-size: 36px;
-    border-bottom: 3px solid #ccc;
+    border-bottom: 3px solid rgb(243, 243, 243);
     display: flex;
     align-items: center;
     padding: 0 20px;
@@ -10,8 +10,8 @@
     text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.8);
 }
 .taskTypeDark {
-    color: rgb(177, 177, 177);
-    border-bottom: 3px solid rgb(177, 177, 177);
+    color: rgb(207, 207, 207);
+    border-bottom: 3px solid rgb(207, 207, 207);
 }
 
 /* 输入框包裹的盒子 */
@@ -21,10 +21,10 @@
     margin: 0 auto;
     display: flex;
     align-items: center;
-    border-bottom: 2px solid #ccc;
+    border-bottom: 2px solid rgb(243, 243, 243);
 }
 .inputBoxDark {
-    border-bottom: 2px solid rgb(177, 177, 177);
+    border-bottom: 2px solid rgb(207, 207, 207);
 }
 /* 输入框 */
 .inputTask {
@@ -38,11 +38,10 @@
     text-align: center;
     transition: all 0.3s;
     -webkit-transition: all 0.3s;
-    color: rgb(243, 243, 243);
 }
 .inputTaskDark {
     background-color: #0d2a44;
-    color: rgb(177, 177, 177);
+    color: rgb(207, 207, 207);
 }
 .inputTask:hover {
     box-shadow: 0 0 16px rgba(0, 0, 0, 0.8);
@@ -80,22 +79,22 @@
 /* ------------------------------------------------------- */
 .inputTaskDark:focus::-webkit-input-placeholder,
 .inputTaskDark::-webkit-input-placeholder {
-    color: rgb(177, 177, 177);
+    color: rgb(207, 207, 207);
 }
 
 .inputTaskDark:focus:-moz-placeholder,
 .inputTaskDark::-moz-placeholder {
-    color: rgb(177, 177, 177);
+    color: rgb(207, 207, 207);
 }
 
 .inputTaskDark:focus::-moz-placeholder,
 .inputTaskDark::-moz-placeholder {
-    color: rgb(177, 177, 177);
+    color: rgb(207, 207, 207);
 }
 
 .inputTaskDark:focus:-ms-input-placeholder,
 .inputTaskDark::-ms-input-placeholder {
-    color: rgb(177, 177, 177);
+    color: rgb(207, 207, 207);
 }
 /* ------------------------------------------------------- */
 
@@ -108,7 +107,7 @@
     text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.8);
 }
 .taskNullDark {
-    color: rgb(177, 177, 177);
+    color: rgb(207, 207, 207);
 }
 .taskNullIcon {
     font-size: 60px;
@@ -160,7 +159,7 @@
 }
 .taskDoneBtnDark {
     background-color: #004b91;
-    /* color: rgb(177, 177, 177); */
+    /* color: rgb(207, 207, 207); */
 }
 .taskDoneBtn:hover {
     background-color: rgb(0, 228, 38);
@@ -185,7 +184,7 @@
 }
 .taskBox li .taskEditDark {
     background-color: #0d2a44;
-    color: rgb(177, 177, 177);
+    color: rgb(207, 207, 207);
 }
 
 .taskBox li .taskEdit:focus {
@@ -261,7 +260,7 @@
     .inputTask {
         width: 100%;
         height: 32px;
-        font-size: 14px;
+        font-size: 16px;
         padding: 0 40px 0;
         border-radius: 16px;
         text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
@@ -293,7 +292,7 @@
     }
     .taskBox li .taskEdit {
         border-radius: 16px;
-        font-size: 14px;
+        font-size: 16px;
         height: 32px;
         padding: 0 70px 0;
         pointer-events: none;

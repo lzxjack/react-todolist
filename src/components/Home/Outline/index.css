@@ -6,14 +6,14 @@
     position: relative;
     z-index: 2;
     box-shadow: 0 0 14px #000;
-    color: rgb(223, 223, 223);
-    text-shadow: 3px 3px 3px #000;
+    color: rgb(243, 243, 243);
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.8);
     font-family: 'yu400';
 }
 
 #outlineBoxDark {
     background-image: linear-gradient(to top, #002446, #000000);
-    color: rgb(177, 177, 177);
+    color: rgb(207, 207, 207);
 }
 
 /* 头像盒子 */
@@ -84,12 +84,12 @@
 }
 
 /* 累计完成任务个数 */
+.doneCountText {
+    font-size: 18px;
+}
 .doneCount {
     font-weight: 700;
     color: red;
-}
-.doneCountText {
-    font-size: 18px;
 }
 
 /* 黑暗模式 */
@@ -183,7 +183,6 @@
         font-size: 14px;
         left: 80px;
         bottom: 6px;
-        text-shadow: 2px 2px 2px #000;
     }
     .logoutBtn {
         right: 10px;

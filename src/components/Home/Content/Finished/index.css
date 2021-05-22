@@ -2,7 +2,7 @@
     width: 100%;
     height: 70px;
     font-size: 36px;
-    border-bottom: 3px solid #ccc;
+    border-bottom: 3px solid rgb(243, 243, 243);
     display: flex;
     align-items: center;
     padding: 0 20px;
@@ -10,8 +10,8 @@
     text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.8);
 }
 #FinishedDark {
-    color: rgb(177, 177, 177);
-    border-bottom: 3px solid rgb(177, 177, 177);
+    color: rgb(207, 207, 207);
+    border-bottom: 3px solid rgb(207, 207, 207);
 }
 .finishedNull {
     text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.8);
@@ -22,7 +22,7 @@
     user-select: none;
 }
 #finishedNullDark {
-    color: rgb(177, 177, 177);
+    color: rgb(207, 207, 207);
 }
 .finishedNullIcon {
     font-size: 60px;
@@ -38,14 +38,14 @@
     width: 90%;
     margin: 0 auto;
     text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.8);
-    border-bottom: 2px solid #ccc;
+    border-bottom: 2px solid rgb(243, 243, 243);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .finishedTextDark {
-    color: rgb(177, 177, 177);
-    border-bottom: 2px solid rgb(177, 177, 177);
+    color: rgb(207, 207, 207);
+    border-bottom: 2px solid rgb(207, 207, 207);
 }
 .finishedText span {
     font-size: 28px;
@@ -134,11 +134,10 @@
     background-color: #00c9b5;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
     user-select: none;
-    color: rgb(243, 243, 243);
 }
 #finishedTaskContentDark {
     background-color: #0d2a44;
-    color: rgb(177, 177, 177);
+    color: rgb(207, 207, 207);
 }
 
 .finishedTaskBox li .finishedDeleteBtn {
@@ -210,7 +209,7 @@
     }
     .finishedTaskBox li .finishedTaskContent {
         border-radius: 16px;
-        font-size: 14px;
+        font-size: 16px;
         height: 32px;
         text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
     }
