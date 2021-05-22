@@ -5,7 +5,7 @@
     width: 1024px;
     margin: 0 auto;
     color: rgb(238, 238, 238);
-    /* background-color: #fff; */
+    font-family: 'FiraCode-Regular', 'ZCOOL';
 }
 
 @media all and (max-width: 1024px) {

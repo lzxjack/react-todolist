@@ -17,7 +17,6 @@
 }
 /* --------------盒子左侧图片区------------------- */
 .display {
-    /* background-color: #008073; */
     background-color: rgba(0, 128, 115, 0.85);
     height: 100%;
     width: 50%;
@@ -32,8 +31,10 @@
 }
 
 .intro {
-    font-size: 48px;
-    font-weight: 700;
+    /* font-size: 74px;
+    font-family: 'shouye2'; */
+    font-size: 76px;
+    font-family: 'shouye1';
 }
 
 /* --------------盒子右侧登录区------------------ */

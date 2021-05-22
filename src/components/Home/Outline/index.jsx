@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Popconfirm, notification, message } from 'antd';
-import { ArrowRightOutlined, RollbackOutlined } from '@ant-design/icons';
+import { Popconfirm, notification } from 'antd';
+import { ArrowRightOutlined, RollbackOutlined, LogoutOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
 import { DEFAULT_AVATAR_URL } from '../../../utils/constant';
 import { db } from '../../../utils/cloudBase';
@@ -135,7 +135,7 @@ class Outline extends PureComponent {
                 <div className="leftWords">
                     <div className="welcomeUser">
                         {this.state.time}
-                        {this.props.nickName === '' ? ' ！' : `，${this.props.nickName} ！`}
+                        {this.props.nickName === '' ? '！' : `，${this.props.nickName}！`}
                     </div>
 
                     <div className="timeText">{this.state.timeText}</div>
@@ -166,7 +166,7 @@ class Outline extends PureComponent {
                     cancelText="再看看！"
                 >
                     <div className="logoutBtn" id={this.props.isDark ? 'logoutBtnDark' : ''}>
-                        退出
+                        <LogoutOutlined />
                     </div>
                 </Popconfirm>
             </div>

@@ -10,8 +10,8 @@ export default class Welcome extends PureComponent {
                 <div className="welcome">
                     {/* 左侧图片区 */}
                     <div className="display">
-                        <span className="intro">使用TodoList，</span>
-                        <span className="intro">做一个时间管理大师。</span>
+                        <span className="intro">使用TodoList</span>
+                        <span className="intro">做时间管理大师</span>
                     </div>
                     {/* 右侧登录区 */}
                     <div className="enter">

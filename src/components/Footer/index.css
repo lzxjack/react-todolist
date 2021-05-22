@@ -11,11 +11,12 @@
     color: #ccc;
     text-shadow: 3px 3px 3px #000;
     box-shadow: 0 0 14px #000;
+    font-family: 'Dengxian';
 }
 
 #footerDark {
     background-image: linear-gradient(to top, #000000, #00162b);
-    color: rgb(167, 167, 167);
+    color: rgb(177, 177, 177);
 }
 
 .authorName,
@@ -28,7 +29,7 @@
 
 #authorNameDark,
 #icpInfoDark {
-    color: rgb(167, 167, 167);
+    color: rgb(177, 177, 177);
 }
 
 .authorName:hover,
@@ -42,7 +43,7 @@
 
 /* 今日诗句 */
 .poemWords {
-    font-size: 14px;
+    font-size: 16px;
 }
 
 @media all and (max-width: 1024px) {

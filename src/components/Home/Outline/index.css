@@ -8,11 +8,12 @@
     box-shadow: 0 0 14px #000;
     color: rgb(223, 223, 223);
     text-shadow: 3px 3px 3px #000;
+    font-family: 'MyriadPro', 'ZCOOL';
 }
 
 #outlineBoxDark {
     background-image: linear-gradient(to top, #002446, #000000);
-    color: rgb(167, 167, 167);
+    color: rgb(177, 177, 177);
 }
 
 /* 头像盒子 */
@@ -51,7 +52,7 @@
 }
 /* 提示时间语句 */
 .timeText {
-    font-size: 18px;
+    font-size: 20px;
     user-select: none;
 }
 
@@ -60,12 +61,13 @@
     height: 120px;
     width: 900px;
     margin: auto;
-    text-align: center;
-    line-height: 120px;
-    font-size: 70px;
-    font-weight: 700;
-    text-shadow: 5px 5px 5px #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 88px;
+    text-shadow: 6px 6px 6px rgba(0, 0, 0, 0.8);
     user-select: none;
+    font-family: 'shouye2';
 }
 
 .rightWords {
@@ -97,8 +99,9 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    text-align: center;
-    line-height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     right: 130px;
     top: 50%;
     transform: translate(0, -50%);
@@ -129,10 +132,11 @@
     height: 60px;
     background-color: #007267;
     border-radius: 50%;
-    font-size: 18px;
-    font-weight: 700;
-    text-align: center;
-    line-height: 60px;
+    font-size: 26px;
+    /* font-weight: 700; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     user-select: none;
     box-shadow: 0 0 15px rgb(0, 0, 0) inset;
     transition: all 0.3s;
@@ -185,14 +189,12 @@
         right: 10px;
         width: 40px;
         height: 40px;
-        font-size: 12px;
-        line-height: 40px;
+        font-size: 18px;
     }
     .darkMode,
     .sunMode {
         width: 40px;
         height: 40px;
-        line-height: 40px;
         right: 60px;
         font-size: 40px;
     }

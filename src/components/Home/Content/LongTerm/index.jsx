@@ -162,7 +162,7 @@ class LongTerm extends PureComponent {
                         type="text"
                         ref={c => (this.inputLongTask = c)}
                         onKeyUp={this.addTask}
-                        placeholder="在这里写下长期任务..."
+                        placeholder="还有什么长远目标未实现呢？"
                         className={this.props.isDark ? 'inputTask inputTaskDark' : 'inputTask'}
                     />
                 </div>

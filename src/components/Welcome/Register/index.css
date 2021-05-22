@@ -26,8 +26,9 @@
     width: 360px;
     height: 70px;
     background-color: #009688;
-    text-align: center;
-    line-height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 28px;
     font-weight: 700;
     border-radius: 20px;

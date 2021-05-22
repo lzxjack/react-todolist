@@ -1,8 +1,5 @@
 .background {
-    /* background: url('./bg.jpg') no-repeat center fixed; */
     background: url(./bg.jpg) 0 / cover fixed;
-    /* background: url('./3.jpg') 0 / cover fixed; */
-
     background-size: cover;
 }
 
