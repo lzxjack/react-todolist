@@ -7,7 +7,7 @@
     z-index: 2;
     box-shadow: 0 0 14px #000;
     color: rgb(243, 243, 243);
-    text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.8);
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.6);
     font-family: 'yu400';
 }
 
@@ -89,7 +89,7 @@
 }
 .doneCount {
     font-weight: 700;
-    color: red;
+    color: yellow;
 }
 
 /* 黑暗模式 */
