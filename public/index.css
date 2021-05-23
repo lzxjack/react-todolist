@@ -83,11 +83,3 @@ a:focus {
     font-weight: normal;
     font-style: normal;
 }
-
-/* 鼠标样式 */
-body {
-    cursor: url(./default.cur), default;
-}
-a {
-    cursor: url(./pointer.cur), default;
-}
