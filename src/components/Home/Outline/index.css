@@ -155,6 +155,7 @@
 @media all and (max-width: 1024px) {
     .outlineBox {
         height: 90px;
+        text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
     }
     .avatarBox {
         left: 10px;
