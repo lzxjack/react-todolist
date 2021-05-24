@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import Login from './Login';
+import Register from './Register';
 import MyNavLink from '../MyNavLink';
-import renderRoutes from '../../utils/renderRoutes';
 import './index.css';
 
 export default class Welcome extends PureComponent {
@@ -27,7 +29,12 @@ export default class Welcome extends PureComponent {
                             </div>
                             {/* 路由展示区 */}
                             <div className="enterBody">
-                                {renderRoutes(this.props.route.children)}
+                                {/* {renderRoutes(this.props.route.children)} */}
+                                <Switch>
+                                    <Route path="/welcome/login" component={Login} />
+                                    <Route path="/welcome/register" component={Register} />
+                                    <Redirect to="/welcome/login" />
+                                </Switch>
                             </div>
                         </div>
                     </div>

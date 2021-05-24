@@ -105,7 +105,7 @@ class Outline extends PureComponent {
         // 提示消息
         this.openLogoutNoti();
         // 回到welcome页面
-        this.props.history.replace('/welcome');
+        this.props.history.replace('/');
     };
     // 切换黑暗模式
     switchDark = async () => {
@@ -114,9 +114,6 @@ class Outline extends PureComponent {
         db.collection('personalData').doc(this.props.id).update({
             isDark: this.props.isDark,
         });
-        // .then(() => {
-        //     this.props.isDark ? message.info('天黑请闭眼~') : message.success('天亮啦！');
-        // });
     };
     render() {
         return (

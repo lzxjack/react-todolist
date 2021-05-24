@@ -13,7 +13,7 @@ class Nav extends PureComponent {
                     <ul>
                         <li id={this.props.isDark ? 'navLiDark' : ''}>
                             <MyNavLink
-                                to="/home/shortterm"
+                                to="/home/short"
                                 className="homeNav"
                                 id={this.props.isDark ? 'homeNavDark' : ''}
                             >
@@ -25,7 +25,7 @@ class Nav extends PureComponent {
                         </li>
                         <li id={this.props.isDark ? 'navLiDark' : ''}>
                             <MyNavLink
-                                to="/home/longterm"
+                                to="/home/long"
                                 className="homeNav"
                                 id={this.props.isDark ? 'homeNavDark' : ''}
                             >
@@ -37,7 +37,7 @@ class Nav extends PureComponent {
                         </li>
                         <li id={this.props.isDark ? 'navLiDark' : ''}>
                             <MyNavLink
-                                to="/home/finished"
+                                to="/home/done"
                                 className="homeNav"
                                 id={this.props.isDark ? 'homeNavDark' : ''}
                             >
