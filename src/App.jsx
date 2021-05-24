@@ -25,7 +25,11 @@ class App extends PureComponent {
         return (
             <div
                 className="background"
-                style={this.props.isDark ? { background: 'url(/3.jpg)' } : {}}
+                style={
+                    this.props.isDark
+                        ? { background: 'url(/dark.jpg) 0 / cover fixed' }
+                        : { background: 'url(/sun.jpg) 0 / cover fixed' }
+                }
             >
                 <div className="appBox">
                     {/* 路由鉴权：渲染/welcome页面 or /home页面 */}
