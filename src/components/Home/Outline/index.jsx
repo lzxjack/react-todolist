@@ -20,7 +20,7 @@ class Outline extends PureComponent {
         nowTime: '',
     };
 
-    async componentDidMount() {
+    componentDidMount() {
         // 先执行一次，避免'白屏'
         this.runPerTime();
         // 开启定时器，每秒执行一次，更新状态
