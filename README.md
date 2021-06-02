@@ -1,3 +1,7 @@
+😃😃😃本人能力有限，欢迎大佬指正改进~
+
+***
+
 # 1. 前言
 
 最近写了一款基于`React`脚手架开发的 TodoList 网页应用，主要记录自己的代办事务，方便查看、管理、安排时间，提升效率。
@@ -14,7 +18,29 @@ PC Web 端 + 移动端 + 黑暗模式，可日常使用。
 
 ![](https://jack-img.oss-cn-hangzhou.aliyuncs.com/img/20210602113848.png)
 
-# 2. 应用简介
+# 2. 食用指南
+
+`fork`本项目后，需要在<a href="https://console.cloud.tencent.com/tcb/env" target="_blank">腾讯云开发CloudBase</a>创建一个云开发环境，选择`空模板`即可：
+
+![](https://jack-img.oss-cn-hangzhou.aliyuncs.com/img/20210602191232.png)
+
+![](https://jack-img.oss-cn-hangzhou.aliyuncs.com/img/20210602191349.png)
+
+创建完成后，获取到云环境的`环境id`，填入到项目的相应位置：
+
+![](https://jack-img.oss-cn-hangzhou.aliyuncs.com/img/20210602191546.png)
+
+在`登录授权`模块中，打开`邮箱登录`和`用户名密码登录`，并根据提示，**配置邮箱登录**：
+
+![](https://jack-img.oss-cn-hangzhou.aliyuncs.com/img/20210602191714.png)
+
+为了能在**React脚手架**中本地预览项目，需要将`localhost:3000`添加到`安全配置`中的`WEB安全域名`中。如果有自定义域名，也将自定义域名添加进来。否则会产生跨域问题。
+
+![](https://jack-img.oss-cn-hangzhou.aliyuncs.com/img/20210602192040.png)
+
+这样下来，就可以`yarn start`或者`npm start`启动项目啦~
+
+# 3. 应用简介
 
 ## 1. 主要功能
 
@@ -58,7 +84,7 @@ PC Web 端 + 移动端 + 黑暗模式，可日常使用。
 -   云存储：存放用户上传的头像
 -   网站托管
 
-# 3. 主要功能实现
+# 4. 主要功能实现
 
 ## 1. 登录前后的路由鉴权
 
@@ -88,7 +114,7 @@ PC Web 端 + 移动端 + 黑暗模式，可日常使用。
 
 每次成功登录后，都会发送网络请求，获得用户的头像链接，保存在`redux`，页面根据链接展示用户头像。
 
-# 4. 未来计划
+# 5. 未来计划
 
 由于本人能力有限，应用还有很多可以再完善的地方，将来可能实现的计划（功能）：
 
