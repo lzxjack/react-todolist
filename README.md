@@ -10,9 +10,9 @@ PC Web 端 + 移动端 + 黑暗模式，可日常使用。
 
 没有复杂的界面，没有繁琐的设置，开箱即用，专注于任务管理。
 
-👆**应用网址**：<a href="https://lzxtodo.top" target="_blank">TodoList</a>
+😛**应用网址**：<a href="https://lzxtodo.top" target="_blank">TodoList</a>
 
-📂**源码仓库**：<a href="https://github.com/lzxjack/React-TodoList" target="_blank">[GitHub]</a>
+😜**源码仓库**：<a href="https://github.com/lzxjack/React-TodoList" target="_blank">[GitHub]</a>
 
 # 2. 食用指南
 
