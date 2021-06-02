@@ -1,12 +1,13 @@
 // 腾讯云开发的一些API
 import cloudbase from '@cloudbase/js-sdk';
 import tcb from '@cloudbase/js-sdk';
+import { env } from '../secret/cloudbaseKey';
 
 export const appTcb = tcb.init({
-    env: 'todolist-3gayiz0cb9b8b263',
+    env,
 });
 export const app = cloudbase.init({
-    env: 'todolist-3gayiz0cb9b8b263',
+    env,
 });
 export const auth = app.auth({
     persistence: 'local',
