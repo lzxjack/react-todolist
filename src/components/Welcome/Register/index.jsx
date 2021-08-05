@@ -85,6 +85,7 @@ export default class Register extends PureComponent {
 
         auth.signUpWithEmailAndPassword(this.newEmail.value, this.newPwd.value)
             .then(() => {
+                // console.log(res);
                 // 发送验证邮件成功，提示消息
                 this.openNotification();
                 // 返回登录页面
@@ -93,6 +94,7 @@ export default class Register extends PureComponent {
             .catch(() => {
                 // 提示消息
                 this.openRegisterFailed();
+                // console.log(res);
             });
     };
     onEnter = e => {
