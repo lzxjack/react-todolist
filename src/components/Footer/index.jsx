@@ -23,7 +23,7 @@ class Footer extends PureComponent {
         return (
             <div className="footer" id={this.props.isDark ? 'footerDark' : ''}>
                 <span className="author">
-                    ©2021&nbsp;By&nbsp;
+                    TodoList&nbsp;©&nbsp;2021&nbsp;By&nbsp;
                     <a
                         className="authorName"
                         id={this.props.isDark ? 'authorNameDark' : ''}
@@ -32,6 +32,16 @@ class Footer extends PureComponent {
                         target="_blank"
                     >
                         飞鸟
+                    </a>
+                    丨
+                    <a
+                        className="authorName"
+                        id={this.props.isDark ? 'authorNameDark' : ''}
+                        rel="noopener noreferrer"
+                        href="https://github.com/lzxjack/react-todolist"
+                        target="_blank"
+                    >
+                        「源代码」
                     </a>
                 </span>
                 <a
