@@ -1,0 +1,44 @@
+@import '../../styles/variation.scss';
+
+.UserBox {
+    height: 100%;
+
+    .header {
+        height: 100px;
+        background-color: $light;
+    }
+
+    .body {
+        height: calc(100% - 100px);
+        position: relative;
+
+        .container {
+            margin: auto;
+            height: 100%;
+            width: $centerOut;
+            color: $font;
+        }
+    }
+}
+
+@media all and (max-width: 1000px) {
+    .UserBox {
+        position: relative;
+
+        .header {
+            height: 0.45rem;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .body {
+            height: calc(100% - 0.45rem);
+
+            .container {
+                width: 100%;
+            }
+        }
+    }
+}

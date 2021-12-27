@@ -1,0 +1,50 @@
+@import '../../../styles/variation.scss';
+
+.NavBox {
+    height: 100%;
+    width: $centerOut;
+    margin: auto;
+
+    .nav {
+        width: $centerIn;
+        height: 100%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .link {
+            padding: 0 10px;
+            font-size: 32px;
+            font-weight: 700;
+            user-select: none;
+            color: $font;
+            transition: all 0.3s;
+        }
+        .linkActive {
+            @extend .link;
+            background-color: $lighter;
+        }
+    }
+}
+
+@media all and (max-width: 1000px) {
+    .NavBox {
+        width: calc(100% - 1rem);
+
+        .nav {
+            width: 100%;
+            .link {
+                font-size: 0.15rem;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex: 1;
+            }
+            .link:last-child {
+                display: none;
+            }
+        }
+    }
+}

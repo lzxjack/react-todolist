@@ -1,0 +1,13 @@
+@import '../../../styles/other.scss';
+
+.LogoutBtn {
+    @extend .twoBtn;
+    @extend .hoverWarn;
+    right: 27px;
+}
+
+@media all and (max-width: 1000px) {
+    .LogoutBtn {
+        left: 0.1rem;
+    }
+}

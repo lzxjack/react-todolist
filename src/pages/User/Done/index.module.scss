@@ -1,0 +1,61 @@
+@import '../../../styles/variation.scss';
+@import '../../../styles/other.scss';
+
+.DoneBox {
+    height: 100%;
+
+    .btnBox {
+        @extend .top;
+
+        .deleteAll {
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            height: 50px;
+            width: 50px;
+            background-color: $lighter;
+            font-size: 36px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            @extend .hoverWarn;
+        }
+    }
+
+    ul {
+        margin: auto;
+        height: calc(100% - 100px);
+        width: $centerIn;
+        padding: 20px 0;
+        overflow-y: auto;
+
+        li {
+            @extend .liItem;
+        }
+    }
+    ul::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+@media all and (max-width: 1000px) {
+    .DoneBox {
+        .btnBox {
+            .deleteAll {
+                width: 0.3rem;
+                height: 0.3rem;
+                font-size: 0.22rem;
+                position: absolute;
+                right: calc((100% - 96%) / 2);
+                top: 50%;
+                transform: translate(0, -50%);
+            }
+        }
+
+        ul {
+            height: calc(100% - 0.6rem);
+            width: 96%;
+            padding: 0.1rem 0;
+        }
+    }
+}

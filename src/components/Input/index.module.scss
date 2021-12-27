@@ -1,0 +1,26 @@
+@import '../../styles/variation.scss';
+@import '../../styles/other.scss';
+
+.InputBox {
+    box-sizing: border-box;
+    @extend .top;
+
+    input {
+        height: 70%;
+        width: $centerIn;
+        background-color: rgba(0, 0, 0, 0);
+        text-align: center;
+        font-size: 32px;
+        font-weight: 700;
+        padding: 0 20px;
+    }
+}
+
+@media all and (max-width: 1000px) {
+    .InputBox {
+        input {
+            width: 100%;
+            font-size: 0.2rem;
+        }
+    }
+}

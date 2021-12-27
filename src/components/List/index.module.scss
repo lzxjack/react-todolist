@@ -1,0 +1,26 @@
+@import '../../styles/variation.scss';
+@import '../../styles/other.scss';
+
+.ListBox {
+    height: calc(100% - 100px);
+    width: $centerIn;
+    margin: auto;
+    padding: 20px 0;
+    overflow-y: auto;
+
+    li {
+        @extend .liItem;
+    }
+}
+
+.ListBox::-webkit-scrollbar {
+    display: none;
+}
+
+@media all and (max-width: 1000px) {
+    .ListBox {
+        height: calc(100% - 0.6rem);
+        width: 96%;
+        padding: 0.1rem 0;
+    }
+}

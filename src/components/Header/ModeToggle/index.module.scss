@@ -1,0 +1,13 @@
+@import '../../../styles/other.scss';
+
+.ToggleBtn {
+    @extend .twoBtn;
+    @extend .hoverInfo;
+    right: 100px;
+}
+
+@media all and (max-width: 1000px) {
+    .ToggleBtn {
+        right: 0.1rem;
+    }
+}

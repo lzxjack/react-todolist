@@ -1,0 +1,7 @@
+@import './styles/variation.scss';
+
+.AppBox {
+    height: 100%;
+    background-color: $deep;
+    transition: all 0.3s;
+}

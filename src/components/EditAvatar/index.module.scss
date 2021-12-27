@@ -1,0 +1,48 @@
+@import '../../styles/other.scss';
+@import '../../styles/variation.scss';
+
+.EditAvatarBox {
+    padding: 50px 0;
+
+    .size {
+        width: 180px;
+        height: 180px;
+        margin: 0 auto;
+    }
+    .avatar {
+        @extend .size;
+        display: block;
+    }
+
+    .noAvatar {
+        @extend .size;
+        background-color: $light;
+    }
+
+    .btns {
+        height: 32px;
+        width: 180px;
+        margin: 40px auto;
+        display: flex;
+        justify-content: space-around;
+
+        button {
+            height: 100%;
+            padding: 0 10px;
+            font-size: 16px;
+            background-color: $lighter;
+            user-select: none;
+            @extend .hoverInfo;
+        }
+
+        .upToCOSInput {
+            display: none;
+        }
+    }
+
+    .loading {
+        font-size: 40px;
+        display: flex;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,35 @@
+// 黑色
+$deep: var(--deep, #1a1a1a);
+$light: var(--light, #272727);
+$lighter: var(--lighter, #777777);
+$lightest: var(--lightest, #d1d1d1);
+$common-hover: var(--common-hover, rgb(65, 65, 116));
+$font: var(--font, #d0d0d0);
+
+// 白色
+// $deep: #ffffff;
+// $light: #dfdfdf;
+// $lighter: #b8b8b8;
+// $lightest: #c4c4c4;
+// $common-hover: rgb(127, 127, 231);
+// $font: #222222;
+
+$btnLight: rgb(28, 139, 139);
+$warn: rgb(177, 0, 0);
+$info: rgb(0, 177, 0);
+
+// 尺寸
+$centerOut: 70%;
+$centerIn: 80%;
+
+// :export {
+//     deep: $deep;
+//     light: $light;
+//     lighter: $lighter;
+//     lightest: $lightest;
+//     btnLight: $btnLight;
+//     btnLight: $btnLight;
+//     common-hover: $common-hover;
+//     centerIn: $centerIn;
+//     centerOut: $centerOut;
+// }
