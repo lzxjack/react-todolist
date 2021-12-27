@@ -30,12 +30,12 @@
 
 @media all and (max-width: 1000px) {
     .NavBox {
-        width: calc(100% - 1rem);
+        width: calc(100% - 1.2rem);
 
         .nav {
             width: 100%;
             .link {
-                font-size: 0.15rem;
+                font-size: 0.2rem;
                 height: 100%;
                 display: flex;
                 justify-content: center;

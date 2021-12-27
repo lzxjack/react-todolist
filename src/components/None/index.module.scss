@@ -10,3 +10,10 @@
     font-size: 30px;
     color: $lighter;
 }
+
+@media all and (max-width: 1000px) {
+    .none {
+        height: calc(100% - 0.7rem);
+        font-size: 0.24rem;
+    }
+}

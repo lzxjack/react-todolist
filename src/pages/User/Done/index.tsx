@@ -80,6 +80,7 @@ const Done: React.FC<Props> = ({ done, setShort, setLong, setDone, configID, sub
                     <VscTrash />
                 </div>
                 <span>Done: {count}</span>
+                {/* <span>Add a todo here...</span> */}
             </div>
 
             {done && done.length ? (
