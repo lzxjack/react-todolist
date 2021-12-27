@@ -11,6 +11,7 @@ import {
 } from '../../utils/api';
 import { connect } from 'react-redux';
 import { setShort, setLong, setDone, addCount } from '../../redux/actions';
+import None from '../../components/None';
 import s from './index.module.scss';
 
 interface Props {
@@ -111,30 +112,36 @@ const List: React.FC<Props> = ({
     };
 
     return (
-        <ul className={s.ListBox}>
-            {(isShort ? short : long).map(item => (
-                <li key={item._id}>
-                    <div className={s.left} onClick={() => finishTask(item._id)}>
-                        <VscCheck />
-                    </div>
-                    <div className={s.change} onClick={() => changeTask(item._id)}>
-                        <VscArrowSwap />
-                    </div>
-                    <form onSubmit={(e: any) => updateTask(e, item._id, item.content)}>
-                        <input
-                            type="text"
-                            id={item._id}
-                            className={s.center}
-                            defaultValue={item.content}
-                            onBlur={() => removeTask(item._id, item.content)}
-                        />
-                    </form>
-                    <div className={s.right} onClick={() => deleteTask(item._id)}>
-                        <VscChromeClose />
-                    </div>
-                </li>
-            ))}
-        </ul>
+        <>
+            {(isShort ? short : long).length ? (
+                <ul className={s.ListBox}>
+                    {(isShort ? short : long).map(item => (
+                        <li key={item._id}>
+                            <div className={s.left} onClick={() => finishTask(item._id)}>
+                                <VscCheck />
+                            </div>
+                            <div className={s.change} onClick={() => changeTask(item._id)}>
+                                <VscArrowSwap />
+                            </div>
+                            <form onSubmit={(e: any) => updateTask(e, item._id, item.content)}>
+                                <input
+                                    type="text"
+                                    id={item._id}
+                                    className={s.center}
+                                    defaultValue={item.content}
+                                    onBlur={() => removeTask(item._id, item.content)}
+                                />
+                            </form>
+                            <div className={s.right} onClick={() => deleteTask(item._id)}>
+                                <VscChromeClose />
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            ) : (
+                <None />
+            )}
+        </>
     );
 };
 

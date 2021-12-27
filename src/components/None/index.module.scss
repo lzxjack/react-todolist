@@ -1,0 +1,12 @@
+@import '../../styles/variation.scss';
+
+.none {
+    user-select: none;
+    height: calc(100% - 100px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 30px;
+    color: $lighter;
+}

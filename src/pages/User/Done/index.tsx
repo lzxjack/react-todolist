@@ -11,6 +11,7 @@ import {
 } from '../../../utils/api';
 import { connect } from 'react-redux';
 import { setShort, setLong, setDone, subCount } from '../../../redux/actions';
+import None from '../../../components/None';
 import s from './index.module.scss';
 
 interface Props {
@@ -80,9 +81,10 @@ const Done: React.FC<Props> = ({ done, setShort, setLong, setDone, configID, sub
                 </div>
                 <span>Done: {count}</span>
             </div>
-            <ul>
-                {done &&
-                    done.map((item: TaskObj) => (
+
+            {done && done.length ? (
+                <ul>
+                    {done.map((item: TaskObj) => (
                         <li key={item._id}>
                             <div className={s.left} onClick={() => recoverTask(item._id)}>
                                 <GrRotateLeft />
@@ -100,7 +102,10 @@ const Done: React.FC<Props> = ({ done, setShort, setLong, setDone, configID, sub
                             </div>
                         </li>
                     ))}
-            </ul>
+                </ul>
+            ) : (
+                <None />
+            )}
         </div>
     );
 };
