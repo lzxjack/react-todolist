@@ -28,7 +28,7 @@
     }
 }
 
-@media all and (max-width: 1000px) {
+@media all and (max-width: 900px) {
     .NavBox {
         width: calc(100% - 1.2rem);
 
@@ -44,6 +44,16 @@
             }
             .link:last-child {
                 display: none;
+            }
+        }
+    }
+}
+
+@media all and (max-width: 950px) {
+    .NavBox {
+        .nav {
+            .link {
+                font-size: 28px;
             }
         }
     }

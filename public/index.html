@@ -4,10 +4,10 @@
         <meta charset="utf-8" />
         <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <!-- <meta
+        <meta
             name="viewport"
             content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no"
-        /> -->
+        />
         <meta name="theme-color" content="#000000" />
         <meta name="description" content="Web site created using create-react-app" />
         <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
@@ -19,4 +19,12 @@
         <noscript>You need to enable JavaScript to run this app.</noscript>
         <div id="root"></div>
     </body>
+    <script type="text/javascript">
+        function inMobile() {
+            document.getElementsByTagName('html')[0].style.fontSize =
+                (document.documentElement.clientWidth / 450) * 100 + 'px';
+        }
+        document.addEventListener('DOMContentLoaded', inMobile);
+        window.onresize = inMobile;
+    </script>
 </html>

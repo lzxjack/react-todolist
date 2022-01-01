@@ -11,7 +11,7 @@
     color: $lighter;
 }
 
-@media all and (max-width: 1000px) {
+@media all and (max-width: 900px) {
     .none {
         height: calc(100% - 0.7rem);
         font-size: 0.24rem;
