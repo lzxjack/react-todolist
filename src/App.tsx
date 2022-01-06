@@ -1,18 +1,21 @@
-import { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { auth } from './utils/cloudbase';
 import { bodyStyle } from './utils/constant';
 import { storeState } from './utils/interface';
 import { connect } from 'react-redux';
 import { setLogin } from './redux/actions';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import Login from './pages/Login';
-import User from './pages/User';
+// import Login from './pages/Login';
+// import User from './pages/User';
 import s from './App.module.scss';
 
 interface Props {
     login?: boolean;
     setLogin?: Function;
 }
+
+const User = lazy(() => import('./pages/User'));
+const Login = lazy(() => import('./pages/Login'));
 
 const App: React.FC<Props> = ({ login, setLogin }) => {
     useEffect(() => {
@@ -37,12 +40,26 @@ const App: React.FC<Props> = ({ login, setLogin }) => {
             <Routes>
                 {login ? (
                     <>
-                        <Route path="user/*" element={<User />} />
+                        <Route
+                            path="user/*"
+                            element={
+                                <Suspense fallback={<></>}>
+                                    <User />
+                                </Suspense>
+                            }
+                        />
                         <Route path="*" element={<Navigate to="user/*" replace />} />
                     </>
                 ) : (
                     <>
-                        <Route path="/" element={<Login />} />
+                        <Route
+                            path="/"
+                            element={
+                                <Suspense fallback={<></>}>
+                                    <Login />
+                                </Suspense>
+                            }
+                        />
                         <Route path="*" element={<Navigate to="/" replace />} />
                     </>
                 )}

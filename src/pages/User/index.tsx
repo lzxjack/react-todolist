@@ -1,13 +1,13 @@
-import { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import Header from '../../components/Header';
 import { getTasksAPI, createConfigAPI, getConfigAPI } from '../../utils/api';
 import { connect } from 'react-redux';
 import { TaskObj, storeState } from '../../utils/interface';
 import { setAvatar, setShort, setLong, setDone, setConfigID, setCount } from '../../redux/actions';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import Task from '../../pages/User/Task';
-import Done from '../../pages/User/Done';
-import About from '../../pages/User/About';
+// import Task from '../../pages/User/Task';
+// import Done from '../../pages/User/Done';
+// import About from '../../pages/User/About';
 import s from './index.module.scss';
 
 interface Props {
@@ -18,6 +18,10 @@ interface Props {
     setCount?: Function;
     setConfigID?: Function;
 }
+
+const Task = lazy(() => import('../../pages/User/Task'));
+const Done = lazy(() => import('../../pages/User/Done'));
+const About = lazy(() => import('../../pages/User/About'));
 
 const User: React.FC<Props> = ({
     setShort,
@@ -87,10 +91,38 @@ const User: React.FC<Props> = ({
             <div className={s.body}>
                 <div className={s.container}>
                     <Routes>
-                        <Route path="short" element={<Task isShort={true} />} />
-                        <Route path="long" element={<Task isShort={false} />} />
-                        <Route path="done" element={<Done />} />
-                        <Route path="about" element={<About />} />
+                        <Route
+                            path="short"
+                            element={
+                                <Suspense fallback={<></>}>
+                                    <Task isShort={true} />
+                                </Suspense>
+                            }
+                        />
+                        <Route
+                            path="long"
+                            element={
+                                <Suspense fallback={<></>}>
+                                    <Task isShort={false} />
+                                </Suspense>
+                            }
+                        />
+                        <Route
+                            path="done"
+                            element={
+                                <Suspense fallback={<></>}>
+                                    <Done />
+                                </Suspense>
+                            }
+                        />
+                        <Route
+                            path="about"
+                            element={
+                                <Suspense fallback={<></>}>
+                                    <About />
+                                </Suspense>
+                            }
+                        />
                         <Route path="*" element={<Navigate to="short" replace />} />
                     </Routes>
                 </div>
