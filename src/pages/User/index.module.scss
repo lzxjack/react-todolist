@@ -1,44 +1,45 @@
 @import '../../styles/variation.scss';
 
 .UserBox {
-    height: 100%;
+  height: calc(100% - 40px);
 
-    .header {
-        height: 100px;
-        background-color: $light;
+  .header {
+    height: 100px;
+    background-color: $light;
+  }
+
+  .body {
+    height: calc(100% - 100px);
+    position: relative;
+
+    .container {
+      margin: auto;
+      height: 100%;
+      width: $centerOut;
+      color: $font;
     }
-
-    .body {
-        height: calc(100% - 100px);
-        position: relative;
-
-        .container {
-            margin: auto;
-            height: 100%;
-            width: $centerOut;
-            color: $font;
-        }
-    }
+  }
 }
 
 @media all and (max-width: 900px) {
-    .UserBox {
-        position: relative;
+  .UserBox {
+    height: 100%;
+    position: relative;
 
-        .header {
-            height: 0.6rem;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-        }
-
-        .body {
-            height: calc(100% - 0.6rem);
-
-            .container {
-                width: 100%;
-            }
-        }
+    .header {
+      height: 0.6rem;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
     }
+
+    .body {
+      height: calc(100% - 0.6rem);
+
+      .container {
+        width: 100%;
+      }
+    }
+  }
 }

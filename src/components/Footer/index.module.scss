@@ -1,0 +1,28 @@
+@import '../../styles/variation.scss';
+
+.footerBox {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0);
+  color: $lighter;
+  user-select: none;
+
+  span {
+    margin-right: 10px;
+  }
+
+  a {
+    color: $lighter;
+  }
+  a:hover {
+    color: $common-hover;
+  }
+}
+
+@media all and (max-width: 900px) {
+  .footerBox {
+    display: none;
+  }
+}

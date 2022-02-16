@@ -2,127 +2,129 @@
 @import '../../styles/other.scss';
 
 .LoginBox {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: calc(100% - 40px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    .container {
-        width: 400px;
-        height: 280px;
-        position: relative;
-        transition: all 0.6s;
-        transform-style: preserve-3d;
+  .container {
+    width: 400px;
+    height: 280px;
+    position: relative;
+    transition: all 0.6s;
+    transform-style: preserve-3d;
 
-        .login {
-            box-sizing: border-box;
-            padding: 10px 0;
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: $light;
-            box-shadow: 0 0 18px rgba(0, 0, 0, 0.5);
-            display: flex;
-            flex-direction: column;
-            display: flex;
-            justify-content: space-evenly;
-            align-items: center;
-            color: $font;
+    .login {
+      box-sizing: border-box;
+      padding: 10px 0;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $light;
+      box-shadow: 0 0 18px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      color: $font;
 
-            .itemBox {
-                height: 50px;
-                width: 320px;
-                overflow: hidden;
-                display: flex;
-                transition: all 0.3s;
+      .itemBox {
+        height: 50px;
+        width: 320px;
+        overflow: hidden;
+        display: flex;
+        transition: all 0.3s;
 
-                .key {
-                    height: 100%;
-                    flex: 1;
-                    background-color: $lighter;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    font-size: 20px;
-                    user-select: none;
-                    @extend .common-hover;
-                }
-
-                .value {
-                    box-sizing: border-box;
-                    height: 100%;
-                    width: 250px;
-                    padding: 0 20px;
-                    font-size: 20px;
-                    background-color: $lightest;
-                    color: #000;
-                }
-            }
-
-            .btns {
-                height: 40px;
-                width: 320px;
-                display: flex;
-                justify-content: space-evenly;
-
-                .btn {
-                    height: 100%;
-                    width: 80px;
-                    font-size: 18px;
-                    background-color: $lighter;
-                    color: $font;
-                    @extend .common-hover;
-                }
-            }
+        .key {
+          height: 100%;
+          flex: 1;
+          background-color: $lighter;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 20px;
+          user-select: none;
+          @extend .common-hover;
         }
-        .loginTrans {
-            z-index: 1;
-            transform: translateZ(200px);
+
+        .value {
+          box-sizing: border-box;
+          height: 100%;
+          width: 250px;
+          padding: 0 20px;
+          font-size: 20px;
+          background-color: $lightest;
+          color: #000;
         }
-        .register {
-            @extend .login;
-            z-index: 0;
-            transform: translateX(200px) rotateY(90deg);
+      }
+
+      .btns {
+        height: 40px;
+        width: 320px;
+        display: flex;
+        justify-content: space-evenly;
+
+        .btn {
+          height: 100%;
+          width: 80px;
+          font-size: 18px;
+          background-color: $lighter;
+          color: $font;
+          @extend .common-hover;
         }
+      }
     }
+    .loginTrans {
+      z-index: 1;
+      transform: translateZ(200px);
+    }
+    .register {
+      @extend .login;
+      z-index: 0;
+      transform: translateX(200px) rotateY(90deg);
+    }
+  }
 }
 
 @media all and (max-width: 900px) {
-    .LoginBox {
-        .container {
-            width: 100%;
-            height: 2.8rem;
+  .LoginBox {
+    height: 100%;
 
-            .login {
-                padding: 0.1rem 0;
+    .container {
+      width: 100%;
+      height: 2.8rem;
 
-                .itemBox {
-                    height: 0.5rem;
-                    width: 90%;
+      .login {
+        padding: 0.1rem 0;
 
-                    .key {
-                        flex: 1;
-                        font-size: 0.18rem;
-                    }
+        .itemBox {
+          height: 0.5rem;
+          width: 90%;
 
-                    .value {
-                        flex: 4;
-                        padding: 0 0.2rem;
-                        font-size: 0.2rem;
-                    }
-                }
-                .btns {
-                    height: 0.4rem;
-                    width: 3.2rem;
+          .key {
+            flex: 1;
+            font-size: 0.18rem;
+          }
 
-                    .btn {
-                        width: 0.8rem;
-                        font-size: 0.17rem;
-                    }
-                }
-            }
+          .value {
+            flex: 4;
+            padding: 0 0.2rem;
+            font-size: 0.2rem;
+          }
         }
+        .btns {
+          height: 0.4rem;
+          width: 3.2rem;
+
+          .btn {
+            width: 0.8rem;
+            font-size: 0.17rem;
+          }
+        }
+      }
     }
+  }
 }
