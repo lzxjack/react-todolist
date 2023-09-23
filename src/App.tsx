@@ -65,14 +65,14 @@ const App: React.FC<Props> = ({ login, setLogin }) => {
           </>
         )}
       </Routes>
-      <Footer/>
+      {/* <Footer /> */}
     </div>
   );
 };
 
 export default connect(
   (state: storeState) => ({
-    login: state.login,
+    login: state.login
   }),
   { setLogin }
 )(App);

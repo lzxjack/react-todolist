@@ -1,7 +1,8 @@
 @import '../../styles/variation.scss';
 
 .UserBox {
-  height: calc(100% - 40px);
+  // height: calc(100% - 40px);
+  height: 100%;
 
   .header {
     height: 100px;
